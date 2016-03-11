@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Visualisation of New Year Resolutions for 2015</title>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <script>
+        //width and height
+        var width = 960;
+        var height = 600;
+
+        //define the map projection
+        var projection = d3.geo.albersUsa()
+                .scale(1280)
+                .translate([width/2, height/2]);
+
+        // define default path generator
+        var path = d3.geo.path()
+                .projection(projection);
+
+        //create the svg element
+        var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+        //load the GeoJSON data
+        d3.json("us-states.json", function(json) {
+
+            //bind data and create one path per GeoJSON feature
+            svg.selectAll("path")
+                    .data(json.features)
+                    .enter()
+                    .append("path")
+                    .attr("d", path)
+                    .style("fill", "#cccccc")
+                    .style("stroke", "white");
+        });
+    </script>
+</body>
+</html>
