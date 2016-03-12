@@ -6,6 +6,39 @@
     <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
     <style type="text/css">
+        /*css for the different categories*/
+        .health {
+            fill: red;
+        }
+        .humor {
+            fill: blue;
+        }
+        .personal {
+            fill: purple;
+        }
+        .philanthropic {
+            fill: yellow;
+        }
+        .education {
+            fill: burlyWood;
+        }
+        .recreation {
+            fill: orange;
+        }
+        .family {
+            fill: green;
+        }
+        .career
+        {
+            fill: deepPink;
+        }
+        .finance {
+            fill: aqua;
+        }
+        .time{
+            fill: navy;
+        }
+
         /*css for tooltips on map*/
 
         #tooltip {
@@ -93,7 +126,9 @@
                             return projection([d.long, d.lat])[1];
                         })
                         .attr("r", 5)
-                        .style("fill", "yellow")
+                        .style("fill", function(d) {
+                            return selectCategoryColour(d.category);
+                        })
                         .style("opacity", 0.75)
                         .on("mouseover", function(d){
                             // what happens when a point is hovered over
@@ -137,7 +172,9 @@
 
                             //set the color of the circle
                             d3.select(this)
-                                    .style("fill", "black");
+                                    .style("fill", function(d){
+                                        return selectCategoryColour("");
+                                    });
                         })
                         .on("mouseout", function(){
                             //what happens when overing over a point is done
@@ -146,10 +183,54 @@
 
                             //set back to the original colour for the point
                             d3.select(this)
-                                    .style("fill", "yellow")
+                                    .style("fill", function(d){
+                                        return selectCategoryColour(d.category);
+                                    });
                         });
             });
         });
+
+        function selectCategoryColour(category)
+        {
+            var color;
+
+            switch(category)
+            {
+                case "Health & Fitness":
+                    color = "red";
+                    break;
+                case "Humor":
+                    color = "blue";
+                    break;
+                case "Personal Growth":
+                    color = "purple";
+                    break;
+                case "Philanthropic":
+                    color = "yellow";
+                    break;
+                case "Education/Training":
+                    color = "burlyWood";
+                    break;
+                case "Recreation & Leisure":
+                    color = "orange";
+                    break;
+                case "Family/Friends/Relationships":
+                    color = "green";
+                    break;
+                case "Career":
+                    color = "deepPink";
+                    break;
+                case "Finance":
+                    color = "aqua";
+                    break;
+                case "Time Management/Organization":
+                    color = "navy";
+                    break;
+                default:
+                    color = "black";
+            }
+            return color;
+        }
 
     </script>
 </body>
