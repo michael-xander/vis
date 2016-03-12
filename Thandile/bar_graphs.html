@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta content="utf-8" http-equiv="encoding">
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: lightsteelblue;
+  border: 0px;					
+  border-radius: 8px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: lightsteelblue;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+</style>
+<head>
+	<form action="" style="text-align:center;">
+		<input type="checkbox" name="All" value="All">All
+		<input type="checkbox" name="Health & Fitness" value="Health & Fitness">Health & Fitness
+		<input type="checkbox" name="Personal Growth" value="Personal Growth">Personal Growth
+		<input type="checkbox" name="Family" value="Family">Family
+		<input type="checkbox" name="Recreation & Leisure" value="Recreation & Leisure">Recreation & Leisure<br>
+		<input type="checkbox" name="Career" value="Career">Career
+		<input type="checkbox" name="Education" value="Education">Education
+		<input type="checkbox" name="Finance" value="Finance">Finance
+		<input type="checkbox" name="Time Management" value="Time Management">Time Management
+		<input type="checkbox" name="Philanthropy" value="Philanthropy">Philanthropy
+	</form>
+	
+	<form action="" style="text-align:center;">
+	  <input type="radio" name="gender" value="male"> Male
+	  <input type="radio" name="gender" value="female"> Female
+	</form>
+
+	<form action="" style="text-align:center;">
+		<select>
+		  <option value="1">Alabama</option>
+		  <option value="2">Alaska</option>
+		  <option value="3">Arizona</option>
+		  <option value="4">Arkansas</option>
+		  <option value="5">California</option>
+		  <option value="6">Colorado</option>
+		  <option value="7">Connecticut</option>
+		  <option value="8">Delaware</option>
+		  <option value="9">Florida</option>
+		  <option value="10">Georgia</option>
+		  <option value="11">Hawaii</option>
+		  <option value="12">Idaho</option>
+		  <option value="13">Illinois</option>
+		  <option value="14">Indiana</option>
+		  <option value="15">Iowa</option>
+		  <option value="16">Kansas</option>
+		  <option value="17">Kentucky</option>
+		  <option value="18">Louisiana</option>
+		  <option value="19">Maine</option>
+		  <option value="20">Maryland</option>
+		  <option value="21">Massachusetts</option>
+		  <option value="22">Michigan</option>
+		  <option value="23">Minnesota</option>
+		  <option value="24">Mississippi</option>
+		  <option value="25">Missouri</option>
+		  <option value="26">Montana</option>
+		  <option value="27">Nebraska</option>
+		  <option value="28">Nevada</option>
+		  <option value="29">New Hampshire</option>
+		  <option value="30">New Jersey</option>
+		  <option value="31">New Mexico</option>
+		  <option value="32">New York</option>
+		  <option value="33">North Carolina </option>
+		  <option value="34">North Dakota</option>
+		  <option value="35">Ohio</option>
+		  <option value="36">Oklahoma</option>
+		  <option value="37">Oregon</option>
+		  <option value="38">Pennsylvania</option>
+		  <option value="39">Rhode Island </option>
+		  <option value="40">South Carolina</option>
+		  <option value="41">South Dakota</option>
+		  <option value="42">Tennessee</option>
+		  <option value="43">Texas</option>
+		  <option value="44">Utah</option>
+		  <option value="45">Vermont</option>
+		  <option value="46">Virginia</option>
+		  <option value="47">Washington</option>
+		  <option value="48">West Virginia</option>
+		  <option value="49">Wisconsin</option>
+		  <option value="50">Wyoming</option>
+		</select>
+
+		<select>
+		  <option value="1">Alabama</option>
+		  <option value="2">Alaska</option>
+		  <option value="3">Arizona</option>
+		  <option value="4">Arkansas</option>
+		  <option value="5">California</option>
+		  <option value="6">Colorado</option>
+		  <option value="7">Connecticut</option>
+		  <option value="8">Delaware</option>
+		  <option value="9">Florida</option>
+		  <option value="10">Georgia</option>
+		  <option value="11">Hawaii</option>
+		  <option value="12">Idaho</option>
+		  <option value="13">Illinois</option>
+		  <option value="14">Indiana</option>
+		  <option value="15">Iowa</option>
+		  <option value="16">Kansas</option>
+		  <option value="17">Kentucky</option>
+		  <option value="18">Louisiana</option>
+		  <option value="19">Maine</option>
+		  <option value="20">Maryland</option>
+		  <option value="21">Massachusetts</option>
+		  <option value="22">Michigan</option>
+		  <option value="23">Minnesota</option>
+		  <option value="24">Mississippi</option>
+		  <option value="25">Missouri</option>
+		  <option value="26">Montana</option>
+		  <option value="27">Nebraska</option>
+		  <option value="28">Nevada</option>
+		  <option value="29">New Hampshire</option>
+		  <option value="30">New Jersey</option>
+		  <option value="31">New Mexico</option>
+		  <option value="32">New York</option>
+		  <option value="33">North Carolina </option>
+		  <option value="34">North Dakota</option>
+		  <option value="35">Ohio</option>
+		  <option value="36">Oklahoma</option>
+		  <option value="37">Oregon</option>
+		  <option value="38">Pennsylvania</option>
+		  <option value="39">Rhode Island </option>
+		  <option value="40">South Carolina</option>
+		  <option value="41">South Dakota</option>
+		  <option value="42">Tennessee</option>
+		  <option value="43">Texas</option>
+		  <option value="44">Utah</option>
+		  <option value="45">Vermont</option>
+		  <option value="46">Virginia</option>
+		  <option value="47">Washington</option>
+		  <option value="48">West Virginia</option>
+		  <option value="49">Wisconsin</option>
+		  <option value="50">Wyoming</option>
+		</select>
+	</form>
+	
+  
+</body>
+</html>
+</head>
+<total>
+</total>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<script>
+
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(5);
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>"  + d.gender_FM + ":</strong> <span style='color:red'>" + d.gender_total + "</span>";
+  })
+
+var svg = d3.select("total").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
+
+
+  
+d3.csv("New-years-resolutions-DFE.csv", type, function(error, data) {
+  if (error) throw error;
+
+  x.domain(data.map(function(d) { return d.gender_FM; }));
+  y.domain([0, d3.max(data, function(d) { return d.gender_total; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("gender total");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.gender_FM); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.gender_total); })
+      .attr("height", function(d) { return height - y(d.gender_total); })
+	  .on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
+});
+
+function type(d) {
+  d.gender_total = +d.gender_total;
+  return d;
+}
+</script>
