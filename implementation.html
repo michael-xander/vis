@@ -26,21 +26,22 @@
                 .attr("width", width)
                 .attr("height", height);
 
-        //load the GeoJSON data
-        d3.json("us-states.json", function(json) {
 
-            //bind data and create one path per GeoJSON feature
-            svg.selectAll("path")
-                    .data(json.features)
-                    .enter()
-                    .append("path")
-                    .attr("d", path)
-                    .style("fill", "#cccccc")
-                    .style("stroke", "white");
+        // load the compiled data
+        d3.csv("compilation.csv", function(data)
+        {
+            // load the GeoJSON data for the states
+            d3.json("us-states.json", function(json){
+                //bind data and create one path per GeoJSON feature
+                svg.selectAll("path")
+                        .data(json.features)
+                        .enter()
+                        .append("path")
+                        .attr("d", path)
+                        .style("fill","cccccc")
+                        .style("stroke", "white");
 
-            //load the compiled data
-            d3.csv("compilation.csv", function(data){
-
+                //set up circles for the different locations
                 svg.selectAll("circle")
                         .data(data)
                         .enter()
