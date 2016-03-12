@@ -6,6 +6,11 @@
     <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
     <style type="text/css">
+        /*css for the different category checkboxes*/
+        .category_checkbox {
+
+        }
+
         /*css for the different categories*/
         .health {
             fill: red;
@@ -80,16 +85,16 @@
     </div>
 
     <form action="">
-        <input type="checkbox" name="category" value="health">Health & Fitness
-        <input type="checkbox" name="category" value="humor">Humor
-        <input type="checkbox" name="category" value="personal">Personal Growth
-        <input type="checkbox" name="category" value="philanthropic">Philanthropic
-        <input type="checkbox" name="category" value="education">Education/Training
-        <input type="checkbox" name="category" value="recreation">Recreation & Leisure
-        <input type="checkbox" name="category" value="family">Family/Friends/Relationships
-        <input type="checkbox" name="category" value="career">Career
-        <input type="checkbox" name="category" value="finance">Finance
-        <input type="checkbox" name="category" value="time">Time Management/Organization
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Health & Fitness">Health & Fitness
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Humor">Humor
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Personal Growth">Personal Growth
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Philanthropic">Philanthropic
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Education/Training">Education/Training
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Recreation & Leisure">Recreation & Leisure
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Family/Friends/Relationships">Family/Friends/Relationships
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Career">Career
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Finance">Finance
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Time Management/Organization">Time Management/Organization
     </form>
 
     <form>
@@ -206,6 +211,25 @@
                                     .style("fill", function(d){
                                         return selectCategoryColour(d.category);
                                     });
+                        });
+
+                //adding listener to each category checkbox
+                d3.selectAll(".category_checkbox")
+                        .on("change", function() {
+                            var checkboxValue = this.value;
+                            var points = svg.selectAll("circle")
+                                    .filter(function(d) {
+                                        return d.category == checkboxValue;
+                                    });
+                            //display only those points that have been ticked
+                            if(this.checked)
+                            {
+                                points.style("display", "inline")
+                            }
+                            else
+                            {
+                                points.style("display", "none");
+                            }
                         });
             });
         });
