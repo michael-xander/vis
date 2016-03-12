@@ -54,7 +54,17 @@
                         })
                         .attr("r", 5)
                         .style("fill", "yellow")
-                        .style("opacity", 0.75);
+                        .style("opacity", 0.75)
+                        .on("mouseover", function(){
+                            // what happens when a point is hovered over
+                            d3.select(this)
+                                    .style("fill", "black")
+                        })
+                        .on("mouseout", function(){
+                            //what happens when overing over a point is done
+                            d3.select(this)
+                                    .style("fill", "yellow")
+                        });
             });
         });
 
