@@ -11,6 +11,11 @@
 
         }
 
+        /*css for the different gender checkboxes*/
+        .gender_checkbox {
+
+        }
+
         /*css for the different categories*/
         .health {
             fill: red;
@@ -98,8 +103,8 @@
     </form>
 
     <form>
-        <input type="radio" name="gender" value="male">Male
-        <input type="radio" name="gender" value="female">Female
+        <input class="gender_checkbox" type="checkbox" name="gender" checked="true" value="male">Male
+        <input class="gender_checkbox" type="checkbox" name="gender" checked="true" value="female">Female
     </form>
 
     <script>
@@ -221,10 +226,57 @@
                                     .filter(function(d) {
                                         return d.category == checkboxValue;
                                     });
+
                             //display only those points that have been ticked
                             if(this.checked)
                             {
-                                points.style("display", "inline")
+                                //checked gender boxes to get the current picked genders
+                                var checkedGenders = d3.selectAll(".gender_checkbox")
+                                        .filter(function(){
+                                            return this.checked;
+                                        });
+
+                                checkedGenders.each(function(){
+                                    var checkboxGender = this.value;
+                                    //filter to return points that satisfy the picked gender
+                                    var tempPoints = points.filter(function(point){
+                                        return point.gender == checkboxGender;
+                                    });
+                                    tempPoints.style("display", "inline");
+                                });
+                            }
+                            else
+                            {
+                                points.style("display", "none");
+                            }
+                        });
+
+                //adding listener to each gender checkbox
+                d3.selectAll(".gender_checkbox")
+                        .on("change", function(){
+                            var checkboxValue = this.value;
+                            var points = svg.selectAll("circle")
+                                    .filter(function(d){
+                                        return d.gender == checkboxValue;
+                                    });
+                            //display only those points that have been ticked
+                            if(this.checked)
+                            {
+                                //checked category boxes to get the current picked categories
+                                var checkedCategories = d3.selectAll(".category_checkbox")
+                                        .filter(function(){
+                                            return this.checked;
+                                        });
+
+                                checkedCategories.each(function(){
+                                    var checkboxCategory = this.value;
+                                    //filter to return points that satisfy the picked categories
+                                    var tempPoints = points.filter(function(point){
+                                        return point.category == checkboxCategory;
+                                    });
+                                    tempPoints.style("display", "inline");
+                                });
+                                //points.style("display", "inline");
                             }
                             else
                             {
