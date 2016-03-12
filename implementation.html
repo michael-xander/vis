@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <title>Data Visualisation of New Year Resolutions for 2015</title>
     <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <style type="text/css">
+        /*css for tooltips on map*/
+
+        #tooltip {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            padding: 10px;
+            background-color: white;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+            -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+            pointer-events: none;
+        }
+
+        #tooltip.hidden {
+            display: none;
+        }
+
+        #tooltip p {
+            margin: 0;
+            font-family: sans-serif;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div id="tooltip" class="hidden">
+        <p><strong>Important label heading</strong></p>
+        <p><span id="value">100</span>%</p>
+    </div>
+
     <script>
         //width and height
         var width = 960;
@@ -57,11 +92,29 @@
                         .style("opacity", 0.75)
                         .on("mouseover", function(){
                             // what happens when a point is hovered over
+
+                            //obtain x and y values for the tooltip to appear
+                            var xPosition = parseFloat(d3.select(this).attr("cx"));
+                            var yPosition = parseFloat(d3.select(this).attr("cy"));
+
+                            //update the tooltip position and values
+                            d3.select("tooltip")
+                                    .style("left", xPosition + "px")
+                                    .style("top", yPosition + "px");
+
+                            //show the tooltip
+                            d3.select("#tooltip").classed("hidden", false);
+
+                            //set the color of the circle
                             d3.select(this)
-                                    .style("fill", "black")
+                                    .style("fill", "black");
                         })
                         .on("mouseout", function(){
                             //what happens when overing over a point is done
+                            //hide the tooltip
+                            d3.select("#tooltip").classed("hidden", true);
+
+                            //set back to the original colour for the point
                             d3.select(this)
                                     .style("fill", "yellow")
                         });
