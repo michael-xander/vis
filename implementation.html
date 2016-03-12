@@ -172,6 +172,7 @@
 
                             //set the color of the circle
                             d3.select(this)
+                                    .attr("r", 10)
                                     .style("fill", function(d){
                                         return selectCategoryColour("");
                                     });
@@ -183,6 +184,7 @@
 
                             //set back to the original colour for the point
                             d3.select(this)
+                                    .attr("r", 5)
                                     .style("fill", function(d){
                                         return selectCategoryColour(d.category);
                                     });
