@@ -85,15 +85,6 @@
     </style>
 </head>
 <body>
-    <div id="tooltip" class="hidden">
-        <p><strong class="tooltip_tag">Handle:@</strong><span id="tweet_handle">@something</span></p>
-        <p><strong class="tooltip_tag">Gender:</strong><span id="gender">male/female</span></p>
-        <p><strong class="tooltip_tag">Tweet:</strong><span id="tweet">#whatever this is life</span></p>
-        <p><strong class="tooltip_tag">Category:</strong><span id="category">Sample category</span></p>
-        <p><strong class="tooltip_tag">Topic:</strong><span id="topic">Sample topic</span></p>
-        <p><strong class="tooltip_tag">Location:</strong><span id="location">Sample location</span></p>
-    </div>
-
     <form action="">
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Health & Fitness">Health & Fitness
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Humor">Humor
@@ -111,6 +102,16 @@
         <input class="gender_checkbox" type="checkbox" name="gender" checked="true" value="male">Male
         <input class="gender_checkbox" type="checkbox" name="gender" checked="true" value="female">Female
     </form>
+
+    <div id="tooltip" class="hidden">
+        <p><strong class="tooltip_tag">Handle:@</strong><span id="tweet_handle">@something</span></p>
+        <p><strong class="tooltip_tag">Gender:</strong><span id="gender">male/female</span></p>
+        <p><strong class="tooltip_tag">Tweet:</strong><span id="tweet">#whatever this is life</span></p>
+        <p><strong class="tooltip_tag">Category:</strong><span id="category">Sample category</span></p>
+        <p><strong class="tooltip_tag">Topic:</strong><span id="topic">Sample topic</span></p>
+        <p><strong class="tooltip_tag">Location:</strong><span id="location">Sample location</span></p>
+    </div>
+
 
     <script>
         //width and height
@@ -169,8 +170,8 @@
                             // what happens when a point is hovered over
 
                             //obtain x and y values for the tooltip to appear
-                            var xPosition = parseFloat(d3.select(this).attr("cx"));
-                            var yPosition = parseFloat(d3.select(this).attr("cy"));
+                            var xPosition = parseFloat(d3.select(this).attr("cx")) + 20;
+                            var yPosition = parseFloat(d3.select(this).attr("cy")) + 35;
 
                             //update the tooltip position and values
                             d3.select("#tooltip")
@@ -204,6 +205,10 @@
 
                             //show the tooltip
                             d3.select("#tooltip").classed("hidden", false);
+
+                            //double the circle radius for the point
+                            d3.select(this)
+                                    .attr("r", 10);
 
                         })
                         .on("mouseout", function(){
