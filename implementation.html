@@ -154,6 +154,8 @@
                             return projection([d.long, d.lat])[1];
                         })
                         .attr("r", 5)
+                        .attr("stroke", "black")
+                        .attr("stroke-width", 2)
                         .style("fill", function(d) {
                             return selectCategoryColour(d.category);
                         })
