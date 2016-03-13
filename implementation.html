@@ -33,7 +33,7 @@
             fill: powderBlue;
         }
         .recreation {
-            fill: yellow;
+            fill: deepPink;
         }
         .family {
             fill: orange;
@@ -160,7 +160,9 @@
                             return projection([d.long, d.lat])[1];
                         })
                         .attr("r", 5)
-                        .attr("stroke", "black")
+                        .attr("stroke", function(d){
+                            return selectGenderColour(d.gender);
+                        })
                         .attr("stroke-width", 2)
                         .style("fill", function(d) {
                             return selectCategoryColour(d.category);
@@ -292,6 +294,24 @@
             });
         });
 
+        //returns the colour specified for the provided gender
+        function selectGenderColour(gender)
+        {
+            var colour;
+
+            if(gender == "male")
+            {
+                colour = "black";
+            }
+            else
+            {
+                colour = "white";
+            }
+
+            return colour;
+        }
+
+        //returns the color specified for the provided category
         function selectCategoryColour(category)
         {
             var color;
@@ -314,7 +334,7 @@
                     color = "powderBlue";
                     break;
                 case "Recreation & Leisure":
-                    color = "yellow";
+                    color = "deepPink";
                     break;
                 case "Family/Friends/Relationships":
                     color = "orange";
