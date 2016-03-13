@@ -103,6 +103,10 @@
         <input class="gender_checkbox" type="checkbox" name="gender" checked="true" value="female">Female
     </form>
 
+    <!-- the dropdown boxes for the selection of states -->
+    <select name="state-1"></select>
+    <select name="state-2"></select>
+
     <div id="tooltip" class="hidden">
         <p><strong class="tooltip_tag">Handle:@</strong><span id="tweet_handle">@something</span></p>
         <p><strong class="tooltip_tag">Gender:</strong><span id="gender">male/female</span></p>
@@ -131,7 +135,8 @@
         var svg = d3.select("body")
                 .append("svg")
                 .attr("width", width)
-                .attr("height", height);
+                .attr("height", height)
+                .attr("display", "block");
 
 
         // load the compiled data
@@ -140,13 +145,16 @@
             // load the GeoJSON data for the states
             d3.json("us-states.json", function(json){
                 //bind data and create one path per GeoJSON feature
-                svg.selectAll("path")
+                paths = svg.selectAll("path")
                         .data(json.features)
                         .enter()
                         .append("path")
                         .attr("d", path)
                         .style("fill","cccccc")
                         .style("stroke", "white");
+
+                //fill the drop down boxes for states
+                fillStateSelectionDropdowns(paths);
 
                 //set up circles for the different locations
                 svg.selectAll("circle")
@@ -173,7 +181,7 @@
 
                             //obtain x and y values for the tooltip to appear
                             var xPosition = parseFloat(d3.select(this).attr("cx")) + 20;
-                            var yPosition = parseFloat(d3.select(this).attr("cy")) + 35;
+                            var yPosition = parseFloat(d3.select(this).attr("cy")) + 55;
 
                             //update the tooltip position and values
                             d3.select("#tooltip")
@@ -293,6 +301,11 @@
                         });
             });
         });
+
+        function fillStateSelectionDropdowns(paths)
+        {
+
+        }
 
         //returns the colour specified for the provided gender
         function selectGenderColour(gender)
