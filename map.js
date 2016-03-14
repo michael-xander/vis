@@ -233,20 +233,27 @@ function fillStateSelectionDropdowns(features)
  * Function called when the drop down selection of state changes
  */
 function stateSelectionChanged() {
-    var selectedValue = d3.event.target.value;
+    //var selectedValue = d3.event.target.value;
 
-    if(selectedValue == "-- select a state --")
-    {
+    // get the current selected states from both drop down boxes
+    var selected_state_1 = d3.select("#state_1").node().value;
+    var selected_state_2 = d3.select("#state_2").node().value;
 
-    }
-    else
-    {
-        paths = d3.selectAll("path")
-            .filter(function(d){
-                return d.properties.name == selectedValue;
-            });
-        paths.style("fill", "khaki");
-    }
+    //console.log(d3.select("#state_1").node().value);
+    //console.log(d3.select("#state_2").node().value);
+
+    paths = d3.selectAll("path")
+        .style("fill", "cccccc");
+
+    paths = paths.filter(function(d){
+        var state_name = d.properties.name;
+        //console.log(d3.select(this).style("fill"));
+
+        return ((selected_state_1 == state_name) || (selected_state_2 == state_name));
+    });
+
+    paths.style("fill", "khaki");
+
 }
 
 /*
