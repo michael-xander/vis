@@ -154,7 +154,7 @@
                         .style("stroke", "white");
 
                 //fill the drop down boxes for states
-                fillStateSelectionDropdowns(paths);
+                fillStateSelectionDropdowns(json.features);
 
                 //set up circles for the different locations
                 svg.selectAll("circle")
@@ -302,8 +302,35 @@
             });
         });
 
-        function fillStateSelectionDropdowns(paths)
+        function fillStateSelectionDropdowns(features)
         {
+            for(var i=0; i < 2; i++)
+            {
+                dropDown = d3.selectAll("select")
+                        .filter(function(){
+                            if(i == 0)
+                            {
+                                return this.name == "state-1";
+                            }
+                            else
+                            {
+                                return this.name == "state-2";
+                            }
+                        });
+
+                var options = dropDown.selectAll("option")
+                        .data(features)
+                        .enter()
+                        .append("option");
+
+                options.text(function(d){
+                            console.log(d);
+                            return d.properties.name;
+                        })
+                        .attr("value", function(d){
+                            return d.properties.name;
+                        });
+            }
 
         }
 
