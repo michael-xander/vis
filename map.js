@@ -125,70 +125,9 @@ function generateMap()
                 });
 
             //adding listener to each category checkbox
-            d3.selectAll(".category_checkbox")
-                .on("change", function() {
-                    var checkboxValue = this.value;
-                    var points = svg.selectAll("circle")
-                        .filter(function(d) {
-                            return d.category == checkboxValue;
-                        });
-
-                    //display only those points that have been ticked
-                    if(this.checked)
-                    {
-                        //checked gender boxes to get the current picked genders
-                        var checkedGenders = d3.selectAll(".gender_checkbox")
-                            .filter(function(){
-                                return this.checked;
-                            });
-
-                        checkedGenders.each(function(){
-                            var checkboxGender = this.value;
-                            //filter to return points that satisfy the picked gender
-                            var tempPoints = points.filter(function(point){
-                                return point.gender == checkboxGender;
-                            });
-                            tempPoints.style("display", "inline");
-                        });
-                    }
-                    else
-                    {
-                        points.style("display", "none");
-                    }
-                });
-
+            setCategoryCheckboxListener();
             //adding listener to each gender checkbox
-            d3.selectAll(".gender_checkbox")
-                .on("change", function(){
-                    var checkboxValue = this.value;
-                    var points = svg.selectAll("circle")
-                        .filter(function(d){
-                            return d.gender == checkboxValue;
-                        });
-                    //display only those points that have been ticked
-                    if(this.checked)
-                    {
-                        //checked category boxes to get the current picked categories
-                        var checkedCategories = d3.selectAll(".category_checkbox")
-                            .filter(function(){
-                                return this.checked;
-                            });
-
-                        checkedCategories.each(function(){
-                            var checkboxCategory = this.value;
-                            //filter to return points that satisfy the picked categories
-                            var tempPoints = points.filter(function(point){
-                                return point.category == checkboxCategory;
-                            });
-                            tempPoints.style("display", "inline");
-                        });
-                        //points.style("display", "inline");
-                    }
-                    else
-                    {
-                        points.style("display", "none");
-                    }
-                });
+            setGenderCheckboxListener();
         });
     });
 
@@ -230,6 +169,24 @@ function fillStateSelectionDropdowns(features)
 }
 
 /*
+ * A function to set the listener event for the category checkboxes
+ */
+function setCategoryCheckboxListener()
+{
+    d3.selectAll(".category_checkbox")
+        .on("change", filterMap);
+}
+
+/*
+ * A function to set the listener event for the gender checkboxes
+ */
+function setGenderCheckboxListener()
+{
+    d3.selectAll(".gender_checkbox")
+        .on("change", filterMap);
+}
+
+/*
  * Function called when the drop down selection of state changes
  */
 function stateSelectionChanged() {
@@ -253,7 +210,76 @@ function stateSelectionChanged() {
     });
 
     paths.style("fill", "khaki");
+    filterMap();
+}
 
+/*
+ * A function that filters the map according to selections made.
+ */
+function filterMap()
+{
+    //filter by states
+    var selected_state_1 = d3.select("#state_1").node().value;
+    var selected_state_2 = d3.select("#state_2").node().value;
+
+    //remove all points
+    circles = d3.selectAll("circle")
+        .style("display", "none");
+
+    var null_state = "-- select a state --";
+
+    if((selected_state_1 == null_state) && (selected_state_2 == null_state))
+    {
+        //if no states chosen, put back all points
+        circles.style("display", "inline");
+    }
+    else
+    {
+        //select circles that fit the states picked
+        circles = circles.filter(function(d){
+            return ((d.state == selected_state_1) || (d.state == selected_state_2));
+        });
+        circles.style("display", "inline");
+    }
+
+    circles.style("display", "none");
+    checkedGenders = d3.selectAll(".gender_checkbox")
+        .filter(function(){
+            return this.checked;
+        });
+
+    circles = circles.filter(function(d){
+        var matched_gender = false;
+
+        checkedGenders.each(function(){
+            if(d.gender == this.value)
+            {
+                matched_gender = true;
+            }
+        });
+        return matched_gender;
+    });
+
+    circles.style("display", "none");
+
+    checkedCategories = d3.selectAll(".category_checkbox")
+        .filter(function(){
+            return this.checked;
+        });
+
+    circles = circles.filter(function(d){
+        var matched_category = false;
+
+        checkedCategories.each(function(){
+            if(d.category == this.value)
+            {
+                matched_category = true;
+            }
+        });
+        return matched_category;
+    });
+
+    circles.style("display", "inline");
 }
 
 /*
