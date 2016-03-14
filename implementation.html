@@ -104,8 +104,14 @@
     </form>
 
     <!-- the dropdown boxes for the selection of states -->
-    <select name="state-1"></select>
-    <select name="state-2"></select>
+    <div>
+        <select name="state-1">
+            <option disabled selected>-- select a state --</option>
+        </select>
+        <select name="state-2">
+            <option disabled selected>-- select a state --</option>
+        </select>
+    </div>
 
     <div id="tooltip" class="hidden">
         <p><strong class="tooltip_tag">Handle:@</strong><span id="tweet_handle">@something</span></p>
