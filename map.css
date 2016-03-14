@@ -1,0 +1,78 @@
+/* contains css utilised in generation of the map*/
+
+/*css for the different category checkboxes*/
+.category_checkbox {
+
+}
+
+/*css for the different gender checkboxes*/
+.gender_checkbox {
+
+}
+
+/*css for the different categories*/
+.health {
+    fill: yellowGreen;
+}
+.humor {
+    fill: tomato;
+}
+.personal {
+    fill: sienna;
+}
+.philanthropic {
+    fill: royalBlue;
+}
+.education {
+    fill: powderBlue;
+}
+.recreation {
+    fill: deepPink;
+}
+.family {
+    fill: orange;
+}
+.career
+{
+    fill: darkOliveGreen;
+}
+.finance {
+    fill: orchid;
+}
+.time{
+    fill: rebeccaPurple;
+}
+
+/*css for tooltips on map*/
+
+#tooltip {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    background-color: black;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.tooltip_tag {
+    color: cyan;
+}
+
+#tooltip.hidden {
+    display: none;
+}
+
+#tooltip p {
+    color: white;
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}
