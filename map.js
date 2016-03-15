@@ -127,6 +127,9 @@ function generateMap()
             setCategoryCheckboxListener();
             //adding listener to each gender checkbox
             setGenderCheckboxListener();
+
+            //generate the graphs
+            generateGraphs({});
         });
     });
 
