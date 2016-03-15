@@ -8,13 +8,13 @@
  */
 function generateGraphs(data)
 {
-    width = 960;
-    height = 600;
-
     var margin = {top:20, right:20, bottom:30, left:40};
 
+    var width = 960 - margin.left - margin.right;
+    var height = 500 - margin.top - margin.bottom;
+
     var x0 = d3.scale.ordinal()
-        .rangeRoundBands([0, width],.1);
+        .rangeRoundBands([0, width], .1);
 
     var x1 = d3.scale.ordinal();
 
@@ -34,7 +34,6 @@ function generateGraphs(data)
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height +  margin.top + margin.bottom)
-        .style("background-color", "cccccc")
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -96,5 +95,26 @@ function generateGraphs(data)
             return d.color;
         })
         .style("stroke", "black");
+
+    var legend = svg.selectAll(".legend")
+        .data(genders.slice().reverse())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d,i){
+            return "translate(0," + i * 20 + ")";
+        });
+
+    legend.append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", "black");
+
+    legend.append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d){return d;});
 
 }
