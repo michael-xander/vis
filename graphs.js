@@ -128,40 +128,4 @@ function updateCategoryGraphs(data)
 {
     d3.selectAll("#graph_div svg").remove();
     generateCategoryGraphs(data);
-    /*
-    var graphDiv = d3.select("#graph_div");
-    var svg = graphDiv.select("svg");
-
-
-
-    var category = svg.selectAll(".category")
-        .data(data.categories)
-        .transition();
-
-    //console.log(category);
-    //console.log(svg.selectAll("rect"));
-    console.log(categoryGraphYAxis);
-    svg.selectAll("rect")
-        .data(data.categories, function(d){
-            return d.stats;
-        })
-        .transition()
-        .attr("y", function(d){
-            return categoryGraphYAxis(d.count);
-        })
-        .attr("height", function(d){
-            return height - categoryGraphYAxis(d.count);
-        });
-    /*
-    category.selectAll("rect")
-        .data(function(d) {
-            return d.stats;
-        })
-        .transition()
-        .attr("y", function(d){
-           return categoryGraphYAxis(d.count);
-        })
-        .attr("height", function(d) {
-            return height - y(d.count);
-        });*/
 }

@@ -382,9 +382,10 @@ function generateCategoryGraphData(circles)
     //build up the data object
     for(var i = 0; i < categoryNames.length; i++)
     {
+        var categoryName = categoryNames[i];
         var categoryData = {
             type : "category",
-            name : categoryNames[i],
+            name : categoryName.charAt(0) + categoryName.charAt(1),
             stats : [
                 {gender : "male", color : selectCategoryColour(categoryNames[i]), count:0 },
                 {gender : "female", color : selectCategoryColour(categoryNames[i]), count:0}
