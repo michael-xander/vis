@@ -3,10 +3,12 @@
  * Created by Michael on 2016/03/15.
  */
 
+var categoryGraphYAxis;
+
 /*
  * Function generates the graphs for a singular state selection or all state selection
  */
-function generateGraphs(data)
+function generateCategoryGraphs(data)
 {
     var margin = {top:20, right:20, bottom:30, left:40};
 
@@ -21,6 +23,7 @@ function generateGraphs(data)
     var y = d3.scale.linear()
         .range([height, 0]);
 
+    categoryGraphYAxis = y;
     var xAxis = d3.svg.axis()
         .scale(x0)
         .orient("bottom");
@@ -117,4 +120,49 @@ function generateGraphs(data)
         .style("text-anchor", "end")
         .text(function(d){return d;});
 
+}
+
+/*
+ * A function that updates the category graph
+ */
+function updateCategoryGraphs(data)
+{
+    d3.selectAll("#graph_div svg").remove();
+    generateCategoryGraphs(data);
+    /*
+    var graphDiv = d3.select("#graph_div");
+    var svg = graphDiv.select("svg");
+
+
+
+    var category = svg.selectAll(".category")
+        .data(data.categories)
+        .transition();
+
+    //console.log(category);
+    //console.log(svg.selectAll("rect"));
+    console.log(categoryGraphYAxis);
+    svg.selectAll("rect")
+        .data(data.categories, function(d){
+            return d.stats;
+        })
+        .transition()
+        .attr("y", function(d){
+            return categoryGraphYAxis(d.count);
+        })
+        .attr("height", function(d){
+            return height - categoryGraphYAxis(d.count);
+        });
+    /*
+    category.selectAll("rect")
+        .data(function(d) {
+            return d.stats;
+        })
+        .transition()
+        .attr("y", function(d){
+           return categoryGraphYAxis(d.count);
+        })
+        .attr("height", function(d) {
+            return height - y(d.count);
+        });*/
 }

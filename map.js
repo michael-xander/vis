@@ -129,9 +129,9 @@ function generateMap()
             setGenderCheckboxListener();
 
             //generate graph data
-            var graphData = generateGraphData(circles);
+            var graphData = generateCategoryGraphData(circles);
             //generate the graphs
-            generateGraphs(graphData);
+            generateCategoryGraphs(graphData);
         });
     });
 
@@ -284,6 +284,12 @@ function filterMap()
     });
 
     circles.style("display", "inline");
+
+    //generate new data for the category graphs
+    graphData = generateCategoryGraphData(circles);
+
+    //update the category graphs
+    //updateCategoryGraphs(graphData);
 }
 
 /*
@@ -354,7 +360,7 @@ function selectCategoryColour(category)
  *A function to generate graph data from cirlces present in the map
  */
 
-function generateGraphData(circles)
+function generateCategoryGraphData(circles)
 {
     var categoryNames = [
         "Health & Fitness",
