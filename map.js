@@ -46,7 +46,7 @@ function generateMap()
             fillStateSelectionDropdowns(json.features);
 
             //set up circles for the different locations
-            svg.selectAll("circle")
+            circles = svg.selectAll("circle")
                 .data(data)
                 .enter()
                 .append("circle")
@@ -128,8 +128,10 @@ function generateMap()
             //adding listener to each gender checkbox
             setGenderCheckboxListener();
 
+            //generate graph data
+            var graphData = generateGraphData(circles);
             //generate the graphs
-            generateGraphs({});
+            generateGraphs(graphData);
         });
     });
 
@@ -346,4 +348,60 @@ function selectCategoryColour(category)
             color = "black";
     }
     return color;
+}
+
+/*
+ *A function to generate graph data from cirlces present in the map
+ */
+
+function generateGraphData(circles)
+{
+    var categoryNames = [
+        "Health & Fitness",
+        "Humor",
+        "Personal Growth",
+        "Philanthropic",
+        "Education/Training",
+        "Recreation & Leisure",
+        "Family/Friends/Relationships",
+        "Career",
+        "Finance",
+        "Time Management/Organization"
+    ];
+
+    var data = {categories: []};
+
+    var categoryDataMap = {};
+    //build up the data object
+    for(var i = 0; i < categoryNames.length; i++)
+    {
+        var categoryData = {
+            type : "category",
+            name : categoryNames[i],
+            stats : [
+                {gender : "male", color : selectCategoryColour(categoryNames[i]), count:0 },
+                {gender : "female", color : selectCategoryColour(categoryNames[i]), count:0}
+            ]
+        };
+
+        categoryDataMap[categoryNames[i]] = categoryData;
+        data.categories.push(categoryData);
+    }
+
+    //iterating through the circles to get complete the data
+
+    circles.each(function(d){
+
+        if(d.gender == "male")
+        {
+            var currentCount = categoryDataMap[d.category].stats[0].count;
+            categoryDataMap[d.category].stats[0].count = currentCount + 1;
+        }
+        else
+        {
+            var currentCount = categoryDataMap[d.category].stats[1].count;
+            categoryDataMap[d.category].stats[1].count = currentCount +1;
+        }
+    });
+    return data;
 }

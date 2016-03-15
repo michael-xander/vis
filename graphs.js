@@ -8,13 +8,6 @@
  */
 function generateGraphs(data)
 {
-    //temporary data for testing
-    data = {categories : [
-        {type : "category", name : "Health & Fitness", stats : [{gender : "male", color: "yellowGreen", count:20},{gender:"female", color:"yellowGreen", count:37}]},
-        {type : "category", name : "Humor", stats : [{gender: "male", color:"tomato", count: 45},{gender: "female", color:"tomato", count:67}]},
-        {type : "category", name : "Personal Growth", stats : [{gender: "male", color:"sienna", count:56}, {gender:"female", color: "sienna",count:13}]}
-    ]};
-
     width = 960;
     height = 600;
 
@@ -53,7 +46,11 @@ function generateGraphs(data)
     x1.domain(genders).rangeRoundBands([0, x0.rangeBand()]);
 
     //to be fixed to show actual max of data
-    y.domain([0, 70]);
+    y.domain([0, d3.max(data.categories, function(d){
+        return d3.max(d.stats, function(c){
+            return c.count;
+        });
+    })]);
 
     svg.append("g")
         .attr("class", "x axis")
