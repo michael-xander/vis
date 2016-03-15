@@ -22,11 +22,10 @@ function generateMap()
         .projection(projection);
 
     //create the svg element
-    var svg = d3.select("body")
+    var svg = d3.select("#map_div")
         .append("svg")
         .attr("width", width)
-        .attr("height", height)
-        .attr("display", "block");
+        .attr("height", height);
 
 
     // load the compiled data
