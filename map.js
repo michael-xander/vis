@@ -38,6 +38,7 @@ function generateMap()
                 .data(json.features)
                 .enter()
                 .append("path")
+                .attr("class", "state_path")
                 .attr("d", path)
                 .style("fill","cccccc")
                 .style("stroke", "white");
@@ -203,7 +204,7 @@ function stateSelectionChanged() {
     //console.log(d3.select("#state_1").node().value);
     //console.log(d3.select("#state_2").node().value);
 
-    paths = d3.selectAll("path")
+    paths = d3.selectAll(".state_path")
         .style("fill", "cccccc");
 
     paths = paths.filter(function(d){
@@ -289,7 +290,7 @@ function filterMap()
     graphData = generateCategoryGraphData(circles);
 
     //update the category graphs
-    //updateCategoryGraphs(graphData);
+    updateCategoryGraphs(graphData);
 }
 
 /*

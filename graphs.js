@@ -30,8 +30,7 @@ function generateCategoryGraphs(data)
 
     var yAxis = d3.svg.axis()
         .scale(y)
-        .orient("left")
-        .tickFormat(d3.format(".2s"));
+        .orient("left");
 
     var svg = d3.select("#graph_div")
         .append("svg")
