@@ -133,6 +133,9 @@ function generateMap()
             var graphData = generateCategoryGraphData(circles);
             //generate the graphs
             generateCategoryGraphs(graphData);
+
+            //generate the state graphs
+            generateStateGraphs({});
         });
     });
 
@@ -310,51 +313,6 @@ function selectGenderColour(gender)
     }
 
     return colour;
-}
-
-/*
- * Returns the color specified for the provided category
- */
-function selectCategoryColour(category)
-{
-    var color;
-
-    switch(category)
-    {
-        case "Health & Fitness":
-            color = "yellowGreen";
-            break;
-        case "Humor":
-            color = "tomato";
-            break;
-        case "Personal Growth":
-            color = "sienna";
-            break;
-        case "Philanthropic":
-            color = "royalBlue";
-            break;
-        case "Education/Training":
-            color = "powderBlue";
-            break;
-        case "Recreation & Leisure":
-            color = "deepPink";
-            break;
-        case "Family/Friends/Relationships":
-            color = "orange";
-            break;
-        case "Career":
-            color = "darkOliveGreen";
-            break;
-        case "Finance":
-            color = "orchid";
-            break;
-        case "Time Management/Organization":
-            color = "rebeccaPurple";
-            break;
-        default:
-            color = "black";
-    }
-    return color;
 }
 
 /*
