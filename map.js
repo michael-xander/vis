@@ -136,6 +136,43 @@ function generateMap()
 
         });
     });
+    generateMapLegend(height, width/4);
+}
+
+/*
+ * A function to generate the legend of the map
+ */
+function generateMapLegend(height, width)
+{
+    var svg = d3.select("#map_div")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var legend = svg.selectAll(".legend")
+        .data(getCategoryNames().slice())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i){
+            return "translate(0," + i * 20 + ")";
+        });
+
+    legend.append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(d){
+            return selectCategoryColour(d);
+        });
+
+    legend.append("text")
+        .attr("x", width-24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d){
+            return d;
+        });
 
 }
 

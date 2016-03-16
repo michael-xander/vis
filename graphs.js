@@ -148,7 +148,7 @@ function generateCategoryGraphs(data)
         .on("mouseout", tip.hide);
 
     var legend = svg.selectAll(".legend")
-        .data(genders.slice().reverse())
+        .data(genders.slice())
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i){
