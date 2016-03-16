@@ -342,7 +342,7 @@ function generateStateGraphs(data)
         .on("mouseout", tip.hide);
 
     var legend = svg.selectAll(".legend")
-        .data(getCategoryNames().slice().reverse())
+        .data(getCategoryNames().slice())
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i){
