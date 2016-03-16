@@ -32,9 +32,38 @@ function generateCategoryGraphs(data)
     var svg = d3.select("#graph_div")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height +  margin.top + margin.bottom)
-        .append("g")
+        .attr("height", height +  margin.top + margin.bottom);
+
+    var defs = svg.append("defs");
+    var pattern = defs.append("pattern")
+        .attr({
+            id: "pattern-stripe",
+            width:4,
+            height: 4,
+            patternUnits: "userSpaceOnUse",
+            patternTransform: "rotate(45)"
+        });
+    pattern.append("rect")
+        .attr({
+            width: 2,
+            height: 4,
+            transform: "translate(0,0",
+            fill: "white"
+        });
+    var mask = defs.append("mask")
+        .attr("id", "mask-stripe");
+    mask.append("rect")
+        .attr({
+            x: "0",
+            y: "0",
+            width: "100%",
+            height: "100%",
+            fill:"url(#pattern-stripe)"
+        });
+
+    svg = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 
     var genders = ["male", "female"];
 
@@ -92,6 +121,18 @@ function generateCategoryGraphs(data)
         })
         .attr("fill", function(d) {
             return d.color;
+        })
+        .attr("class", function(d){
+            var className;
+            if(d.gender == "male")
+            {
+                className = "male";
+            }
+            else
+            {
+                className = "hbar";
+            }
+            return className;
         })
         .style("stroke", "black");
 
