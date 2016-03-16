@@ -304,7 +304,6 @@ function filterMap()
     else if(selected_state_1 != null_state)
     {
         var stateGraphData = generateStateGraphData(circles, [selected_state_1]);
-        console.log(stateGraphData);
         updateStateGraphs(stateGraphData);
     }
     else
