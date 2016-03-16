@@ -169,6 +169,7 @@ function selectCategoryColour(category)
  */
 function generateStateGraphs(data)
 {
+    /*
     data = {states: [
         {
             type: "state",
@@ -178,7 +179,7 @@ function generateStateGraphs(data)
                 {category:"Personal Growth", count:22}
             ]
         }
-    ]};
+    ]};*/
 
     var margin = {top:20, right:20, bottom:30, left:40};
 

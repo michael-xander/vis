@@ -301,14 +301,15 @@ function filterMap()
         var stateGraphData = generateStateGraphData(circles, [selected_state_1, selected_state_2]);
         updateStateGraphs(stateGraphData);
     }
-    else if(selected_state_1 != null)
+    else if(selected_state_1 != null_state)
     {
-        var stateGraphData = generateCategoryGraphData(circles, [selected_state_1]);
+        var stateGraphData = generateStateGraphData(circles, [selected_state_1]);
+        console.log(stateGraphData);
         updateStateGraphs(stateGraphData);
     }
     else
     {
-        var stateGraphData = generateCategoryGraphData(circles, [selected_state_2]);
+        var stateGraphData = generateStateGraphData(circles, [selected_state_2]);
         updateStateGraphs(stateGraphData);
     }
 }
