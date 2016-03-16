@@ -216,7 +216,7 @@ function generateStateComparisonGraphs(data, stateNames)
             width:4,
             height: 4,
             patternUnits: "userSpaceOnUse",
-            patternTransform: "rotate(180)"
+            patternTransform: "rotate(45)"
         });
     pattern.append("rect")
         .attr({
@@ -536,8 +536,16 @@ function getCategoryNames()
  */
 function updateCategoryGraphs(data)
 {
-    d3.selectAll("#graph_div svg").remove();
+    deleteCategoryGraphs();
     generateCategoryGraphs(data);
+}
+
+/*
+ * A function that removes the category graphs
+ */
+function deleteCategoryGraphs()
+{
+    d3.selectAll("#graph_div svg").remove();
 }
 
 /*

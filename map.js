@@ -324,30 +324,37 @@ function filterMap()
     graphData = generateCategoryGraphData(circles);
 
     //update the category graphs
-    updateCategoryGraphs(graphData);
+    //updateCategoryGraphs(graphData);
 
     //checking whether to update state graph data
-
+    deleteCategoryGraphs();
+    deleteStateGraphs();
     if((selected_state_1 == null_state) && (selected_state_2 == null_state))
     {
         // no states picked so remove state graphs
-        //deleteStateGraphs();
+        updateCategoryGraphs(graphData);
     }
     else if((selected_state_1 != null_state) && (selected_state_2 != null_state))
     {
-        var stateGraphData = generateStateComparisonData(circles, [selected_state_1, selected_state_2]);
-        generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
-        //updateStateGraphs(stateGraphData);
+        if(selected_state_1 == selected_state_2)
+        {
+            updateCategoryGraphs(graphData);
+        }
+        else
+        {
+            var stateGraphData = generateStateComparisonData(circles, [selected_state_1, selected_state_2]);
+            generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
+        }
+        //var stateGraphData = generateStateComparisonData(circles, [selected_state_1, selected_state_2]);
+        //generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
     }
     else if(selected_state_1 != null_state)
     {
-        //var stateGraphData = generateStateGraphData(circles, [selected_state_1]);
-        //updateStateGraphs(stateGraphData);
+        updateCategoryGraphs(graphData);
     }
     else
     {
-        //var stateGraphData = generateStateGraphData(circles, [selected_state_2]);
-        //updateStateGraphs(stateGraphData);
+        updateCategoryGraphs(graphData);
     }
 }
 
