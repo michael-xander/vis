@@ -147,8 +147,30 @@ function generateCategoryGraphs(data)
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);
 
+    generateCategoryGraphLegend(height, width/4);
+
+}
+
+/*
+ * A function to generate the legend for the category graph
+ */
+function generateCategoryGraphLegend(height, width)
+{
+    var svg = d3.select("#graph_div")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var items = ["Male", "Female"];
+
+    var categoryNames = getCategoryNames();
+    for(var i = 0; i < categoryNames.length; i++)
+    {
+        items.push(categoryNames[i]);
+    }
+
     var legend = svg.selectAll(".legend")
-        .data(genders.slice())
+        .data(items.slice())
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i){
@@ -159,10 +181,12 @@ function generateCategoryGraphs(data)
         .attr("x", width - 18)
         .attr("width", 18)
         .attr("height", 18)
-        .style("fill", "red")
+        .style("fill", function(d){
+            return selectCategoryColour(d);
+        })
         .attr("class", function(d){
             var className = "male";
-            if(d == "female")
+            if(d == "Female")
             {
                 className = "hbar";
             }
@@ -175,7 +199,196 @@ function generateCategoryGraphs(data)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
         .text(function(d){return d;});
+}
 
+/*
+ * Generates the graphs for comparison of state data
+ */
+function generateStateComparisonGraphs(data, stateNames)
+{
+    var margin = {top:20, right:20, bottom:30, left:40};
+
+    var width = 960 - margin.left - margin.right;
+    var height = 500 - margin.top - margin.bottom;
+
+    var x0 = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1);
+
+    var x1 = d3.scale.ordinal();
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x0)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    var svg = d3.select("#state_graph_div")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height +  margin.top + margin.bottom);
+
+    var defs = svg.append("defs");
+    var pattern = defs.append("pattern")
+        .attr({
+            id: "state-pattern-stripe",
+            width:4,
+            height: 4,
+            patternUnits: "userSpaceOnUse",
+            patternTransform: "rotate(45)"
+        });
+    pattern.append("rect")
+        .attr({
+            width: 2,
+            height: 4,
+            transform: "translate(0,0)",
+            fill: "yellow"
+        });
+
+    var mask = defs.append("mask")
+        .attr("id", "state-mask-stripe");
+
+    mask.append("rect")
+        .attr({
+            x: 0,
+            y: 0,
+            width: "100%",
+            height: "100%",
+            fill: "url(#state-pattern-stripe)"
+        });
+
+    svg = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<strong>State: </strong><span style='color:red'>" + d.state + "</span><br>" +
+                "<strong>Category: </strong><span style='color:red'>" + d.category + "</span><br>" +
+                "<strong>Population: </strong><span style='color:red'>" + d.count + "</span>";
+        });
+    svg.call(tip);
+
+    x0.domain(data.categories.map(function(d){
+        return d.name;
+    }));
+    x1.domain(stateNames).rangeRoundBands([0, x0.rangeBand()]);
+
+    //to be fixed to show actual max of data
+    y.domain([0, d3.max(data.categories, function(d){
+        return d3.max(d.stats, function(c){
+            return c.count;
+        });
+    })]);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Population");
+
+    var category = svg.selectAll(".category")
+        .data(data.categories)
+        .enter()
+        .append("g")
+        .attr("class", "category")
+        .attr("transform", function(d) {
+            return "translate(" + x0(d.name) + ",0)";
+        });
+
+    category.selectAll("rect")
+        .data(function(d) {
+            return d.stats;
+        })
+        .enter()
+        .append("rect")
+        .attr("width", x1.rangeBand())
+        .attr("x", function(d) {
+            return x1(d.state);
+        })
+        .attr("y", function(d){
+            return y(d.count);
+        })
+        .attr("height", function(d){
+            return height - y(d.count);
+        })
+        .attr("fill", function(d) {
+            return selectCategoryColour(d.category);
+        })
+        .attr("class", function(d){
+            var className = "first-state";
+
+            if(d.state == stateNames[1])
+            {
+                className = "hbar-state";
+            }
+            return className;
+        })
+        .style("stroke", "black")
+        .on("mouseover", tip.show)
+        .on("mouseout", tip.hide);
+
+    generateStateComparisonGraphLegend(stateNames, height, width/4);
+}
+
+function generateStateComparisonGraphLegend(stateNames, height, width)
+{
+    var svg = d3.select("#state_graph_div")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var categoryNames = getCategoryNames();
+
+    for(var i = 0; i < categoryNames.length; i++)
+    {
+        stateNames.push(categoryNames[i]);
+    }
+
+    var legend = svg.selectAll(".legend")
+        .data(stateNames.slice())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d,i){
+            return "translate(0," + i * 20 + ")";
+        });
+
+    legend.append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(d){
+            return selectCategoryColour(d);
+        })
+        .attr("class", function(d){
+            var className = "first-state";
+            if(d == stateNames[1])
+            {
+                className = "hbar-state";
+            }
+            return className;
+        });
+
+    legend.append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d){return d;});
 }
 
 /*
@@ -392,8 +605,16 @@ function getCategoryNames()
  */
 function updateCategoryGraphs(data)
 {
-    d3.selectAll("#graph_div svg").remove();
+    deleteCategoryGraphs();
     generateCategoryGraphs(data);
+}
+
+/*
+ * A function that removes the category graphs
+ */
+function deleteCategoryGraphs()
+{
+    d3.selectAll("#graph_div svg").remove();
 }
 
 /*

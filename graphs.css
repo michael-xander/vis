@@ -1,5 +1,5 @@
 /*contains css required for the graphs*/
-#graph_div {
+#graph_div, #state_graph_div {
     font: 10px sans-serif;
 }
 
@@ -20,4 +20,8 @@
 
 rect.hbar {
     mask: url(#mask-stripe);
+}
+
+rect.hbar-state {
+    mask: url(#state-mask-stripe);
 }
