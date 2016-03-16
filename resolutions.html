@@ -10,6 +10,7 @@
             <ul class="navigation">
                 <li class="link"> <a href="#intro"> Introduction </a> </li>
                 <li class="link"> <a href="#research"> Research</a> </li>
+                <li class="link"> <a href="#data"> Our Data</a> </li>
                 <li class="link"> <a href="#visqueries"> Visual Queries </a> </li>
                 <li class="link"> <a href="#design"> Initial Design</a> </li>
                 <li class="link"> <a href="#viz"> Visualization</a> </li>
@@ -17,55 +18,89 @@
                 <li class="link"> <a href="#team"> Team</a>  </li>
             </ul>
         </div>
+
         <div style="margin-left:15%; margin-right: 20%; padding:1px 16px; height:100%; background-color: white">
+        <div class="heading">
+        <h1>Computer Science Honours</h1>
+                    <h2>Visualisation and Visual Thinking 2015</h2>
+                    <h2 style="color:#8000ff">2016 New Years Resolutions</h2>
+                    <p>Michael Kyeyune, William Lumala and Thandile Xiphu</p>
+        </div>
             <section id="intro">
                 <h2> Introduction</h2>
                 <p>
-                    Introduction and what we wanna visualize..
+                    New Years Resolutions are made by people every year, while some stick to them and others do not, we thought it would be interesting to visualise the types of resolutions that were made in 2015 heading into 2016.  
                 </p>
             </section>
+            <div>
             <section id="research">
                 <h2> Research</h2>
                 <p>
-                    Before developing our initial design, we searched for visualizations that were similar to what we were trying to accomplish. We did not majority
-                    of the ones we found but took a few ideas from some of them.
+                    Before developing our initial design, we searched for existing visualizations that had been done on New Years resolutions. We found quite a few examples, however, we thought that they all could be inproved in some way or another, but there were a few lessons to be taken away from each of them which we then incorporated into our own design.Below are some critiques of the designs we found.
                 </p>
-                <h3> New Jersey New Year's Resolution</h3>
+               
                 <div id="NJ">
-                    <div class="chart_exp">
+                 <h3> Example 1: New Jersey New Year's Resolution</h3>
+                    <div class="chart_exp2">
                         <p>
-                            This visualization used a different colour to identify each category which makes it easy to view and understand. We did not like
-                            the pie chart and think a bar graph would have been a better representation of the data. Lastly, there was no discrete information
-                            i.e number breakdown.
+                            This visualization associated different colours with each category in the pie chart, which maked it easy to get a gist of which categories of resolutions were most popular. We did not like the use of a pie chart and thought that a bar graph would be better suited to represent the data, because once you start looking at the poorer performing categories it is difficult to tell which slice of the pie chart is smaller than the other. Lastly, there was no discrete information, so one does not know how big the data set they was used is or if the data was a true representation of the new year's resolutions of the people in New Jersey. One also can not drill down on the data to see specific numbers about the categories.
                         </p>
                     </div>
-                    <div class="chart">
+                    <div class="chart2">
                         <img src="research1.PNG" border="1">
                     </div>
                 </div>
-                <h3> United States: New Year's Resolution</h3>
-                <img src="research2.png" border="1">
+
+                <div id="us">
+                <div class="chart1">
+                    <img src="research2.png" border="1">
+                </div>
+                <div class="chart_exp1">
+                <h3> Example 2: United States: New Year's Resolution</h3>
                 <p>
                     The second visualization uses a horizontal bar chart to represent the data. We think vertical bar graphs are more intuitive than
                     horizontal ones. The graph uses percentages which may not be clear from the image but the summation of the values is 99. The graph
                     could have used more colour to distinguish the categories. The value of each category was shown next to its bar which makes it easier
                     to know the actual value and make a comparison.
                 </p>
-                <h3> New Year's Resolutions by state 2016</h3>
-                <img src="research3.PNG" border="1">
+                </div>
+                </div>
+
+                <div id="state">
+                <div class="chart_exp">
+                <h3> Example 3: New Year's Resolutions by state 2016</h3>
                 <p>
                     This is closer to what we have in mind. The map shows the 50 states and the most popular category in each state. We like the use of
                     colour and a symbol to represent a category. The symbols were easy to understand and a key (not shown here) was provided. However, we
                     could not make any other comparisons such as how other categories performed in a state beside the "winner". Another issue we had with this
                     visualization is that the states we not labelled and therefore one had to know names and location of states to understand the visualization.
                 </p>
-                <h3> All Resolution Categories</h3>
-                <img src="research4.PNG" border="1">
+                </div>
+                <div class="chart">
+                    <img src="research3.PNG" border="1">
+                </div>
+                </div>
+
+                <div id="all">
+                <h3> Example 4: All Resolution Categories</h3>
+                <p><img src="research4.PNG" border="1"></p>
                 <p>
                     The main bar graph appears to be a stacked bar graph which does not make it easy to understand what the visualization is showing. Furthermore,
                     we did not like the use of a pie chart. The slider at the bottom allows users to change the time range and see how the data changes with time.
                 </p>
+                </div>
+
+           <div>
+            <section id="data">
+           
+                <p><h2> Our Data</h2></p>
+                <p>
+                    where we got our data
+                </p>
+        
             </section>
+            </div>
+            <div>
             <section id="visqueries">
                 <h2> Visual Queries</h2>
                 <p>
@@ -79,9 +114,14 @@
                     <li> What is the spread of tweets per gender throughout the nation or in a given state?</li>
                 </ul>
             </section>
+            </div>
+            </section>
+            </div>
+
             <section id="design">
                 <h2> Initial Design</h2>
-                <img src="initialMap.PNG" border="1">
+
+                <p><img src="initialMap.PNG" border="1"></p>
                 <br>
                 <p>
                     The initial design included a map and supporting graphs (below) to show discrete information about the data. We used a map in order
@@ -100,7 +140,7 @@
                 </p>
                 <img src="initialGender.PNG" border="1">
                 <br> <br> <br>
-                <img src="initialCategories.PNG" border="1">
+           <img src="initialCategories.PNG" border="1">
                 <br>
                 <h4> Feedback after 1st presentation of initial design.</h4>
                 <ul>

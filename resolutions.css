@@ -1,5 +1,8 @@
+.heading{
+    text-align: center
+}
 body {
-
+    line-height: 150%;
 }
 
 /* navigation ul */
@@ -37,19 +40,63 @@ body {
 
 /* the new jersey chart and it's explanation*/
 .chart{
-    width: 582px;
-    height: 399px;
+    width: 400px;
+    height: 560px;
     background-color: white;
-    float: right;
+    float: right
 }
 
 .chart_exp{
-    width: 250px;
-    height: 399px;
+    width: 400px;
+    height: 560px;
     background-color: white;
     float: left;
     font-style: normal;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+ 
+}
+
+.chart1{
+    width: 400px;
+    height: 700px;
+    background-color: white;
+    float: right
+}
+
+.chart_exp1{
+    width: 400px;
+    height: 700px;
+    background-color: white;
+    float: left;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+ 
+}
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    padding: 10px;
+}
+
+.chart2{
+    width: 400px;
+    height: 450px;
+    background-color: white;
+    float: right
+}
+
+.chart_exp2{
+    width: 400px;
+    height: 450px;
+    background-color: white;
+    float: left;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+ 
 }
 
 /* all the text*/
@@ -113,4 +160,10 @@ table{
     color: yellow;
     background-color: transparent;
     text-decoration: underline;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
 }
