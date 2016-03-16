@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>VIS - New Year Resolutions</title>
+        <link rel="stylesheet" type="text/css" href="resolutions.css">
+    </head>
+    <body>
+        <div>
+            <ul class="navigation">
+                <li class="link"> <a href="#intro"> Introduction </a> </li>
+                <li class="link"> <a href="#research"> Research</a> </li>
+                <li class="link"> <a href="#visqueries"> Visual Queries </a> </li>
+                <li class="link"> <a href="#design"> Initial Design</a> </li>
+                <li class="link"> <a href="#viz"> Visualization</a> </li>
+                <li class="link"> <a href="#discussions"> Discussion</a> </li>
+                <li class="link"> <a href="#team"> Team</a>  </li>
+            </ul>
+        </div>
+        <div style="margin-left:15%; margin-right: 20%; padding:1px 16px; height:100%; background-color: white">
+            <section id="intro">
+                <h2> Introduction</h2>
+                <p>
+                    Introduction and what we wanna visualize..
+                </p>
+            </section>
+            <section id="research">
+                <h2> Research</h2>
+                <p>
+                    Before developing our initial design, we searched for visualizations that were similar to what we were trying to accomplish. We did not majority
+                    of the ones we found but took a few ideas from some of them.
+                </p>
+                <h3> New Jersey New Year's Resolution</h3>
+                <div id="NJ">
+                    <div class="chart_exp">
+                        <p>
+                            This visualization used a different colour to identify each category which makes it easy to view and understand. We did not like
+                            the pie chart and think a bar graph would have been a better representation of the data. Lastly, there was no discrete information
+                            i.e number breakdown.
+                        </p>
+                    </div>
+                    <div class="chart">
+                        <img src="research1.PNG" border="1">
+                    </div>
+                </div>
+                <h3> United States: New Year's Resolution</h3>
+                <img src="research2.png" border="1">
+                <p>
+                    The second visualization uses a horizontal bar chart to represent the data. We think vertical bar graphs are more intuitive than
+                    horizontal ones. The graph uses percentages which may not be clear from the image but the summation of the values is 99. The graph
+                    could have used more colour to distinguish the categories. The value of each category was shown next to its bar which makes it easier
+                    to know the actual value and make a comparison.
+                </p>
+                <h3> New Year's Resolutions by state 2016</h3>
+                <img src="research3.PNG" border="1">
+                <p>
+                    This is closer to what we have in mind. The map shows the 50 states and the most popular category in each state. We like the use of
+                    colour and a symbol to represent a category. The symbols were easy to understand and a key (not shown here) was provided. However, we
+                    could not make any other comparisons such as how other categories performed in a state beside the "winner". Another issue we had with this
+                    visualization is that the states we not labelled and therefore one had to know names and location of states to understand the visualization.
+                </p>
+                <h3> All Resolution Categories</h3>
+                <img src="research4.PNG" border="1">
+                <p>
+                    The main bar graph appears to be a stacked bar graph which does not make it easy to understand what the visualization is showing. Furthermore,
+                    we did not like the use of a pie chart. The slider at the bottom allows users to change the time range and see how the data changes with time.
+                </p>
+            </section>
+            <section id="visqueries">
+                <h2> Visual Queries</h2>
+                <p>
+                    With our visualization, we want to be able to answer the following questions:
+                </p>
+                <ul class="list">
+                    <li> What is the distribution of tweets per category throughout the nation or in a state? </li>
+                    <li> How do the genders compare in different categories? </li>
+                    <li> How do any 2 given states compare overall or in a particular category?</li>
+                    <li> In which state is a particular category prevalent?</li>
+                    <li> What is the spread of tweets per gender throughout the nation or in a given state?</li>
+                </ul>
+            </section>
+            <section id="design">
+                <h2> Initial Design</h2>
+                <img src="initialMap.PNG" border="1">
+                <br>
+                <p>
+                    The initial design included a map and supporting graphs (below) to show discrete information about the data. We used a map in order
+                    to show all the data points in the data set at the same time and how they are spread out. Each point on the map represents a tweet
+                    and the location from which it was tweeted. Users can get all the information about a data point by clicking on it (shown on image
+                    above). The slider below the map allows users to select the range of time
+                </p>
+                <p>
+                    Above the map, there are checkboxes with each checkbox representing a category or a gender (male and female). This will enable a
+                    user select any number of categories and that would change the map to show only selected categories.
+                </p>
+                <p>
+                    Our design caters for comparison between a maximum of 2 states which can be done by selecting the 2 states from the 2 combo boxes above the
+                    map. Selecting one state would highlight the state on the map and change the graphs to represent only that state. Selecting another state
+                    would then show a comparison between the 2.
+                </p>
+                <img src="initialGender.PNG" border="1">
+                <br> <br> <br>
+                <img src="initialCategories.PNG" border="1">
+                <br>
+                <h4> Feedback after 1st presentation of initial design.</h4>
+                <ul>
+                    <li> Use a shape as well as colour to represent a category</li>
+                    <li> Too much data could overcrowd the map</li>
+                    <li> Comparison between 2 states.</li>
+                    <li> Use texture as well as colour for bar graphs</li>
+                    <li> Use symbols a bit more</li>
+                    <li> Show the "winning" category in each state</li>
+                    <li> Make the color of the border distinct from any category colour</li>
+                    <li> Have a bit more of theme add appeal to your graphic (due to the topic)</li>
+                </ul>
+
+            </section><section id="viz">
+                <h2> Visualization </h2>
+                <h3> Implementation Of Feedback And Redesign </h3>
+                <p> After the presentation of our initial design, we received feedback from Michelle and other students. We thought about how each of
+                    these points would affect our final visualization and made a few changes.
+                </p>
+                <h4> Use shape as well as colour for the symbol (category)</h4>
+                <p> We thought the colors representing the categories were distinct enough and some of the symbols might be misinterpreted therefore
+                    we decided not to add symbols.
+                </p>
+                <h4> Compare two states</h4>
+                <p>
+                    Users can compare only 2 states at a time. A state is selected by clicking on its location the map or by choosing it from the combo
+                    box. This changes the graphs as well therefore providing discrete information. Comparisons and be made between 2 states for a particular
+                    category or a single category.
+                </p>
+                <h4> Use both texture and colour for bar graphs </h4>
+                <h4> Have a bit more of theme - resolutions - add appeal to your graphic </h4>
+                <h4> Total resolution (category) "winner" of the state shown as a texture?</h4>
+            </section>
+            <section id="discussions">
+                <h2> Discussion </h2>
+                <p>
+                    The final implementation is very similar to our initial design.This was expected as we did not get a lot of negative feedback after
+                    our 1st presentation.<br>
+                    With this visualization, we are able to:
+                </p>
+                <ul class="list">
+                    <li> Show all the information about each tweet and its location on the map</li>
+                    <li> View all the information for only 1 state or category</li>
+                    <li> Compare any 2 states</li>
+                    <li> Compare any number of categories at the same time</li>
+                    <li> Compare the 2 genders by each category and state</li>
+                </ul>
+                <h3> Strengths </h3>
+                <p>
+                    The visualization is interactive and enables users to choose what information they would like to view at a particular time. Furthermore,
+                    the visualization covered the 4 main categories discussed by Ben Shneiderman. These are Overview, Zoom & Filter and Details on Demand.
+                    The map provided the overview while the interactivity provided the other 3.
+                </p>
+                <h4>Overview:</h4>
+                <p>
+                    The map overview (before any interaction) allows a user to see all the data points at the same time. From this, the user can notice
+                    patterns or see which categories are popular in which areas.
+                </p>
+                <h4>Zoom and Filter:</h4>
+                <p>
+                    Users can zoom into a particular state and will be able to view that information better. The graphs will also show discrete information
+                    about that particular state. Using the same functionality, comparisons can be made between 2 states.
+                </p>
+                <p>
+                    Filtering can be done on both the categories and the genders. This allows users to see information about a specific category in a
+                    specific state or on the entire map. Filtering also changes the graphs to enable users get more information about the category or
+                    gender they have selected.
+                </p>
+                <h4>Details on demand:</h4>
+                <p>
+                    Clicking on a point on the map shows all the information about that data point on the map. This allows a user to get all the information
+                    about that tweet while having an overview in the background.
+                </p>
+                <h3> Weaknesses </h3>
+                <h3> Conclusion</h3>
+            </section>
+            <section id="team">
+                <h2> Team</h2>
+                <p>
+                    The group worked together and used the <a href="https://slack.com/">Slack</a> application for communication and file sharing.
+                    Google drive was also used to share files as well work collaboratively. All the members agreed on the final design. Some of
+                    the work was divided up among the 3 members in the following way:
+                </p>
+                <table cellpadding="10%">
+                    <thead align="left">
+                    <tr>
+                        <th>Name</th>
+                        <th>Work done</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Michael Kyeyune</td>
+                        <td>Implementation of the map and coordinates</td>
+                    </tr>
+                    <tr>
+                        <td>Thandile Xiphu</td>
+                        <td>Implementation of the graphs</td>
+                    </tr>
+                    <tr>
+                        <td>William Lumala</td>
+                        <td>Editing HTML code and web page layout</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+         </div>
+    </body>
+</html>
