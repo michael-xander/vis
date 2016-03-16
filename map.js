@@ -134,8 +134,6 @@ function generateMap()
             //generate the graphs
             generateCategoryGraphs(graphData);
 
-            //generate the state graphs
-            generateStateGraphs({});
         });
     });
 
@@ -290,6 +288,29 @@ function filterMap()
 
     //update the category graphs
     updateCategoryGraphs(graphData);
+
+    //checking whether to update state graph data
+
+    if((selected_state_1 == null_state) && (selected_state_2 == null_state))
+    {
+        // no states picked so remove state graphs
+        deleteStateGraphs();
+    }
+    else if((selected_state_1 != null_state) && (selected_state_2 != null_state))
+    {
+        var stateGraphData = generateStateGraphData(circles, [selected_state_1, selected_state_2]);
+        updateStateGraphs(stateGraphData);
+    }
+    else if(selected_state_1 != null)
+    {
+        var stateGraphData = generateCategoryGraphData(circles, [selected_state_1]);
+        updateStateGraphs(stateGraphData);
+    }
+    else
+    {
+        var stateGraphData = generateCategoryGraphData(circles, [selected_state_2]);
+        updateStateGraphs(stateGraphData);
+    }
 }
 
 /*
@@ -311,6 +332,87 @@ function selectGenderColour(gender)
     return colour;
 }
 
+/*
+ * A function to generate graph data for the state graphs
+ */
+function generateStateGraphData(circles, stateNames)
+{
+    var data = {states: []};
+
+    var stateDataMap = {};
+    var categoryNames = getCategoryNames();
+    for(var i = 0; i < stateNames.length; i++)
+    {
+        var stateName = stateNames[i];
+        var stateData = {
+            type: "state",
+            name: stateName,
+            stats : []
+        };
+
+        for(var k = 0; k < categoryNames.length; k++)
+        {
+            var categoryData = {
+                category: categoryNames[k],
+                count: 0
+            };
+            stateData.stats.push(categoryData);
+        }
+        stateDataMap[stateNames[i]] = stateData;
+        data.states.push(stateData);
+    }
+
+    // iteration through the circles to complete the data
+
+    circles.each(function(d){
+
+        switch(d.category)
+        {
+            case "Health & Fitness":
+                var currentCount = stateDataMap[d.state].stats[0].count;
+                stateDataMap[d.state].stats[0].count = currentCount + 1;
+                break;
+            case "Humor":
+                var currentCount = stateDataMap[d.state].stats[1].count;
+                stateDataMap[d.state].stats[1].count = currentCount + 1;
+                break;
+            case "Personal Growth":
+                var currentCount = stateDataMap[d.state].stats[2].count;
+                stateDataMap[d.state].stats[2].count = currentCount + 1;
+                break;
+            case "Philanthropic":
+                var currentCount = stateDataMap[d.state].stats[3].count;
+                stateDataMap[d.state].stats[3].count = currentCount + 1;
+                break;
+            case "Education/Training":
+                var currentCount = stateDataMap[d.state].stats[4].count;
+                stateDataMap[d.state].stats[4].count = currentCount + 1;
+                break;
+            case "Recreation & Leisure":
+                var currentCount = stateDataMap[d.state].stats[5].count;
+                stateDataMap[d.state].stats[5].count = currentCount + 1;
+                break;
+            case "Family/Friends/Relationships":
+                var currentCount = stateDataMap[d.state].stats[6].count;
+                stateDataMap[d.state].stats[6].count = currentCount + 1;
+                break;
+            case "Career":
+                var currentCount = stateDataMap[d.state].stats[7].count;
+                stateDataMap[d.state].stats[7].count = currentCount + 1;
+                break;
+            case "Finance":
+                var currentCount = stateDataMap[d.state].stats[8].count;
+                stateDataMap[d.state].stats[8].count = currentCount + 1;
+                break;
+            case "Time Management/Organization":
+                var currentCount = stateDataMap[d.state].stats[9].count;
+                stateDataMap[d.state].stats[9].count = currentCount + 1;
+                break;
+        }
+
+    });
+    return data;
+}
 /*
  *A function to generate graph data from cirlces present in the map
  */

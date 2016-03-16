@@ -296,3 +296,20 @@ function updateCategoryGraphs(data)
     d3.selectAll("#graph_div svg").remove();
     generateCategoryGraphs(data);
 }
+
+/*
+ * A function that removes the state graphs
+ */
+function deleteStateGraphs()
+{
+    d3.selectAll("#state_graph_div svg").remove();
+}
+
+/*
+ * A function that updates the state graph
+ */
+function updateStateGraphs(data)
+{
+    deleteStateGraphs();
+    generateStateGraphs(data);
+}
