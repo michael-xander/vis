@@ -323,12 +323,11 @@ function filterMap()
     //generate new data for the category graphs
     graphData = generateCategoryGraphData(circles);
 
-    //update the category graphs
-    //updateCategoryGraphs(graphData);
 
-    //checking whether to update state graph data
     deleteCategoryGraphs();
     deleteStateGraphs();
+
+    //checking whether to update state comparison data
     if((selected_state_1 == null_state) && (selected_state_2 == null_state))
     {
         // no states picked so remove state graphs
@@ -345,8 +344,6 @@ function filterMap()
             var stateGraphData = generateStateComparisonData(circles, [selected_state_1, selected_state_2]);
             generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
         }
-        //var stateGraphData = generateStateComparisonData(circles, [selected_state_1, selected_state_2]);
-        //generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
     }
     else if(selected_state_1 != null_state)
     {

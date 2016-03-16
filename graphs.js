@@ -245,9 +245,9 @@ function generateStateComparisonGraphs(data, stateNames)
         .attr("class", "d3-tip")
         .offset([-10, 0])
         .html(function(d) {
-            return "<strong>Category: </strong><span style='color:red'>Sample category</span><br>" +
-                "<strong>Gender: </strong><span style='color:red'>male/female</span><br>" +
-                "<strong>Population: </strong><span style='color:red'>1000</span>";
+            return "<strong>State: </strong><span style='color:red'>" + d.state + "</span><br>" +
+                "<strong>Category: </strong><span style='color:red'>" + d.category + "</span><br>" +
+                "<strong>Population: </strong><span style='color:red'>" + d.count + "</span>";
         });
     svg.call(tip);
 
