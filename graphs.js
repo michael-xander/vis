@@ -147,14 +147,14 @@ function generateCategoryGraphs(data)
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);
 
-    generateCategoryMapLegend(height, width/4);
+    generateCategoryGraphLegend(height, width/4);
 
 }
 
 /*
  * A function to generate the legend for the category graph
  */
-function generateCategoryMapLegend(height, width)
+function generateCategoryGraphLegend(height, width)
 {
     var svg = d3.select("#graph_div")
         .append("svg")
@@ -342,7 +342,53 @@ function generateStateComparisonGraphs(data, stateNames)
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);
 
+    generateStateComparisonGraphLegend(stateNames, height, width/4);
+}
 
+function generateStateComparisonGraphLegend(stateNames, height, width)
+{
+    var svg = d3.select("#state_graph_div")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var categoryNames = getCategoryNames();
+
+    for(var i = 0; i < categoryNames.length; i++)
+    {
+        stateNames.push(categoryNames[i]);
+    }
+
+    var legend = svg.selectAll(".legend")
+        .data(stateNames.slice())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d,i){
+            return "translate(0," + i * 20 + ")";
+        });
+
+    legend.append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(d){
+            return selectCategoryColour(d);
+        })
+        .attr("class", function(d){
+            var className = "first-state";
+            if(d == stateNames[1])
+            {
+                className = "hbar-state";
+            }
+            return className;
+        });
+
+    legend.append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d){return d;});
 }
 
 /*
