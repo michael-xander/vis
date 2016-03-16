@@ -70,7 +70,9 @@ function generateCategoryGraphs(data)
         .attr("class", "d3-tip")
         .offset([-10, 0])
         .html(function(d) {
-            return "<strong>Frequency:</strong><span style='color: red;'>1000</span>";
+            return "<strong>Category: </strong><span style='color:red'>"+ d.category +"</span><br>" +
+                "<strong>Gender: </strong><span style='color:red'>"+ d.gender +"</span><br>" +
+                "<strong>Population: </strong><span style='color:red'>" + d.count + "</span>";
         });
     svg.call(tip);
 

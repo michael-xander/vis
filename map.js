@@ -432,8 +432,8 @@ function generateCategoryGraphData(circles)
             type : "category",
             name : categoryName.charAt(0) + categoryName.charAt(1),
             stats : [
-                {gender : "male", color : selectCategoryColour(categoryNames[i]), count:0 },
-                {gender : "female", color : selectCategoryColour(categoryNames[i]), count:0}
+                {gender : "male", category: categoryName, color : selectCategoryColour(categoryNames[i]), count:0 },
+                {gender : "female", category: categoryName, color : selectCategoryColour(categoryNames[i]), count:0}
             ]
         };
 
