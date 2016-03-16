@@ -66,6 +66,14 @@ function generateCategoryGraphs(data)
     svg = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<strong>Frequency:</strong><span style='color: red;'>1000</span>";
+        });
+    svg.call(tip);
+
 
     var genders = ["male", "female"];
 
@@ -134,19 +142,8 @@ function generateCategoryGraphs(data)
             return className;
         })
         .style("stroke", "black")
-        .on("mouseover", function(d){
-            var xPosition = parseFloat(d3.select(this).attr("x"));
-            var yPosition = parseFloat(d3.select(this).attr("y"));
-
-            d3.select("#category-graph-tooltip")
-                .style("left", xPosition + "px")
-                .style("top", yPosition + "px");
-
-            d3.select("#category-graph-tooltip").classed("hidden", false);
-        })
-        .on("mouseout", function(){
-            d3.select("#category-graph-tooltip").classed("hidden", true);
-        });
+        .on("mouseover", tip.show)
+        .on("mouseout", tip.hide);
 
     var legend = svg.selectAll(".legend")
         .data(genders.slice().reverse())
