@@ -147,8 +147,30 @@ function generateCategoryGraphs(data)
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);
 
+    generateCategoryMapLegend(height, width/4);
+
+}
+
+/*
+ * A function to generate the legend for the category graph
+ */
+function generateCategoryMapLegend(height, width)
+{
+    var svg = d3.select("#graph_div")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var items = ["Male", "Female"];
+
+    var categoryNames = getCategoryNames();
+    for(var i = 0; i < categoryNames.length; i++)
+    {
+        items.push(categoryNames[i]);
+    }
+
     var legend = svg.selectAll(".legend")
-        .data(genders.slice())
+        .data(items.slice())
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i){
@@ -159,10 +181,12 @@ function generateCategoryGraphs(data)
         .attr("x", width - 18)
         .attr("width", 18)
         .attr("height", 18)
-        .style("fill", "red")
+        .style("fill", function(d){
+            return selectCategoryColour(d);
+        })
         .attr("class", function(d){
             var className = "male";
-            if(d == "female")
+            if(d == "Female")
             {
                 className = "hbar";
             }
@@ -175,7 +199,6 @@ function generateCategoryGraphs(data)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
         .text(function(d){return d;});
-
 }
 
 /*
