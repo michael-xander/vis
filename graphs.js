@@ -159,7 +159,15 @@ function generateCategoryGraphs(data)
         .attr("x", width - 18)
         .attr("width", 18)
         .attr("height", 18)
-        .style("fill", "black");
+        .style("fill", "red")
+        .attr("class", function(d){
+            var className = "male";
+            if(d == "female")
+            {
+                className = "hbar";
+            }
+            return className;
+        });
 
     legend.append("text")
         .attr("x", width - 24)
