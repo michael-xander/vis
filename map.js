@@ -103,6 +103,10 @@ function generateMap()
                         .select("#location")
                         .text(d.location);
 
+                    d3.select("#tooltip")
+                        .select("#tweet_state")
+                        .text(d.state);
+
                     //show the tooltip
                     d3.select("#tooltip").classed("hidden", false);
 
