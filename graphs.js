@@ -340,6 +340,31 @@ function generateStateGraphs(data)
         .style("stroke", "black")
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);
+
+    var legend = svg.selectAll(".legend")
+        .data(getCategoryNames().slice().reverse())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i){
+            return "translate(0," + i * 20 + ")";
+        });
+
+    legend.append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(d){
+            return selectCategoryColour(d);
+        });
+
+    legend.append("text")
+        .attr("x", width-24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d){
+            return d;
+        });
 }
 
 /*
