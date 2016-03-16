@@ -179,6 +179,150 @@ function generateCategoryGraphs(data)
 }
 
 /*
+ * Generates the graphs for comparison of state data
+ */
+function generateStateComparisonGraphs(data, stateNames)
+{
+    var margin = {top:20, right:20, bottom:30, left:40};
+
+    var width = 960 - margin.left - margin.right;
+    var height = 500 - margin.top - margin.bottom;
+
+    var x0 = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1);
+
+    var x1 = d3.scale.ordinal();
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x0)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    var svg = d3.select("#state_graph_div")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height +  margin.top + margin.bottom);
+
+    var defs = svg.append("defs");
+    var pattern = defs.append("pattern")
+        .attr({
+            id: "state-pattern-stripe",
+            width:4,
+            height: 4,
+            patternUnits: "userSpaceOnUse",
+            patternTransform: "rotate(180)"
+        });
+    pattern.append("rect")
+        .attr({
+            width: 2,
+            height: 4,
+            transform: "translate(0,0)",
+            fill: "yellow"
+        });
+
+    var mask = defs.append("mask")
+        .attr("id", "state-mask-stripe");
+
+    mask.append("rect")
+        .attr({
+            x: 0,
+            y: 0,
+            width: "100%",
+            height: "100%",
+            fill: "url(#state-pattern-stripe)"
+        });
+
+    svg = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<strong>Category: </strong><span style='color:red'>Sample category</span><br>" +
+                "<strong>Gender: </strong><span style='color:red'>male/female</span><br>" +
+                "<strong>Population: </strong><span style='color:red'>1000</span>";
+        });
+    svg.call(tip);
+
+    x0.domain(data.categories.map(function(d){
+        return d.name;
+    }));
+    x1.domain(stateNames).rangeRoundBands([0, x0.rangeBand()]);
+
+    //to be fixed to show actual max of data
+    y.domain([0, d3.max(data.categories, function(d){
+        return d3.max(d.stats, function(c){
+            return c.count;
+        });
+    })]);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Population");
+
+    var category = svg.selectAll(".category")
+        .data(data.categories)
+        .enter()
+        .append("g")
+        .attr("class", "category")
+        .attr("transform", function(d) {
+            return "translate(" + x0(d.name) + ",0)";
+        });
+
+    category.selectAll("rect")
+        .data(function(d) {
+            return d.stats;
+        })
+        .enter()
+        .append("rect")
+        .attr("width", x1.rangeBand())
+        .attr("x", function(d) {
+            return x1(d.state);
+        })
+        .attr("y", function(d){
+            return y(d.count);
+        })
+        .attr("height", function(d){
+            return height - y(d.count);
+        })
+        .attr("fill", function(d) {
+            return selectCategoryColour(d.category);
+        })
+        .attr("class", function(d){
+            var className = "first-state";
+
+            if(d.state == stateNames[1])
+            {
+                className = "hbar-state";
+            }
+            return className;
+        })
+        .style("stroke", "black")
+        .on("mouseover", tip.show)
+        .on("mouseout", tip.hide);
+
+
+}
+
+/*
  * Returns the color specified for the provided category
  */
 function selectCategoryColour(category)

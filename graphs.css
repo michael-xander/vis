@@ -21,3 +21,7 @@
 rect.hbar {
     mask: url(#mask-stripe);
 }
+
+rect.hbar-state {
+    mask: url(#state-mask-stripe);
+}

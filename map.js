@@ -331,22 +331,23 @@ function filterMap()
     if((selected_state_1 == null_state) && (selected_state_2 == null_state))
     {
         // no states picked so remove state graphs
-        deleteStateGraphs();
+        //deleteStateGraphs();
     }
     else if((selected_state_1 != null_state) && (selected_state_2 != null_state))
     {
-        var stateGraphData = generateStateGraphData(circles, [selected_state_1, selected_state_2]);
-        updateStateGraphs(stateGraphData);
+        var stateGraphData = generateStateComparisonData(circles, [selected_state_1, selected_state_2]);
+        generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
+        //updateStateGraphs(stateGraphData);
     }
     else if(selected_state_1 != null_state)
     {
-        var stateGraphData = generateStateGraphData(circles, [selected_state_1]);
-        updateStateGraphs(stateGraphData);
+        //var stateGraphData = generateStateGraphData(circles, [selected_state_1]);
+        //updateStateGraphs(stateGraphData);
     }
     else
     {
-        var stateGraphData = generateStateGraphData(circles, [selected_state_2]);
-        updateStateGraphs(stateGraphData);
+        //var stateGraphData = generateStateGraphData(circles, [selected_state_2]);
+        //updateStateGraphs(stateGraphData);
     }
 }
 
@@ -492,6 +493,49 @@ function generateCategoryGraphData(circles)
         {
             var currentCount = categoryDataMap[d.category].stats[1].count;
             categoryDataMap[d.category].stats[1].count = currentCount +1;
+        }
+    });
+    return data;
+}
+
+/*
+ * A function that generates data for state comparison graph
+ */
+function generateStateComparisonData(circles, stateNames)
+{
+    var categoryNames = getCategoryNames();
+
+    var data = {categories:[]};
+
+    var categoryDataMap = {};
+
+    //build up the data object
+    for(var i = 0; i < categoryNames.length; i++)
+    {
+        var categoryName = categoryNames[i];
+        var categoryData = {
+            type: "category",
+            name: categoryName.charAt(0) + categoryName.charAt(1),
+            stats: [
+                {state: stateNames[0], category: categoryName, count:0},
+                {state: stateNames[1], category: categoryName, count:0}
+            ]
+        };
+        categoryDataMap[categoryNames[i]] = categoryData;
+        data.categories.push(categoryData);
+    }
+
+    //iterating through the circles to get the different data
+    circles.each(function(d){
+        if(d.state == stateNames[0])
+        {
+            var currentCount = categoryDataMap[d.category].stats[0].count;
+            categoryDataMap[d.category].stats[0].count = currentCount + 1;
+        }
+        else if(d.state == stateNames[1])
+        {
+            var currentCount = categoryDataMap[d.category].stats[1].count;
+            categoryDataMap[d.category].stats[1].count = currentCount + 1;
         }
     });
     return data;
