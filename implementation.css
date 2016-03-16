@@ -1,4 +1,5 @@
 /* contains css utilised in implementation.css*/
+
 /*css for the different category checkboxes*/
 .category_checkbox {
 
@@ -11,7 +12,7 @@
 
 /*css for tooltips on map*/
 
-#tooltip {
+#tooltip, #category-graph-tooltip {
     position: absolute;
     width: 300px;
     height: auto;
@@ -31,11 +32,11 @@
     color: cyan;
 }
 
-#tooltip.hidden {
+#tooltip.hidden, #category-graph-tooltip.hidden {
     display: none;
 }
 
-#tooltip p {
+#tooltip p, #category-graph-tooltip p {
     color: white;
     margin: 0;
     font-family: sans-serif;

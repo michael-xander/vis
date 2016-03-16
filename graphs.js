@@ -133,7 +133,20 @@ function generateCategoryGraphs(data)
             }
             return className;
         })
-        .style("stroke", "black");
+        .style("stroke", "black")
+        .on("mouseover", function(d){
+            var xPosition = parseFloat(d3.select(this).attr("x"));
+            var yPosition = parseFloat(d3.select(this).attr("y"));
+
+            d3.select("#category-graph-tooltip")
+                .style("left", xPosition + "px")
+                .style("top", yPosition + "px");
+
+            d3.select("#category-graph-tooltip").classed("hidden", false);
+        })
+        .on("mouseout", function(){
+            d3.select("#category-graph-tooltip").classed("hidden", true);
+        });
 
     var legend = svg.selectAll(".legend")
         .data(genders.slice().reverse())
