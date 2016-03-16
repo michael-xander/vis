@@ -127,10 +127,12 @@ h2{
     color: darkslateblue;
 }
 
-ul.list{
+ul{
     font-style: normal;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
 
 table{
     font-style: normal;
