@@ -261,6 +261,17 @@ function generateStateGraphs(data)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 0])
+        .html(function(d){
+            return "<strong>State: </strong><span style='color:red'>"+ d.state +"</span><br>" +
+                "<strong>Category: </strong><span style='color:red'>" + d.category + "</span><br>" +
+                "<strong>Population: </strong><span style='color:red'>"+ d.count +"</span>";
+        });
+
+    svg.call(tip);
+
     var categories = getCategoryNames();
 
     x0.domain(data.states.map(function(d){
@@ -318,7 +329,9 @@ function generateStateGraphs(data)
         .attr("fill", function(d){
             return selectCategoryColour(d.category);
         })
-        .style("stroke", "black");
+        .style("stroke", "black")
+        .on("mouseover", tip.show)
+        .on("mouseout", tip.hide);
 }
 
 /*

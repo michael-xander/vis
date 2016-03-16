@@ -353,6 +353,7 @@ function generateStateGraphData(circles, stateNames)
         for(var k = 0; k < categoryNames.length; k++)
         {
             var categoryData = {
+                state: stateName,
                 category: categoryNames[k],
                 count: 0
             };
