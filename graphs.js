@@ -37,20 +37,30 @@ function generateCategoryGraphs(data)
     var defs = svg.append("defs");
     var pattern = defs.append("pattern")
         .attr({
-            id: "pattern_stripe",
-            x: 10,
-            y: 10,
-            width:20,
-            height: 20,
+            id: "pattern-stripe",
+            width:4,
+            height: 4,
             patternUnits: "userSpaceOnUse",
             patternTransform: "rotate(45)"
         });
-    pattern.append("circle")
+    pattern.append("rect")
         .attr({
-            cx: 10,
-            cy: 10,
-            r: 10,
-            style: "stroke: none; fill: #0000ff"
+            width: 2,
+            height: 4,
+            transform: "translate(0,0)",
+            fill: "white"
+        });
+
+    var mask = defs.append("mask")
+        .attr("id", "mask-stripe");
+
+    mask.append("rect")
+        .attr({
+            x: 0,
+            y: 0,
+            width: "100%",
+            height: "100%",
+            fill: "url(#pattern-stripe)"
         });
 
     svg = svg.append("g")
@@ -112,7 +122,16 @@ function generateCategoryGraphs(data)
             return height - y(d.count);
         })
         .attr("fill", function(d) {
-            return "url(#pattern_stripe)";
+            return d.color;
+        })
+        .attr("class", function(d){
+            var className = "male";
+
+            if(d.gender == "female")
+            {
+                className = "hbar";
+            }
+            return className;
         })
         .style("stroke", "black");
 
