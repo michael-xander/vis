@@ -239,7 +239,6 @@ function filterMap()
     if((selected_state_1 == null_state) && (selected_state_2 == null_state))
     {
         //if no states chosen, put back all points
-        circles.style("display", "inline");
     }
     else
     {
@@ -247,10 +246,8 @@ function filterMap()
         circles = circles.filter(function(d){
             return ((d.state == selected_state_1) || (d.state == selected_state_2));
         });
-        circles.style("display", "inline");
     }
 
-    circles.style("display", "none");
     checkedGenders = d3.selectAll(".gender_checkbox")
         .filter(function(){
             return this.checked;
@@ -268,7 +265,6 @@ function filterMap()
         return matched_gender;
     });
 
-    circles.style("display", "none");
 
     checkedCategories = d3.selectAll(".category_checkbox")
         .filter(function(){
@@ -321,18 +317,7 @@ function selectGenderColour(gender)
 
 function generateCategoryGraphData(circles)
 {
-    var categoryNames = [
-        "Health & Fitness",
-        "Humor",
-        "Personal Growth",
-        "Philanthropic",
-        "Education/Training",
-        "Recreation & Leisure",
-        "Family/Friends/Relationships",
-        "Career",
-        "Finance",
-        "Time Management/Organization"
-    ];
+    var categoryNames = getCategoryNames();
 
     var data = {categories: []};
 
