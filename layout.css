@@ -1,0 +1,53 @@
+.heading{
+	align: center;
+    text-align: center;
+    width: 90%;
+	height: 20%;
+	padding: 10px;
+	margin-top: -220px;
+    margin-left: 60px;
+	color: white;
+	font-size: 200%;
+}
+
+.pic{
+	width: 300px;
+	height: 200px;
+	margin-top: 0px;
+    margin-left: 0px;
+	
+}
+body {
+    line-height: 150%;
+}
+
+/* navigation ul */
+.options{
+	align: center;
+	
+	padding: 5px;
+	width: 90%;
+	height: 15%;
+	margin-top: 50px;
+    margin-left: 60px;
+	background-color: #FBF6D9;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+.map{
+	align: center;
+	background-color: #FBF6D9;
+	margin: auto;
+    width: 91%;
+  	height: 650px;
+    margin-top: -140px;
+}
+
+.graph{
+	align: center;
+	background-color: #FBF6D9;
+	margin: auto;
+    width: 91%;
+    padding: 10px;
+    margin-top: 50px;
+}
