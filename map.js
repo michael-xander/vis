@@ -525,8 +525,8 @@ function generateStateComparisonData(circles, stateNames)
             type: "category",
             name: categoryName.charAt(0) + categoryName.charAt(1),
             stats: [
-                {state: stateNames[0], category: categoryName, count:0},
-                {state: stateNames[1], category: categoryName, count:0}
+                {state: stateNames[0], category: categoryName, count: 0, femaleCount: 0, maleCount: 0},
+                {state: stateNames[1], category: categoryName, count: 0, femaleCount: 0, maleCount: 0}
             ]
         };
         categoryDataMap[categoryNames[i]] = categoryData;
@@ -539,11 +539,33 @@ function generateStateComparisonData(circles, stateNames)
         {
             var currentCount = categoryDataMap[d.category].stats[0].count;
             categoryDataMap[d.category].stats[0].count = currentCount + 1;
+
+            if(d.gender == "male")
+            {
+                var maleCount = categoryDataMap[d.category].stats[0].maleCount;
+                categoryDataMap[d.category].stats[0].maleCount = maleCount + 1;
+            }
+            else
+            {
+                var femaleCount = categoryDataMap[d.category].stats[0].femaleCount;
+                categoryDataMap[d.category].stats[0].femaleCount = femaleCount + 1;
+            }
         }
         else if(d.state == stateNames[1])
         {
             var currentCount = categoryDataMap[d.category].stats[1].count;
             categoryDataMap[d.category].stats[1].count = currentCount + 1;
+
+            if(d.gender == "male")
+            {
+                var maleCount = categoryDataMap[d.category].stats[1].maleCount;
+                categoryDataMap[d.category].stats[1].maleCount = maleCount + 1;
+            }
+            else
+            {
+                var femaleCount = categoryDataMap[d.category].stats[1].femaleCount;
+                categoryDataMap[d.category].stats[1].femaleCount = femaleCount + 1;
+            }
         }
     });
     return data;

@@ -270,7 +270,9 @@ function generateStateComparisonGraphs(data, stateNames)
         .html(function(d) {
             return "<strong>State: </strong><span style='color:red'>" + d.state + "</span><br>" +
                 "<strong>Category: </strong><span style='color:red'>" + d.category + "</span><br>" +
-                "<strong>Population: </strong><span style='color:red'>" + d.count + "</span>";
+                "<strong>Male population: </strong><span style='color:red'>" + d.maleCount + "</span><br>" +
+                "<strong>Female population: </strong><span style='color:red'>" + d.femaleCount + "</span><br>" +
+                "<strong>Total population: </strong><span style='color:red'>" + d.count + "</span>";
         });
     svg.call(tip);
 
