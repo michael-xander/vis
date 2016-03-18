@@ -150,7 +150,7 @@ function generateMapLegend(height, width)
 {
     var svg = d3.select("#map_div")
         .append("svg")
-        .attr("width", width)
+        .attr("width", width+30)
         .attr("height", height);
 
     var legend = svg.selectAll(".legend")
@@ -162,7 +162,7 @@ function generateMapLegend(height, width)
         });
 
     legend.append("rect")
-        .attr("x", width - 18)
+        .attr("x", width)
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", function(d){
@@ -170,10 +170,12 @@ function generateMapLegend(height, width)
         });
 
     legend.append("text")
-        .attr("x", width-24)
+        .attr("x", width-6)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
+        .style('fill', 'white')
+        .style("font-size", "14")
         .text(function(d){
             return d;
         });

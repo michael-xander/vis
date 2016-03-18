@@ -158,8 +158,8 @@ function generateCategoryGraphLegend(height, width)
 {
     var svg = d3.select("#graph_div")
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", width+50)
+        .attr("height", height+30);
 
     var items = ["Male", "Female"];
 
@@ -178,7 +178,7 @@ function generateCategoryGraphLegend(height, width)
         });
 
     legend.append("rect")
-        .attr("x", width - 18)
+        .attr("x", width)
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", function(d){
@@ -194,10 +194,12 @@ function generateCategoryGraphLegend(height, width)
         });
 
     legend.append("text")
-        .attr("x", width - 24)
+        .attr("x", width - 6)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
+        .style('fill', 'white')
+        .style("font-size", "14")
         .text(function(d){return d;});
 }
 
@@ -289,6 +291,7 @@ function generateStateComparisonGraphs(data, stateNames)
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
+        .style("fill", "white")
         .call(xAxis);
 
     svg.append("g")
@@ -299,6 +302,7 @@ function generateStateComparisonGraphs(data, stateNames)
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
+        .style("fill", "white")
         .text("Population");
 
     var category = svg.selectAll(".category")
@@ -407,7 +411,7 @@ function selectCategoryColour(category)
             color = "tomato";
             break;
         case "Personal Growth":
-            color = "sienna";
+            color = "orchid";
             break;
         case "Philanthropic":
             color = "royalBlue";
@@ -425,7 +429,7 @@ function selectCategoryColour(category)
             color = "darkOliveGreen";
             break;
         case "Finance":
-            color = "orchid";
+            color = "sienna";
             break;
         case "Time Management/Organization":
             color = "rebeccaPurple";
