@@ -96,67 +96,8 @@ function generateMap()
                     return selectCategoryColour(d.category);
                 })
                 .style("opacity", 1)
-                .on("mouseover", function(d){
-                    // what happens when a point is hovered over
-
-                    //obtain x and y values for the tooltip to appear
-                    var xPosition = parseFloat(d3.select(this).attr("cx")) + 20;
-                    var yPosition = parseFloat(d3.select(this).attr("cy")) + 55;
-
-                    //update the tooltip position and values
-                    d3.select("#tooltip")
-                        .style("left", xPosition + "px")
-                        .style("top", yPosition + "px");
-
-                    //fill in the fields in the tooltip
-                    d3.select("#tooltip")
-                        .select("#tweet_handle")
-                        .text(d.handle);
-
-                    d3.select("#tooltip")
-                        .select("#gender")
-                        .text(d.gender);
-
-                    d3.select("#tooltip")
-                        .select("#tweet")
-                        .text(d.tweet);
-
-                    d3.select("#tooltip")
-                        .select("#category")
-                        .text(d.category);
-
-                    d3.select("#tooltip")
-                        .select("#topic")
-                        .text(d.topic);
-
-                    d3.select("#tooltip")
-                        .select("#location")
-                        .text(d.location);
-
-                    d3.select("#tooltip")
-                        .select("#tweet_state")
-                        .text(d.state);
-
-                    //show the tooltip
-                    d3.select("#tooltip").classed("hidden", false);
-
-                    //double the circle radius for the point
-                    d3.select(this)
-                        .attr("r", 10);
-
-                })
-                .on("mouseout", function(){
-                    //what happens when overing over a point is done
-                    //hide the tooltip
-                    d3.select("#tooltip").classed("hidden", true);
-
-                    //set back to the original colour for the point
-                    d3.select(this)
-                        .attr("r", 5)
-                        .style("fill", function(d){
-                            return selectCategoryColour(d.category);
-                        });
-                });
+                .on("mouseover", tip.show)
+                .on("mouseout", tip.hide);
 
             //females to be represented with rectangles that have white boundaries.
             //rectangles to be given the class "female-points"
