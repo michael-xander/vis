@@ -46,11 +46,29 @@ function generateMap()
             //fill the drop down boxes for states
             fillStateSelectionDropdowns(json.features);
 
-            //set up circles for the different locations
-            circles = svg.selectAll("circle")
-                .data(data)
+            //iterating through data to separate males and females
+
+            var females = [];
+            var males = [];
+            for(var i = 0; i < data.length; i++)
+            {
+                if(data[i].gender == "male")
+                {
+                    males.push(data[i]);
+                }
+                else
+                {
+                    females.push(data[i]);
+                }
+            }
+
+            //males to be represented with circles that have white boundaries. Circles will have class "male-points"
+            //general class for points will be "data-points"
+            circles = svg.selectAll(".male-points")
+                .data(males)
                 .enter()
                 .append("circle")
+                .attr("class", "male-points data-points")
                 .attr("cx", function(d){
                     return projection([d.long, d.lat])[0];
                 })
@@ -58,9 +76,7 @@ function generateMap()
                     return projection([d.long, d.lat])[1];
                 })
                 .attr("r", 5)
-                .attr("stroke", function(d){
-                    return selectGenderColour(d.gender);
-                })
+                .attr("stroke", "white")
                 .attr("stroke-width", 2)
                 .style("fill", function(d) {
                     return selectCategoryColour(d.category);
