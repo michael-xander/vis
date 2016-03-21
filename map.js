@@ -144,6 +144,29 @@ function generateMap()
                         });
                 });
 
+            //females to be represented with rectangles that have white boundaries.
+            //rectangles to be given the class "female-points"
+            rectangles = svg.selectAll(".female-points")
+                .data(females)
+                .enter()
+                .append("rect")
+                .attr("class", "female-points data-points")
+                .attr("width", 10) //maintain same size distributions as circles
+                .attr("height", 10)
+                .attr("x", function(d) {
+                    return projection([d.long, d.lat])[0];
+                })
+                .attr("y", function(d) {
+                    return projection([d.long, d.lat])[1];
+                })
+                .attr("stroke", "white")
+                .attr("stroke-width", 2)
+                .style("fill", function(d){
+                    return selectCategoryColour(d.category);
+                })
+                .style("opacity", 1);
+
+
             //adding listener to each category checkbox
             setCategoryCheckboxListener();
             //adding listener to each gender checkbox
