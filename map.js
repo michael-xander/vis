@@ -387,7 +387,7 @@ function filterMap()
         }
         else
         {
-            var stateGraphData = generateStateComparisonData(graphData, [selected_state_1, selected_state_2]);
+            var stateGraphData = generateStateComparisonData(dataPoints, [selected_state_1, selected_state_2]);
             generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
         }
     }
@@ -494,7 +494,7 @@ function generateStateComparisonData(dataPoints, stateNames)
         data.categories.push(categoryData);
     }
 
-    //iterating through the circles to get the different data
+    //iterating through the data points to get the different data
     dataPoints.each(function(d){
         if(d.state == stateNames[0])
         {
