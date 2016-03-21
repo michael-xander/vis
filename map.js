@@ -96,8 +96,24 @@ function generateMap()
                     return selectCategoryColour(d.category);
                 })
                 .style("opacity", 1)
-                .on("mouseover", tip.show)
-                .on("mouseout", tip.hide);
+                .on("mouseover", function(d) {
+
+                    //double the circles radius and fill it black
+                    d3.select(this)
+                        .attr("r", 10)
+                        .style("fill", "black");
+                    tip.show(d);
+                })
+                .on("mouseout", function(){
+
+                    //return the cirle to original radius and colour
+                    d3.select(this)
+                        .attr("r", 5)
+                        .style("fill", function(d){
+                            return selectCategoryColour(d.category);
+                        });
+                    tip.hide();
+                });
 
             //females to be represented with rectangles that have white boundaries.
             //rectangles to be given the class "female-points"
@@ -120,8 +136,25 @@ function generateMap()
                     return selectCategoryColour(d.category);
                 })
                 .style("opacity", 1)
-                .on("mouseover", tip.show)
-                .on("mouseout", tip.hide);
+                .on("mouseover", function(d) {
+
+                    // double the rectangle's width and height plus fill it black
+                    d3.select(this)
+                        .attr("width", 20)
+                        .attr("height", 20)
+                        .style("fill", "black");
+                    tip.show(d);
+                })
+                .on("mouseout", function()
+                {
+                    d3.select(this)
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .style("fill", function(d){
+                            return selectCategoryColour(d.category);
+                        });
+                    tip.hide();
+                });
 
 
             //adding listener to each category checkbox
