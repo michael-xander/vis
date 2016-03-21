@@ -172,8 +172,10 @@ function generateMap()
             //adding listener to each gender checkbox
             setGenderCheckboxListener();
 
+            //select all the data points
+            var dataPoints = d3.selectAll(".data-points");
             //generate graph data
-            var graphData = generateCategoryGraphData(circles);
+            var graphData = generateCategoryGraphData(dataPoints);
             //generate the graphs
             generateCategoryGraphs(graphData);
 
@@ -309,7 +311,7 @@ function filterMap()
     var selected_state_2 = d3.select("#state_2").node().value;
 
     //remove all points
-    circles = d3.selectAll("circle")
+    var dataPoints = d3.selectAll(".data-points")
         .style("display", "none");
 
     var null_state = "-- select a state --";
@@ -321,7 +323,7 @@ function filterMap()
     else
     {
         //select circles that fit the states picked
-        circles = circles.filter(function(d){
+        dataPoints = dataPoints.filter(function(d){
             return ((d.state == selected_state_1) || (d.state == selected_state_2));
         });
     }
@@ -331,7 +333,7 @@ function filterMap()
             return this.checked;
         });
 
-    circles = circles.filter(function(d){
+    dataPoints = dataPoints.filter(function(d){
         var matched_gender = false;
 
         checkedGenders.each(function(){
@@ -349,7 +351,7 @@ function filterMap()
             return this.checked;
         });
 
-    circles = circles.filter(function(d){
+    dataPoints = dataPoints.filter(function(d){
         var matched_category = false;
 
         checkedCategories.each(function(){
@@ -361,10 +363,10 @@ function filterMap()
         return matched_category;
     });
 
-    circles.style("display", "inline");
+    dataPoints.style("display", "inline");
 
     //generate new data for the category graphs
-    graphData = generateCategoryGraphData(circles);
+    var graphData = generateCategoryGraphData(dataPoints);
 
 
     deleteCategoryGraphs();
@@ -385,7 +387,7 @@ function filterMap()
         }
         else
         {
-            var stateGraphData = generateStateComparisonData(circles, [selected_state_1, selected_state_2]);
+            var stateGraphData = generateStateComparisonData(graphData, [selected_state_1, selected_state_2]);
             generateStateComparisonGraphs(stateGraphData, [selected_state_1, selected_state_2]);
         }
     }
@@ -422,7 +424,7 @@ function selectGenderColour(gender)
 /*
  *A function to generate graph data from cirlces present in the map
  */
-function generateCategoryGraphData(circles)
+function generateCategoryGraphData(dataPoints)
 {
     var categoryNames = getCategoryNames();
 
@@ -446,9 +448,10 @@ function generateCategoryGraphData(circles)
         data.categories.push(categoryData);
     }
 
-    //iterating through the circles to get complete the data
+    //selecting and iterating through the data points
 
-    circles.each(function(d){
+
+    dataPoints.each(function(d){
 
         if(d.gender == "male")
         {
@@ -467,7 +470,7 @@ function generateCategoryGraphData(circles)
 /*
  * A function that generates data for state comparison graph
  */
-function generateStateComparisonData(circles, stateNames)
+function generateStateComparisonData(dataPoints, stateNames)
 {
     var categoryNames = getCategoryNames();
 
@@ -492,7 +495,7 @@ function generateStateComparisonData(circles, stateNames)
     }
 
     //iterating through the circles to get the different data
-    circles.each(function(d){
+    dataPoints.each(function(d){
         if(d.state == stateNames[0])
         {
             var currentCount = categoryDataMap[d.category].stats[0].count;
