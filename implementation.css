@@ -47,10 +47,12 @@
 /*css for the tooltips used in the graphs*/
 .d3-tip {
     line-height: 1;
+    width: 300px;
+    font-family: sans-serif;
     font-weight: bold;
     padding: 12px;
     background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    color: cyan;
     border-radius: 2px;
 }
 

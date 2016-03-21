@@ -27,6 +27,20 @@ function generateMap()
         .attr("width", width)
         .attr("height", height);
 
+    var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 0])
+        .html(function(d){
+            return "<strong>Handle:@</strong><span style='color:white'>" + d.handle + "</span><br>" +
+                "<strong>Gender: </strong><span style='color:white'>" + d.gender + "</span><br>" +
+                "<strong>Tweet: </strong><span style='color:white'>" + d.tweet + "</span><br>" +
+                "<strong>Category: </strong><span style='color:white'>" + d.category + "</span><br>" +
+                "<strong>Topic: </strong><span style='color:white'>" + d.topic + "</span><br>" +
+                "<strong>Location: </strong><span style='color:white'>" + d.location + "</span><br>" +
+                "<strong>State: </strong><span style='color:white'>" + d.state + "</span>";
+        });
+
+    svg.call(tip);
 
     // load the compiled data
     d3.csv("compilation.csv", function(data)
@@ -164,7 +178,9 @@ function generateMap()
                 .style("fill", function(d){
                     return selectCategoryColour(d.category);
                 })
-                .style("opacity", 1);
+                .style("opacity", 1)
+                .on("mouseover", tip.show)
+                .on("mouseout", tip.hide);
 
 
             //adding listener to each category checkbox
