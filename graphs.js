@@ -94,16 +94,22 @@ function generateCategoryGraphs(data)
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
+        .style("fill", "white")
+        .style("font-size", "14")
         .call(xAxis);
 
     svg.append("g")
         .attr("class", "y axis")
+        .style("fill", "white")
+        .style("font-size", "14")
         .call(yAxis)
         .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
+            .style("fill", "white")
+            .style("font-size", "14")
             .text("Population");
 
     var category = svg.selectAll(".category")
@@ -292,10 +298,13 @@ function generateStateComparisonGraphs(data, stateNames)
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .style("fill", "white")
+        .style("font-size", "14")
         .call(xAxis);
 
     svg.append("g")
         .attr("class", "y axis")
+        .style("fill", "white")
+        .style("font-size", "14")
         .call(yAxis)
         .append("text")
         .attr("transform", "rotate(-90)")
@@ -303,6 +312,7 @@ function generateStateComparisonGraphs(data, stateNames)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .style("fill", "white")
+        .style("font-size", "14")
         .text("Population");
 
     var category = svg.selectAll(".category")
@@ -392,6 +402,8 @@ function generateStateComparisonGraphLegend(stateNames, height, width)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
+        .style('fill', 'white')
+        .style("font-size", "14")
         .text(function(d){return d;});
 }
 
@@ -435,7 +447,7 @@ function selectCategoryColour(category)
             color = "rebeccaPurple";
             break;
         default:
-            color = "black";
+            color = "white";
     }
     return color;
 }
