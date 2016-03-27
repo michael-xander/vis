@@ -20,36 +20,39 @@
             </nav>
         </div>
         <div style="margin-left:15%; margin-right: 10%; height: 100%;  padding:1px 16px; background-color: white">
+            <header>
+            </header>
             <div class="heading">
                 <h1 style="font-family: cursive">Computer Science Honours</h1>
                 <h2>Visualisation and Visual Thinking 2016</h2>
-                <h2 style="color:#8000ff">2016 New Years Resolutions</h2>
+                <h2 style="color:#ff00ce">2016 New Years Resolutions</h2>
                 <p>Michael Kyeyune, Thandile Xiphu and William Lumala</p>
             </div>
             <section id="intro">
                 <h2> Introduction</h2>
                 <p>
-                    New Years Resolutions are made by people every year, while some stick to them and others do not, we thought it would be interesting to visualise
-                    the types of resolutions that were made in 2015 heading into 2016. The aim of this project is for us to visualise as much high dimensional data
-                    as we can in such a way that a user will be able to look at the visualisation and draw conclusions just from the overview of the data that has
-                    been provided. Our second aim was for the user to be able to interact with the data that they are exploring. They should be able to drill down
-                    to lower levels of dimensionality and interact with the discreet data. To achieve these aims we used an interactive visualisation software
-                    called <a href="https://d3js.org/">D3js</a>, which is a javascript visualisation library.
+                    New Years Resolutions are made by people every year and while some stick to them, others do not. We thought it would be interesting
+                    to visualize the types of resolutions that were made in 2015 heading into 2016. The aim of this project is for us to visualise data
+                    with about 3 to 4 dimensions. We wanted to enable users have an overview of all the data points in the data set and identify patterns.
+                    Our second aim was for the user to be able to interact with the data to get answers to their visual queries. They should be able to
+                    drill down to lower levels of dimensionality and interact with the discreet data. To achieve these aims we used an interactive
+                    visualisation software called <a href="https://d3js.org/">D3js</a>, which is a javascript visualisation library.
                 </p>
                 <h3><a name="data"></a> Our Data</h3>
                 <p>
-                    The data that we used we got off a <a href="http://www.crowdflower.com/blog/new-years-resolutions-2015">CrowdFlower</a> blog about new year
-                    resolutions. The data was scrapped off of Twitter, taking anything that was tweeted from the United States with a hashtag of #NewYearsResolution.
-                    The data that they collected was compiled into a csv file with the following columns: Twitter handle, gender, tweet, resolution category,
-                    resolution topic (which narrows down the category), 'retweet' count, tweet time and date, location coordinates and state.
+                    We got the data off a <a href="http://www.crowdflower.com/blog/new-years-resolutions-2015">CrowdFlower</a> blog about new year
+                    resolutions. The data was scrapped off of Twitter, taking anything that was tweeted from the United States with a 'hashtag' of #NewYearsResolution.
+                    The data that they collected was compiled into a csv file with the following columns: Twitter handle, gender, tweet, resolution category, resolution
+                    topic (which narrows down the category), 'retweet' count, tweet time and date, location coordinates and state.
                 </p>
             </section>
             <section id="research">
                 <h2> Research</h2>
                 <p>
-					Before developing our initial design, we searched for existing visualizations that had been done on New Years resolutions. We found quite a
-                    few examples, however, we thought that they all could be improved in some way or another, but there were a few lessons to be taken away from
-                    each of them which we then incorporated into our own design. Below are some critiques of the designs we found.
+					Before developing our initial design, we searched for existing visualizations that had been done on a similar topic. We found quite a
+                    few examples some of which have been shown below. While we liked some things about them, we also thought that they all could be improved
+                    in one way or another. Some of these visualizations gave us ideas which we incorporated (or tried) in our designs. Below are some
+                    of the designs we found.
                 </p>
                 <div id="NJ">
                     <h3> Example 1: New Jersey New Year's Resolution</h3>
@@ -57,16 +60,15 @@
                         <p>
                             This visualization associated different colours with each category in the pie chart, which made it easy to get a gist of which
                             categories of resolutions were most popular. We did not like the use of a pie chart and thought that a bar graph would be better
-                            suited to represent the data, because once you start looking at the poorer performing categories it is difficult to tell which slice
-                            of the pie chart is smaller than the other. Lastly, there was no discrete information, so one does not know how big the data set they
-                            was used is or if the data was a true representation of the new year's resolutions of the people in New Jersey. One also can not drill
-                            down on the data to see specific numbers about the categories.
+                            suited to represent the data. With this pie chart, once you start looking at the poorer performing categories it is difficult to tell
+                            which slice of the pie chart is smaller than the other. Lastly, there was no discrete information, so one does not know how big the data
+                            set they was used is or if the data was a true representation of the new year's resolutions of the people in New Jersey. Lastly, one
+                            cannot drill down on the data to see specific numbers about the categories.
                         </p>
                     </div>
                     <div class="chart2">
                         <img src="research1.PNG" border="1">
                     </div>
-                    <p> </p>
                     <br>
                 </div>
                 <div id="US">
@@ -78,10 +80,13 @@
                     <div class="chart_exp1">
                         <p>
                             The second visualization uses a horizontal bar chart to represent the data. We think that vertical bar graphs are more intuitive than
-                            horizontal ones. The graph uses percentages which may not be evident from looking at the graph as it gives no indication that the values
-                            represent percentages.The summation of the values is 99, we are not sure why they do not add up to 100. The <a href="http://www.statista.com/statistics/378105/new-years-resolution/">
-                            graph</a> could have used more colour to help distinguish between the categories. The total of each category was shown next to its bar
-                            which makes it easy to know the actual value and make a comparison.
+                            horizontal ones. The graph (seen better <a href="http://www.statista.com/statistics/378105/new-years-resolution/">here</a>) uses percentages
+                            but the sum of the values is not 100 and we are not certain why. Furthermore, we think the graph could have used a different color to represent
+                            each category / resolution. The downside to this is that the graph has 21 resolutions and it might not be easy to get 21 distinct colours that will
+                            not be affected by the background.
+                        </p>
+                        <p>
+                            The total of each category was shown next to its bar which makes it easy to know the actual value and make a comparison.
                         </p>
                     </div>
                 </div>
@@ -91,9 +96,12 @@
                         <p>
                             Given that our <a href="#data"> data </a> had a location for each data point, this visualisation was the closest to what we had in
                             mind. The map shows the 50 states and the most popular category in each state. We like the use of colour and a symbol to represent
-                            a category. The symbols were easy to understand and a key (not shown here) was provided. However, we could not make any other comparisons
-                            such as how other categories performed in a state besides the "winner". Another issue we had with this visualization is that the states
-                            were not labelled and therefore one had to know names and location of states to fully understand the visualization.
+                            a category. The symbols were easy to understand and a key (not shown here) was provided.
+                        </p>
+                        <p>
+                            However, we could not make any other comparisons such as how other categories performed in a state besides the "winner". Another issue
+                            we had with this visualization is that the states were not labelled and therefore one had to know names and location of states to fully
+                            understand the visualization.
                         </p>
                     </div>
                     <div class="chart">
@@ -132,23 +140,24 @@
                 <p><img src="initialMap.PNG" border="1"></p>
                 <p>
                     The initial design included a map and supporting graphs (below) to show discrete information about the data. We used a map in order to show
-                    all the data points in the data set at the same time and to show the spread across the nation and individual states. Each point on the map
+                    all the data points in the data set at the same time and to show the spread across the nation and in each state. Each point on the map
                     represents a tweet and the location from which it was tweeted. Users can get all the information about a data point by hovering over it
-                    (shown on image above). We included the slider below the map allows so that users can select the range of time starting from the 21st of
-                    December 2015 to the 1st of January 2016.
+                    (shown on image above). We included a slider below the map so that users can select the range of time starting from the 21st
+                    of December 2015 to the 1st of January 2016.
                 </p>
                 <p>
-                    Above the map there are checkboxes, with each one representing a category or a gender (male and female). This is to allow a user to select
-                    any number of categories they wish to view. The changes made in the selection are propagated to the map and graphs in order for them to show
-                    only the selected categories.
+                    Above the map there are checkboxes, with each one representing a category or a gender (male and female). This is to allow a user to
+                    select any number of categories they wish to view. The changes made in the selection are propagated to the map and graphs in order
+                    for them to show only the selected categories or gender.
                 </p>
                 <p>
-                    Our design caters for comparison between a maximum of two states, which can be done by selecting the two states from the two combo boxes above
-                    the map. Selecting one state would highlight the state on the map and change the graphs to represent only that state. Selecting another state
-                    would then highlight both the states and display both the graphs of the states to allow for comparison between the two.
+                    Our design caters for comparison between a maximum of two states, which can be done by selecting the two states from the two combo
+                    boxes above the map. Selecting one state would highlight the state (and grey out everything else) on the map and change the graphs to
+                    represent only that state. Selecting another state would then highlight both the states and display both the graphs of the states to allow
+                    for comparison between the two.
                 </p>
                 <img src="initialGender.PNG" border="1">
-                <br> <br> <br>
+                <br> <br>
                 <img src="initialCategories.PNG" border="1">
                 <br>
                 <h4> Feedback after presentation of initial design</h4>
@@ -165,8 +174,8 @@
 
                 <h3> Second Iteration </h3>
                 <p>
-                    The second iteration, seen <a href="implementation.html">here</a> was developed using <a href="https://d3js.org/">D3js</a> to enable see how
-                    the all the data points fitted on the map.
+                    The <a href="implementation.html"> second iteration </a> was developed using <a href="https://d3js.org/">D3js</a>. This was to
+                    enable us to see how the all the data points fitted on the map.
                 </p>
                 <h4> Implementation of feedback (from 1st presentation) in 2nd iteration</h4>
                 <p>
@@ -220,8 +229,6 @@
                 <p>
                     After the 2nd presentation, we decided to make changes to the visualization based on the feedback above.
                 </p>
-                <h5> Different shapes for the 2 genders </h5>
-                <h5> Symbols for the categories </h5>
                 <h4> Other Design Decisions</h4>
             </section>
             <section id="viz">
@@ -231,8 +238,8 @@
             <section id="discussions">
                 <h2> Discussion </h2>
                 <p>
-                    The final implementation is very similar to our initial design. This was expected as we did not get a lot of negative feedback after our first presentation.
-                    With this visualization, we are able to:
+                    The final implementation is very similar to our initial design. This was expected as we did not get a lot of negative feedback after
+                    our first presentation. With this visualization, we are able to:
                 </p>
                 <ul class="list">
                     <li> Show all the information about each tweet and its location on the map</li>
@@ -243,9 +250,10 @@
                 </ul>
                 <h3> Strengths </h3>
                 <p>
-                    The visualization has an overview (map) of all the data in the data set and has graphs which show discrete information. The graphs make it easy to
-                    comparisons from the visualization. Furthermore, the visualization covered the 3 main categories discussed by Ben Shneiderman in his visualization mantra.
-                    These are Overview, Zoom and Filter and lastly, Details on Demand. The map provided the overview while the interactivity of the visualisation provided the other 2.
+                    The visualization has an overview (map) of all the data in the data set and has graphs which show discrete information. The graphs
+                    make it easy to comparisons from the visualization. Furthermore, the visualization covered the 3 main categories discussed by Ben
+                    Shneiderman in his visualization mantra. These are Overview, Zoom and Filter and lastly, Details on Demand. The map provided the
+                    overview while the interactivity of the visualisation provided the other 2.
                 </p>
                 <h4>Overview:</h4>
                 <p>
@@ -254,7 +262,9 @@
                 </p>
                 <h4>Zoom and Filter:</h4>
                 <p>
-                    Users can zoom into a particular state to see the information for only the selected state. The graphs change to show discrete information, such as number of resolutions in each category, for that particular state. Using the same functionality, users can make comparisons between two states.
+                    Users can zoom into a particular state to see the information for only the selected state. The graphs change to show discrete
+                    information, such as number of resolutions in each category, for that particular state. Using the same functionality, users can make
+                    comparisons between two states.
                 </p>
                 <p>
                     Filtering can be done on both the categories and the genders. This allows users to see information about a specific category in a
@@ -268,18 +278,31 @@
                 </p>
                 <h3> Weaknesses </h3>
                 <p>
-                    The major weakness of our visualization is the poor spacing.The East of the map has significantly more data points. There is nothing we could
-                    about this as the data was
+                    The major weakness of our visualization is the poor spacing. The East of the map has significantly more data points. There is nothing
+                    we could about this.
                 </p>
                 <p>
-                    Another weakness is that most of the queries require the user to interact with the visualization ...
+                    Secondly, most of the queries require the user to interact with the visualization.
                 </p>
                 <p>
-                    The states are not labelled which makes it hard for people who are not familiar with the map to know which state is located where.
+                    The states are not labelled which makes it hard for people who are not familiar with the map of USA to know the location of each state or
+                    which state they are looking at without selecting one.
+                </p>
+                <p>
+                    There are no "all" and "nothing" buttons. The "all" button would enable a user select all the categories at once without having to check all the
+                    9 checkboxes. And similarly, the "nothing" button would enable a de-select all the catgories and choose the one they want to explore.
                 </p>
                 <h3> Difficulties </h3>
                 <h3> Conclusions </h3>
                 <h3> Future work</h3>
+                <p>
+                    Future work could include finding a way to add the name of each state to the map.
+
+                </p>
+                <p>
+                    We could also include the slider. This would enable user look at less data without selecting a gender, category or state. Other users could
+                    make conclusions based on when a resolution was made.
+                </p>
             </section>
             <section id="team">
                 <h2> Team </h2>
@@ -297,7 +320,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr style="background-color: rgba(128, 128, 128, 0.2)">
+                    <tr style="background-color: rgba(24, 0, 128, 0.2)">
                         <td>Michael Kyeyune</td>
                         <td>Implementation of the map and coordinates</td>
                     </tr>
@@ -305,15 +328,16 @@
                         <td>Thandile Xiphu</td>
                         <td>Implementation of the graphs</td>
                     </tr>
-                    <tr style="background-color: rgba(128, 128, 128, 0.2)">
+                    <tr style="background-color: rgba(24, 0, 128, 0.2)">
                         <td>William Lumala</td>
                         <td>Editing HTML code and web page layout</td>
                     </tr>
                     </tbody>
                 </table>
                 <p>
-                    // Talk about how efficient this was.
+                    The system was very efficient and enabled us to work on all the tasks concurrently.
                 </p>
+                <h3> References</h3>
             </section>
          </div>
     </body>
