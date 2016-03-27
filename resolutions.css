@@ -35,6 +35,10 @@ nav ul a:hover{
     color: black;
 }
 
+nav ul a:active{
+    color: black;
+    background-color: white;
+}
 
 
 /* the body and its contents*/
@@ -171,4 +175,10 @@ th{
 p a{
     text-decoration: none;
     color: #ff0066;
+}
+
+/* initial design images*/
+div img {
+    display:block;
+    margin:auto;
 }
