@@ -7,22 +7,24 @@
     </head>
     <body>
         <div>
-            <ul class="navigation">
-                <li class="link"> <a href="#intro"> Introduction </a> </li>
-                <li class="link"> <a href="#research"> Research </a> </li>
-                <li class="link"> <a href="#visqueries"> Visual Queries </a> </li>
-                <li class="link"> <a href="#design"> Design Iterations</a> </li>
-                <li class="link"> <a href="#viz"> Visualization</a> </li>
-                <li class="link"> <a href="#discussions"> Discussion</a> </li>
-                <li class="link"> <a href="#team"> Team</a>  </li>
-            </ul>
+            <nav>
+                <ul>
+                    <li> <a href="#intro"> Introduction </a> </li>
+                    <li> <a href="#research"> Research </a> </li>
+                    <li> <a href="#visqueries"> Visual Queries </a> </li>
+                    <li> <a href="#design"> Design Iterations</a> </li>
+                    <li> <a href="#viz"> Visualization</a> </li>
+                    <li> <a href="#discussions"> Discussion</a> </li>
+                    <li> <a href="#team"> Team</a>  </li>
+                </ul>
+            </nav>
         </div>
         <div style="margin-left:15%; margin-right: 10%; height: 100%;  padding:1px 16px; background-color: white">
             <div class="heading">
-                <h1 style="font-family: cursive ">Computer Science Honours</h1>
+                <h1 style="font-family: cursive">Computer Science Honours</h1>
                 <h2>Visualisation and Visual Thinking 2016</h2>
                 <h2 style="color:#8000ff">2016 New Years Resolutions</h2>
-                <p>Michael Kyeyune, William Lumala and Thandile Xiphu</p>
+                <p>Michael Kyeyune, Thandile Xiphu and William Lumala</p>
             </div>
             <section id="intro">
                 <h2> Introduction</h2>
@@ -129,17 +131,20 @@
                 <h3> Initial Design</h3>
                 <p><img src="initialMap.PNG" border="1"></p>
                 <p>
-                    The initial design included a map and supporting graphs (below) to show discrete information about the data. We used a map in order
-                    to show all the data points in the data set at the same time and to show the spread across the nation and individual states. Each point on the map represents a tweet
-                    and the location from which it was tweeted. Users can get all the information about a data point by hovering over it (shown on image
-                    above). We included the slider below the map allows so that users can select the range of time starting from the 21st of December 2015 to the 1st of January 2016.
+                    The initial design included a map and supporting graphs (below) to show discrete information about the data. We used a map in order to show
+                    all the data points in the data set at the same time and to show the spread across the nation and individual states. Each point on the map
+                    represents a tweet and the location from which it was tweeted. Users can get all the information about a data point by hovering over it
+                    (shown on image above). We included the slider below the map allows so that users can select the range of time starting from the 21st of
+                    December 2015 to the 1st of January 2016.
                 </p>
                 <p>
-                    Above the map there are checkboxes, with each one representing a category or a gender (male and female). This is to allow a user to select any number of categories they wish to view. The changes made in the selection are propagated to the map and graphs in order for them to show only the selected categories.
+                    Above the map there are checkboxes, with each one representing a category or a gender (male and female). This is to allow a user to select
+                    any number of categories they wish to view. The changes made in the selection are propagated to the map and graphs in order for them to show
+                    only the selected categories.
                 </p>
                 <p>
-                    Our design caters for comparison between a maximum of two states, which can be done by selecting the two states from the two combo boxes above the
-                    map. Selecting one state would highlight the state on the map and change the graphs to represent only that state. Selecting another state
+                    Our design caters for comparison between a maximum of two states, which can be done by selecting the two states from the two combo boxes above
+                    the map. Selecting one state would highlight the state on the map and change the graphs to represent only that state. Selecting another state
                     would then highlight both the states and display both the graphs of the states to allow for comparison between the two.
                 </p>
                 <img src="initialGender.PNG" border="1">
@@ -160,60 +165,68 @@
 
                 <h3> Second Iteration </h3>
                 <p>
-                    The second iteration was developed using <a href="https://d3js.org/">D3js</a> to enable see how the all the data points fitted on the map.
+                    The second iteration, seen <a href="implementation.html">here</a> was developed using <a href="https://d3js.org/">D3js</a> to enable see how
+                    the all the data points fitted on the map.
                 </p>
                 <h4> Implementation of feedback (from 1st presentation) in 2nd iteration</h4>
                 <p>
-                    After the presentation of our initial design where we received feedback from Michelle and other students, we thought about how each of the
-                    points mentioned above would affect our 2nd iteration and made a few changes based on the feedback.
+                    After the presentation of our initial design where we received feedback from Michelle and other students, we thought about how each
+                    of the points mentioned above would affect our 2nd iteration and made a few changes based on the feedback.
                 </p>
                 <h5> Use shape as well as colour to represent a category</h5>
                 <p>
-                    We thought the colors representing the categories were distinct enough that a person did not need an additional symbol to help them easily
-                    identify a category. Due to the fact that we have a large data set we decided not to use symbols for categories because we felt they would only
-                    contribute to over crowding the map. We decided to have circles to represent data points and have them colour coded to the category it falls
-                    and and we added an extra dimension of gender by having male data points have a black outline, while female data points had a white outline.
+                    We thought the colors representing the categories were distinct enough that a person did not need an additional symbol to help them
+                    easily identify a category. Due to the fact that we have a large data set we decided not to use symbols for categories because we
+                    felt they would only overcrowd the map even more. We decided use a circle to represent data points and have them colour coded tp the
+                    category it falls under. We added an extra dimension of gender by having male data points have a black outline, while female data
+                    points have a white outline.
                 </p>
                 <h5> Comparing two states</h5>
                 <p>
-                    Users have the ability to compare two states at a time. A state is selected by selecting it from the combo box above the map. This changes
-                    the map as well as the graphs, therefore providing discrete information. Comparisons can be made within a single state across its different
-                    categories or genders and comparisons can also be made between two states across all of their categories or in one specific category.
+                    Users have the ability to compare two states at a time. A state is selected by selecting it from the combo box above the map. This
+                    changes the map as well as the graphs, therefore providing discrete information. Comparisons can be made within a single state across
+                    its different categories or genders. Comparisons can also be made between two states across all of their categories or in one specific
+                    category and of course gender.
                 </p>
                 <h5> Use both texture and colour for bar graphs </h5>
                 <p>
-                    When comparing genders or two states texture, in the form of lines as can be seen in the bar graph depicting the new year's resolutions by
-                    gender, is used to differentiate between the two. We decided against using texture for the categories because the colour we felt was enough
-                    to help the user effectively differentiate between the categories.
+                    When comparing genders or two states, texture, in the form of lines as can be seen in the bar graph depicting the new year's resolutions
+                    by gender, is used to differentiate between the two. We decided against using texture for the categories because the colour we felt
+                    was enough to help the user effectively differentiate between the categories.
                 </p>
                 <h5> Have a bit more of theme - resolutions - add appeal to your graphic </h5>
                 <p>
-                    Rather than adding the new year's theme to our visualisation through symbols and colour etc. we decided to add the theme to the website
-                    instead. We wanted a visually appealing visualisation that did not overwhelm the user with unnecessary symbols amd colour. Our aim is for
-                    the user to easily get a gist of the data while still having a  ************************
+                    Rather than adding the new year's theme to our visualisation through symbols and colour etc. we decided to add the theme to the
+                    website instead. We wanted a visually appealing visualisation that did not overwhelm the user with unnecessary symbols amd colour.
+                    Our aim is for the user to easily understand the visualization and have their visual queries answered as fast as possible.
                 </p>
                 <h5> Total resolution (category) "winner" of the state shown as a texture?</h5>
-                // Add link to second iteration
-                <p> The feedback from the presentation of the second iteration was quite similar to the feedback from the 1st presentation.</p>
+                <p>
+                    At this stage had not added this feature because one category was the winner in about 47 of the 50 states. We thought this would
+                    just fill up the entire map with the symbol or color and decided to think about it for final implementation.
+                </p>
                 <h4> Feedback after presentation of 2nd iteration</h4>
+                <p> The feedback from the presentation of the second iteration was quite similar to the feedback from the 1st presentation.</p>
                 <ul>
-                    <li> Use shape as well as colour to represent a category</li>
-                    <li> Too much data could overcrowd the map</li>
-                    <li> Comparison between two states</li>
-                    <li> Use texture as well as colour for bar graphs</li>
-                    <li> Use symbols a bit more</li>
-                    <li> Show the "winning" category in each state</li>
-                    <li> Make the color of the border distinct from any category colour</li>
-                    <li> Have a bit more of theme to add appeal to your graphic (due to the topic)</li>
+                    <li> Add a symbol for each category</li>
+                    <li> The white border around the "female" data points was not visible to some people</li>
+                    <li> Enlarge a state when a user selects it</li>
+                    <li> Use a 2 different shapes - one for males and one for females</li>
+                    <li> Add a frame around the map</li>
+                    <li> Add more appeal (theme) to the visualization</li>
                 </ul>
                 <h3> Final Implementation </h3>
                 <h4> Changes from the second iteration to the final visualization</h4>
+                <p>
+                    After the 2nd presentation, we decided to make changes to the visualization based on the feedback above.
+                </p>
                 <h5> Different shapes for the 2 genders </h5>
                 <h5> Symbols for the categories </h5>
                 <h4> Other Design Decisions</h4>
             </section>
             <section id="viz">
                 <h2> Visualization </h2>
+                // link to the final presentation
             </section>
             <section id="discussions">
                 <h2> Discussion </h2>
