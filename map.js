@@ -174,7 +174,7 @@ function generateMapLegend(height, width)
         .data(category_img)
         .attr('xlink:href',function (d){
             return d;})
-        .attr('class', 'pico')
+       // .attr('class', 'pico')
         .attr('height', '40')
         .attr('width', '40')
         .attr("x", width);

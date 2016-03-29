@@ -154,7 +154,6 @@ function generateCategoryGraphs(data)
         .on("mouseout", tip.hide);
 
     generateCategoryGraphLegend(height, width/4);
-
 }
 
 /*
@@ -162,9 +161,11 @@ function generateCategoryGraphs(data)
  */
 function generateCategoryGraphLegend(height, width)
 {
+    var category_img = ['', '', 'ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+
     var svg = d3.select("#graph_div")
         .append("svg")
-        .attr("width", width+50)
+        .attr("width", width+30)
         .attr("height", height+30);
 
     var items = ["Male", "Female"];
@@ -180,13 +181,13 @@ function generateCategoryGraphLegend(height, width)
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i){
-            return "translate(0," + i * 20 + ")";
+            return "translate(0," + i * 40 + ")";
         });
 
     legend.append("rect")
         .attr("x", width)
-        .attr("width", 18)
-        .attr("height", 18)
+        .attr("width", 30)
+        .attr("height", 30)
         .style("fill", function(d){
             return selectCategoryColour(d);
         })
@@ -198,6 +199,16 @@ function generateCategoryGraphLegend(height, width)
             }
             return className;
         });
+
+     legend.append('image')
+             .data(category_img)
+             .attr('xlink:href',function (d){
+                 return d;})
+             //.attr('class', 'pico')
+             .attr('height', '30')
+             .attr('width', '30')
+             .attr("x", width);
+             //.attr("y", 20);
 
     legend.append("text")
         .attr("x", width - 6)
@@ -361,10 +372,12 @@ function generateStateComparisonGraphs(data, stateNames)
 
 function generateStateComparisonGraphLegend(stateNames, height, width)
 {
+    var category_img = ['', '', 'ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+
     var svg = d3.select("#state_graph_div")
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", width+30)
+        .attr("height", height+30);
 
     var categoryNames = getCategoryNames();
 
@@ -378,13 +391,13 @@ function generateStateComparisonGraphLegend(stateNames, height, width)
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i){
-            return "translate(0," + i * 20 + ")";
+            return "translate(0," + i * 40 + ")";
         });
 
     legend.append("rect")
-        .attr("x", width - 18)
-        .attr("width", 18)
-        .attr("height", 18)
+        .attr("x", width)
+        .attr("width", 30)
+        .attr("height", 30)
         .style("fill", function(d){
             return selectCategoryColour(d);
         })
@@ -396,6 +409,16 @@ function generateStateComparisonGraphLegend(stateNames, height, width)
             }
             return className;
         });
+
+     legend.append('image')
+             .data(category_img)
+             .attr('xlink:href',function (d){
+                 return d;})
+             //.attr('class', 'pico')
+             .attr('height', '30')
+             .attr('width', '30')
+             .attr("x", width );
+             //.attr("y", 50);
 
     legend.append("text")
         .attr("x", width - 24)
