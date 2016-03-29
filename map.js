@@ -3,14 +3,53 @@
  * Created by Michael on 2016/03/14.
  */
 
+//the current centered object on the map and container for states
+var centered, g;
+//the current path utilised for the map
+var path;
+
+//the height and width of the map
+var width, height;
+
+/*
+ * Function called on clicking on a state or on the map
+ */
+function clicked(d)
+{
+    var x, y, k;
+
+    if(d && centered !== d)
+    {
+        var centroid = path.centroid(d);
+        x = centroid[0];
+        y = centroid[1];
+        k = 4;
+        centered = d;
+    }
+    else
+    {
+        x = width/2;
+        y = height/2;
+        k = 1;
+        centered = null;
+    }
+
+    g.transition()
+        .duration(750)
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+        .style("stroke-width", 1.5 / k + "px");
+
+}
+
+
 /*
  * Generates the map to be displayed
  */
 function generateMap()
 {
     //width and height
-    var width = 960;
-    var height = 600;
+    width = 960;
+    height = 600;
 
     //define the map projection
     var projection = d3.geo.albersUsa()
@@ -18,7 +57,7 @@ function generateMap()
         .translate([width/2, height/2]);
 
     // define default path generator
-    var path = d3.geo.path()
+    path = d3.geo.path()
         .projection(projection);
 
     //create the svg element
@@ -26,6 +65,14 @@ function generateMap()
         .append("svg")
         .attr("width", width)
         .attr("height", height);
+
+    svg.append("rect")
+        .attr("class", "background")
+        .attr("width", width)
+        .attr("height", height)
+        .on("click", clicked);
+
+    g = svg.append("g");
 
     var tip = d3.tip()
         .attr("class", "d3-tip")
@@ -48,14 +95,16 @@ function generateMap()
         // load the GeoJSON data for the states
         d3.json("us-states.json", function(json){
             //bind data and create one path per GeoJSON feature
-            paths = svg.selectAll("path")
+            g.append("g")
+                .selectAll("path")
                 .data(json.features)
                 .enter()
                 .append("path")
                 .attr("class", "state_path")
                 .attr("d", path)
                 .style("fill","cccccc")
-                .style("stroke", "white");
+                .style("stroke", "white")
+                .on("click", clicked);
 
             //fill the drop down boxes for states
             fillStateSelectionDropdowns(json.features);
@@ -78,7 +127,7 @@ function generateMap()
 
             //males to be represented with circles that have white boundaries. Circles will have class "male-points"
             //general class for points will be "data-points"
-            circles = svg.selectAll(".male-points")
+            var circles = g.selectAll(".male-points")
                 .data(males)
                 .enter()
                 .append("circle")
@@ -117,7 +166,7 @@ function generateMap()
 
             //females to be represented with rectangles that have white boundaries.
             //rectangles to be given the class "female-points"
-            rectangles = svg.selectAll(".female-points")
+            var rectangles = g.selectAll(".female-points")
                 .data(females)
                 .enter()
                 .append("rect")
@@ -171,18 +220,20 @@ function generateMap()
 
         });
     });
-    generateMapLegend(height, width/4);
+    generateMapLegend();
 }
 
 /*
  * A function to generate the legend of the map
  */
-function generateMapLegend(height, width)
+function generateMapLegend()
 {
+    var legend_height = height;
+    var legend_width = width/4;
     var svg = d3.select("#map_div")
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", legend_width)
+        .attr("height", legend_height);
 
     var legend = svg.selectAll(".legend")
         .data(getCategoryNames().slice())
@@ -193,7 +244,7 @@ function generateMapLegend(height, width)
         });
 
     legend.append("rect")
-        .attr("x", width - 18)
+        .attr("x", legend_width - 18)
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", function(d){
@@ -201,7 +252,7 @@ function generateMapLegend(height, width)
         });
 
     legend.append("text")
-        .attr("x", width-24)
+        .attr("x", legend_width-24)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
@@ -218,7 +269,7 @@ function fillStateSelectionDropdowns(features)
 {
     for(var i=0; i < 2; i++)
     {
-        dropDown = d3.selectAll("select")
+        var dropDown = d3.selectAll("select")
             .filter(function(){
                 if(i == 0)
                 {
@@ -277,7 +328,7 @@ function stateSelectionChanged() {
     //console.log(d3.select("#state_1").node().value);
     //console.log(d3.select("#state_2").node().value);
 
-    paths = d3.selectAll(".state_path")
+    var paths = d3.selectAll(".state_path")
         .style("fill", "cccccc");
 
     paths = paths.filter(function(d){
@@ -318,7 +369,7 @@ function filterMap()
         });
     }
 
-    checkedGenders = d3.selectAll(".gender_checkbox")
+    var checkedGenders = d3.selectAll(".gender_checkbox")
         .filter(function(){
             return this.checked;
         });
@@ -336,7 +387,7 @@ function filterMap()
     });
 
 
-    checkedCategories = d3.selectAll(".category_checkbox")
+    var checkedCategories = d3.selectAll(".category_checkbox")
         .filter(function(){
             return this.checked;
         });
