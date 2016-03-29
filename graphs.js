@@ -420,13 +420,13 @@ function selectCategoryColour(category)
             color = "yellowGreen";
             break;
         case "Humor":
-            color = "tomato";
+            color = "#7E3517";
             break;
         case "Personal Growth":
             color = "orchid";
             break;
         case "Philanthropic":
-            color = "royalBlue";
+            color = "sienna";
             break;
         case "Education/Training":
             color = "powderBlue";
@@ -441,7 +441,7 @@ function selectCategoryColour(category)
             color = "darkOliveGreen";
             break;
         case "Finance":
-            color = "sienna";
+            color = "royalBlue";
             break;
         case "Time Management/Organization":
             color = "rebeccaPurple";
@@ -602,16 +602,19 @@ function generateStateGraphs(data)
 function getCategoryNames()
 {
     var categoryNames = [
-        "Health & Fitness",
-        "Humor",
-        "Personal Growth",
+        
         "Philanthropic",
+        "Personal Growth",
         "Education/Training",
+        "Health & Fitness",
         "Recreation & Leisure",
         "Family/Friends/Relationships",
+        
         "Career",
         "Finance",
-        "Time Management/Organization"
+        
+        "Time Management/Organization",
+        "Humor"
     ];
     return categoryNames;
 }

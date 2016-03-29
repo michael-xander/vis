@@ -180,6 +180,26 @@ function generateMapLegend(height, width)
             return d;
         });
 
+    var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([50, -10])
+        .html(function(d) {
+            return "Map showing overall category winners in each state"
+        });
+    svg.call(tip);
+
+
+    d3.select('.legend')
+        .append('image')
+        .attr('xlink:href','category_winners.png')
+        .attr('class', 'pico')
+        .attr('height', '290')
+        .attr('width', '260')
+        .attr("x", 5)
+        .attr("y", 280)
+        .on("mouseover", tip.show)
+        .on("mouseout", tip.hide);
+
 }
 
 /*
