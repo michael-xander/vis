@@ -148,9 +148,10 @@ function generateMap()
  */
 function generateMapLegend(height, width)
 {
+    var category_img = ['ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
     var svg = d3.select("#map_div")
         .append("svg")
-        .attr("width", width+30)
+        .attr("width", width+40)
         .attr("height", height);
 
     var legend = svg.selectAll(".legend")
@@ -158,16 +159,35 @@ function generateMapLegend(height, width)
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i){
-            return "translate(0," + i * 20 + ")";
+            return "translate(0," + i * 50 + ")";
         });
 
     legend.append("rect")
         .attr("x", width)
-        .attr("width", 18)
-        .attr("height", 18)
+        .attr("width", 40)
+        .attr("height", 40)
         .style("fill", function(d){
             return selectCategoryColour(d);
         });
+
+       // d3.select('.legend')
+       legend.append('image')
+                .data(category_img)
+                .attr('xlink:href',function (d){
+                            return d;})
+                .attr('class', 'pico')
+                .attr('height', '40')
+                .attr('width', '40')
+                .attr("x", width);
+                //.attr("y", 280);
+
+
+
+     var rectangles = legend.selectAll("rect");
+
+     rectangles.append('svg:image')
+        .attr('xlink:href', function(d) {
+            return 'phil.jpg'});
 
     legend.append("text")
         .attr("x", width-6)
@@ -180,25 +200,23 @@ function generateMapLegend(height, width)
             return d;
         });
 
-    var tip = d3.tip()
+            /** d3.select('rect')
+                .append('image')
+                .attr('xlink:href','phil.jpg')
+                .attr('class', 'pico')
+                .attr('height', '290')
+                .attr('width', '260');
+
+  var tip = d3.tip()
         .attr("class", "d3-tip")
         .offset([50, -10])
         .html(function(d) {
             return "Map showing overall category winners in each state"
         });
-    svg.call(tip);
+    svg.call(tip); **/
 
 
-    d3.select('.legend')
-        .append('image')
-        .attr('xlink:href','category_winners.png')
-        .attr('class', 'pico')
-        .attr('height', '290')
-        .attr('width', '260')
-        .attr("x", 5)
-        .attr("y", 280)
-        .on("mouseover", tip.show)
-        .on("mouseout", tip.hide);
+
 
 }
 
