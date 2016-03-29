@@ -11,6 +11,11 @@ var path;
 //the height and width of the map
 var width, height;
 
+
+//sizes for the circles and radius
+var circleRadius = 4.2;
+var rectLength = circleRadius * 2;
+var pointBoundarySize = 1.3;
 /*
  * Function called on clicking on a state or on the map
  */
@@ -138,9 +143,9 @@ function generateMap()
                 .attr("cy", function(d){
                     return projection([d.long, d.lat])[1];
                 })
-                .attr("r", 5)
+                .attr("r", circleRadius)
                 .attr("stroke", "white")
-                .attr("stroke-width", 2)
+                .attr("stroke-width", pointBoundarySize)
                 .style("fill", function(d) {
                     return selectCategoryColour(d.category);
                 })
@@ -149,7 +154,7 @@ function generateMap()
 
                     //double the circles radius and fill it black
                     d3.select(this)
-                        .attr("r", 10)
+                        .attr("r", circleRadius*2)
                         .style("fill", "black");
                     tip.show(d);
                 })
@@ -157,7 +162,7 @@ function generateMap()
 
                     //return the cirle to original radius and colour
                     d3.select(this)
-                        .attr("r", 5)
+                        .attr("r", circleRadius)
                         .style("fill", function(d){
                             return selectCategoryColour(d.category);
                         });
@@ -171,8 +176,8 @@ function generateMap()
                 .enter()
                 .append("rect")
                 .attr("class", "female-points data-points")
-                .attr("width", 10) //maintain same size distributions as circles
-                .attr("height", 10)
+                .attr("width", rectLength) //maintain same size distributions as circles
+                .attr("height", rectLength)
                 .attr("x", function(d) {
                     return projection([d.long, d.lat])[0];
                 })
@@ -180,7 +185,7 @@ function generateMap()
                     return projection([d.long, d.lat])[1];
                 })
                 .attr("stroke", "white")
-                .attr("stroke-width", 2)
+                .attr("stroke-width", pointBoundarySize)
                 .style("fill", function(d){
                     return selectCategoryColour(d.category);
                 })
@@ -189,16 +194,16 @@ function generateMap()
 
                     // double the rectangle's width and height plus fill it black
                     d3.select(this)
-                        .attr("width", 20)
-                        .attr("height", 20)
+                        .attr("width", rectLength*2)
+                        .attr("height", rectLength*2)
                         .style("fill", "black");
                     tip.show(d);
                 })
                 .on("mouseout", function()
                 {
                     d3.select(this)
-                        .attr("width", 10)
-                        .attr("height", 10)
+                        .attr("width", rectLength)
+                        .attr("height", rectLength)
                         .style("fill", function(d){
                             return selectCategoryColour(d.category);
                         });
