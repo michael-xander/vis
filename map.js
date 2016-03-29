@@ -170,24 +170,14 @@ function generateMapLegend(height, width)
             return selectCategoryColour(d);
         });
 
-       // d3.select('.legend')
-       legend.append('image')
-                .data(category_img)
-                .attr('xlink:href',function (d){
-                            return d;})
-                .attr('class', 'pico')
-                .attr('height', '40')
-                .attr('width', '40')
-                .attr("x", width);
-                //.attr("y", 280);
-
-
-
-     var rectangles = legend.selectAll("rect");
-
-     rectangles.append('svg:image')
-        .attr('xlink:href', function(d) {
-            return 'phil.jpg'});
+   legend.append('image')
+        .data(category_img)
+        .attr('xlink:href',function (d){
+            return d;})
+        .attr('class', 'pico')
+        .attr('height', '40')
+        .attr('width', '40')
+        .attr("x", width);
 
     legend.append("text")
         .attr("x", width-6)
@@ -199,25 +189,6 @@ function generateMapLegend(height, width)
         .text(function(d){
             return d;
         });
-
-            /** d3.select('rect')
-                .append('image')
-                .attr('xlink:href','phil.jpg')
-                .attr('class', 'pico')
-                .attr('height', '290')
-                .attr('width', '260');
-
-  var tip = d3.tip()
-        .attr("class", "d3-tip")
-        .offset([50, -10])
-        .html(function(d) {
-            return "Map showing overall category winners in each state"
-        });
-    svg.call(tip); **/
-
-
-
-
 }
 
 /*
@@ -252,7 +223,6 @@ function fillStateSelectionDropdowns(features)
                 return d.properties.name;
             });
     }
-
 }
 
 /*

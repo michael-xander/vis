@@ -609,10 +609,8 @@ function getCategoryNames()
         "Health & Fitness",
         "Recreation & Leisure",
         "Family/Friends/Relationships",
-        
         "Career",
         "Finance",
-        
         "Time Management/Organization",
         "Humor"
     ];
