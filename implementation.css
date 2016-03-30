@@ -10,8 +10,9 @@
 
 }
 
-/*css for the tooltips used in the svgs*/
-.d3-tip {
+/*css for the tooltip used in the map*/
+.d3-tip-map
+{
     line-height: 1;
     width: 300px;
     font-family: sans-serif;
@@ -22,8 +23,8 @@
     border-radius: 2px;
 }
 
-/* Creates a small triangle extender for the tooltip */
-.d3-tip:after {
+.d3-tip-map:after
+{
     box-sizing: border-box;
     display: inline;
     font-size: 10px;
@@ -35,8 +36,42 @@
     text-align: center;
 }
 
+.d3-tip-map.n:after
+{
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+/*css for the tooltips used in the graphs*/
+.d3-tip-graph
+{
+    line-height: 1;
+    width: 300px;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    color: darkblue;
+    border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip-graph:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.5);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
 /* Style northward tooltips differently */
-.d3-tip.n:after {
+.d3-tip-graph.n:after
+{
     margin: -1px 0 0 0;
     top: 100%;
     left: 0;

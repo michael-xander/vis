@@ -80,7 +80,7 @@ function generateMap()
     g = svg.append("g");
 
     var tip = d3.tip()
-        .attr("class", "d3-tip")
+        .attr("class", "d3-tip-map")
         .offset([-10, 0])
         .html(function(d){
             return "<strong>Handle:@</strong><span style='color:white'>" + d.handle + "</span><br>" +

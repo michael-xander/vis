@@ -67,7 +67,7 @@ function generateCategoryGraphs(data)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var tip = d3.tip()
-        .attr("class", "d3-tip")
+        .attr("class", "d3-tip-graph")
         .offset([-10, 0])
         .html(function(d) {
             return "<strong>Category: </strong><span style='color:red'>"+ d.category +"</span><br>" +
