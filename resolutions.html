@@ -19,7 +19,7 @@
                 </ul>
             </nav>
         </div>
-        <div style="margin-left:13.4%; margin-right: 10%; height: 100%;  padding:1px 16px; background-color: #fcfaff; min-width:980px; max-width: 980px">
+        <div style="margin-left:13.4%; margin-right: 10%; height: 100%;  padding:1px 16px; background-color: white; min-width:980px; max-width: 980px">
             <div class="heading">
                 <h1 style="font-family: cursive">Computer Science Honours</h1>
                 <h2>Visualisation and Visual Thinking 2016</h2>
@@ -47,25 +47,26 @@
             <section id="research">
                 <h2> Research</h2>
                 <p>
-					Before developing our initial design, we searched for existing visualizations that had been done on a similar topic. We found quite a
-                    few examples some of which have been shown below. While we liked some things about them, we also thought that they all could be improved
-                    in one way or another. Some of these visualizations gave us ideas which we incorporated (or tried) in our designs. Below are some
-                    of the designs we found.
+					Before the initial design was developed, research into existing visualizations on the same topic was done. All the visualizations discovered
+                    were static and the data was not multi-dimensional. Below are some of the visualizations along with an analysis for each of them.
                 </p>
                 <div id="NJ">
                     <h3> Example 1: New Jersey New Year's Resolution</h3>
                     <div class="chart_exp2">
                         <p>
-                            This visualization associated different colours with each category in the pie chart, which made it easy to get a gist of which
-                            categories of resolutions were most popular. We did not like the use of a pie chart and thought that a bar graph would be better
-                            suited to represent the data. With this pie chart, once you start looking at the poorer performing categories it is difficult to tell
-                            which slice of the pie chart is smaller than the other. Lastly, there was no discrete information, so one does not know how big the data
-                            set they was used is or if the data was a true representation of the new year's resolutions of the people in New Jersey. Lastly, one
-                            cannot drill down on the data to see specific numbers about the categories.
+                            The <a href="http://www.nj.com/news/index.ssf/2015/12/what_tops_njs_new_years_resolution_list.html"> visualization </a> associated a different colour with
+                            each category in the pie chart. This made it easy to get the know which categories were most popular. Though pie charts are considered  bad
+                            visualizations(especially for multiple categories), this one shows the value(percentage) for category each clearly. This helps especially when looking
+                            at the poorer performing categories. Without this extra information, it would difficult to tell which slice of the pie chart is smaller than the other.
+                        </p>
+                        <p>
+                            There is no discrete information displayed. Therefore so one does not know how big the data set they was used is or if the data was a true representation of
+                            the new year's resolutions of the people in New Jersey. Lastly, one cannot drill down on the data to see specific numbers about the categories.
                         </p>
                     </div>
                     <div class="chart2">
                         <img src="research1.PNG" border="1">
+                        <p> Figure 1: </p>
                     </div>
                     <br>
                 </div>
@@ -74,17 +75,18 @@
                     <h3> Example 2: United States: New Year's Resolution</h3>
                     <div class="chart1">
                         <img src="research2.png" border="1">
+                        <p> Figure 2: </p>
                     </div>
                     <div class="chart_exp1">
                         <p>
-                            The second visualization uses a horizontal bar chart to represent the data. We think that vertical bar graphs are more intuitive than
-                            horizontal ones. The graph (seen better <a href="http://www.statista.com/statistics/378105/new-years-resolution/">here</a>) uses percentages
-                            but the sum of the values is not 100 and we are not certain why. Furthermore, we think the graph could have used a different color to represent
-                            each category / resolution. The downside to this is that the graph has 21 resolutions and it might not be easy to get 21 distinct colours that will
-                            not be affected by the background.
+                            The second visualization uses a horizontal bar chart to represent the data. Vertical bar graphs are more intuitive than horizontal ones.
+                            The graph (seen better <a href="http://www.statista.com/statistics/378105/new-years-resolution/">here</a>) uses percentages
+                            but the sum of the values is not 100.  and we are not certain why.
                         </p>
                         <p>
                             The total of each category was shown next to its bar which makes it easy to know the actual value and make a comparison.
+                            The graph could have used a different color to represent each category or resolution to make easier to distinct between the categories.
+                            The downside to this is that the graph has 21 resolutions and it might not be easy to get 21 distinct colours that will not be affected by the background.
                         </p>
                     </div>
                 </div>
@@ -93,29 +95,48 @@
                     <div class="chart_exp">
                         <p>
                             Given that our <a href="#data"> data </a> had a location for each data point, this visualisation was the closest to what we had in
-                            mind. The map shows the 50 states and the most popular category in each state. We like the use of colour and a symbol to represent
-                            a category. The symbols were easy to understand and a key (not shown here) was provided.
+                            mind. The map shows the 50 states and the most popular category in each state. The use of colour and a symbol to represent
+                            a category makes it easier to have visual queries answered. The symbols are easy to understand and a key as seen
+                            <a href="http://mentalfloss.com/article/73426/most-popular-new-years-resolutions-each-state">here</a> was provided.
                         </p>
                         <p>
-                            However, we could not make any other comparisons such as how other categories performed in a state besides the "winner". Another issue
-                            we had with this visualization is that the states were not labelled and therefore one had to know names and location of states to fully
+                            However, no other comparisons can be made such as how other categories performed in a state besides the "winner". Another issue
+                            with this visualization is that the states are not labelled and therefore one had to know names and location of states to fully
                             understand the visualization.
                         </p>
                     </div>
                     <div class="chart">
                         <img src="research3.PNG" border="1">
+                        <p> Figure 3: </p>
                     </div>
                 </div>
                 <div id="all">
-                    <h3> Example 4: All resolution categories</h3>
-                    <p><img src="research4.PNG" border="1"></p>
+                    <h3> Example 4: All Resolution Categories</h3>
+                    <div class="chart3">
+                        <img src="research4.PNG" border="1">
+                        <p>Figure 4: </p>
+                    </div>
                     <p>
-                        The main bar graph appears to be a stacked line graph. It is not easy to understand what the visualization is showing because it takes
-                        a while to realise that not the entire area from the x-axis up to the line is taken into account, only the area that is the specific
-                        category's colour is considered, for example one might think that the blue category, smoking, was the best performing but it is actually
-                        the worst performing. Furthermore, we did not like the use of a pie chart because it is difficult to differentiate between the size of
+                        The main bar graph appears to be a stacked line graph. It takes a while to realize that not the entire area from the x-axis up to
+                        the line is taken into account and only the area that is the specific category's colour is considered. For example one might think that the blue category
+                        (smoking) was the best performing yet it is actually the worst performing. Furthermore, the use of a pie chart makes difficult to differentiate between the size of
                         the smoking and alcohol categories. The slider at the bottom of <a href="http://www.fastcoexist.com/3024280/visualized/visualizing-the-new-years-resolutions-were-all-trying-not-to-break"> this visualization</a>
-                        is a nice addition as it allows users to change the time range and see how the data changes with time.
+                        is a useful feature as it allows users to change the time range and see how the data changes with time.
+                    </p>
+                </div>
+                <div class="state2">
+                    <h3> Example 5 : The Most Popular 2016 Resolution in Every State</h3>
+
+  <div class="chart4">
+                        <img src="research5.PNG">
+                        <p> Figure 5: </p>
+                    </div>                  <p>
+                        The colours are distinct enough but with a grey background, the <a href="http://www.businesswire.com/news/home/20151229005116/en/%E2%80%98Enjoying-Life-Fullest%E2%80%99-2016%E2%80%99s-Top-Years-Resolution">visualization</a>
+                        could have used the 6 colours in the unique hue for humans. The different saturation of blue and red could mislead a user into thinking that different quantities of the
+                        same thing are being represented. Another misleading feature is the different sizes of the circles. Size is used to make objects stand out and therefore it is misleading here
+                        because it shows the size of a state and could someone using this visualization. The full name of each state is not shown which makes it harder to understand the
+                        visualization if one is not familiar with the map of USA. However, it is very easy to understand the 'indicates a tie' feature and more information about the
+                        visualization including graphs is provided <a href="http://www.gobankingrates.com/personal-finance/enjoying-life-2016s-top-new-years-resolution-survey/"> here</a>.
                     </p>
                 </div>
             </section>
@@ -127,7 +148,7 @@
                 <ul class="list">
                     <li> What is the <strong> distribution </strong> of tweets per <strong> category</strong> throughout the <strong> nation </strong> or in a <strong> state</strong> ? </li>
                     <li> How do the <strong> genders </strong> <strong> compare </strong> in different <strong> categories</strong> ? </li>
-                    <li> How do any 2 given <strong> states</strong> <strong> compare </strong>  <strong> overall </strong> or in a particular <strong> category?</strong> ?</li>
+                    <li> How do any 2 given <strong> states</strong> <strong> compare </strong> <strong> overall </strong> or in a particular <strong> category?</strong> ?</li>
                     <li> What is the <strong> most</strong> popular category in a state?</li>
                     <li> What is the <strong> spread </strong> of tweets per <strong> gender </strong> throughout the <strong> nation </strong> or in a given <strong> state </strong> ?</li>
                 </ul>
@@ -135,29 +156,39 @@
             <section id="design">
                 <h2> Design Iterations</h2>
                 <h3> Initial Design</h3>
-                <p><img src="initialMap.PNG" border="1"></p>
+                <div class="map">
+                    <img src="initialMap.PNG" border="1">
+                    <p> Figure 6 : The initial design as presented to the class </p>
+                </div>
                 <p>
-                    The initial design included a map and supporting graphs (below) to show discrete information about the data. We used a map in order to show
-                    all the data points in the data set at the same time and to show the spread across the nation and in each state. Each point on the map
+                    The initial design included a map and supporting graphs (below) to show discrete information about the data. The map shows all the data
+                    points in the data set at the same time and how they are the spread across the nation and in each state. Each point on the map
                     represents a tweet and the location from which it was tweeted. Users can get all the information about a data point by hovering over it
-                    (shown on image above). We included a slider below the map so that users can select the range of time starting from the 21st
-                    of December 2015 to the 1st of January 2016.
+                    (shown on image above). The slider below the map allows users to select the range of time starting from the 21st of December 2015 to the
+                    1st of January 2016.
                 </p>
                 <p>
-                    Above the map there are checkboxes, with each one representing a category or a gender (male and female). This is to allow a user to
-                    select any number of categories they wish to view. The changes made in the selection are propagated to the map and graphs in order
-                    for them to show only the selected categories or gender.
+                    Above the map, there are checkboxes with each one representing a category or a gender (male and female). This is to allow a user to
+                    select any number of categories or a specific gender they wish to view. The changes made in the selection are propagated to the map
+                    and graphs in order for them to show only the selected categories or gender.
                 </p>
                 <p>
-                    Our design caters for comparison between a maximum of two states, which can be done by selecting the two states from the two combo
+                    The design caters for comparison between a maximum of two states, which can be done by selecting the two states from the two combo
                     boxes above the map. Selecting one state would highlight the state (and grey out everything else) on the map and change the graphs to
                     represent only that state. Selecting another state would then highlight both the states and display both the graphs of the states to allow
                     for comparison between the two.
                 </p>
-                <img src="initialGender.PNG" border="1">
-                <br> <br>
-                <img src="initialCategories.PNG" border="1">
-                <br>
+                <p>
+                    At this point, the choice of colours was made with a white background in mind. All the colours of the unique hue were selected with the
+                    exception of white and yellow. Because a white background was being used, these 2 colours could not be chosen as they would not be clearly
+                    visible. Therefore the colour yellow was replaced with orange and white with grey.
+                </p>
+                <div class="graphs">
+                    <img src="initialGender.PNG" border="1">
+                    <p> Figure 7: </p>
+                    <img src="initialCategories.PNG" border="1">
+                    <p> Figure 8:</p>
+                </div>
                 <h4> Feedback after presentation of initial design</h4>
                 <ul>
                     <li> Use shape as well as colour to represent a category</li>
@@ -169,51 +200,72 @@
                     <li> Make the color of the border distinct from any category colour</li>
                     <li> Have a bit more of theme to add appeal to your graphic (due to the topic)</li>
                 </ul>
-
                 <h3> Second Iteration </h3>
-
                 <p>
-                    After the presentation of our initial design where we received feedback from Michelle and other students, we thought about how each
-                    of the points mentioned above would affect our 2nd iteration and made a few changes based on the feedback.
-                </p>
-                <p>
-                    The <a href="implementation.html"> second iteration </a> was developed using <a href="https://d3js.org/">D3js</a>. This was to
-                    enable us to see how the all the data points fitted on the map.
+                    The <a href="implementation.html"> second iteration </a> was developed using <a href="https://d3js.org/">D3js</a>. The visualization
+                    is interactive and contains all the data points.
                 </p>
                 <h4> Implementation of feedback (from 1st presentation) in 2nd iteration</h4>
 
                 <h5> Use shape as well as colour to represent a category</h5>
                 <p>
-                    We thought the colors representing the categories were distinct enough that a person did not need an additional symbol to help them
+                    We thought the colors representing the categories were so distinct that a person did not need an additional symbol to help them
                     easily identify a category. Due to the fact that we have a large data set we decided not to use symbols for categories because we
-                    felt they would only overcrowd the map even more. We decided use a circle to represent data points and have them colour coded tp the
-                    category it falls under. We added an extra dimension of gender by having male data points have a black outline, while female data
-                    points have a white outline.
+                    felt they would only overcrowd the map even more. We decided use a circle to represent data points and have them colour coded to the
+                    category it falls under. We added an extra dimension of gender by having male data points have a black border around the circle,
+                    while female data points have a white border.
                 </p>
                 <h5> Comparing two states</h5>
                 <p>
-                    Users have the ability to compare two states at a time. A state is selected by selecting it from the combo box above the map. This
+                    Users have the ability to compare only two states at a time. A state is chosen by selecting it from the combo box above the map. This
                     changes the map as well as the graphs, therefore providing discrete information. Comparisons can be made within a single state across
                     its different categories or genders. Comparisons can also be made between two states across all of their categories or in one specific
-                    category and of course gender.
+                    category.
                 </p>
                 <h5> Use both texture and colour for bar graphs </h5>
                 <p>
-                    When comparing genders or two states, texture, in the form of lines as can be seen in the bar graph depicting the new year's resolutions
-                    by gender, is used to differentiate between the two. We decided against using texture for the categories because the colour we felt
-                    was enough to help the user effectively differentiate between the categories.
+                    The graphs use both colour and texture. Each category retains its colour while texture is added to the bar representing females as clearly
+                    shown on the key.
                 </p>
                 <h5> Have a bit more of theme - resolutions - add appeal to your graphic </h5>
                 <p>
                     Rather than adding the new year's theme to our visualisation through symbols and colour etc., we decided to add the theme to the
-                    website instead. We wanted a visually appealing visualisation that did not overwhelm the user with unnecessary symbols and colour.
+                    web page instead. We wanted a visually appealing visualisation that did not overwhelm the user with unnecessary symbols and colour.
                     Our aim is for the user to easily understand the visualization and have their visual queries answered as fast as possible.
                 </p>
                 <h5> Total resolution (category) "winner" of the state shown as a texture?</h5>
                 <p>
                     At this stage had not added this feature because one category was the winner in about 47 of the 50 states. We thought this would
-                    just fill up the entire map with the symbol or color and decided to think about it for final implementation.
+                    just fill up the entire map with the symbol or color and decided to think about it for final implementation. A smaller map would be
+                    added next to the large map showing this. This map would look like the one showed below. We decided to make a decision on this during
+                    the final implementation.
                 </p>
+                <div class="winner">
+                    <img src="winnerinstate.PNG">
+                    <p> Figure 9: A map showing the 'winning' category in each state</p>
+                </div>
+                <h5> </h5>
+                <p>
+                    Symbols were discarded for this iteration because they were only going to be used on the key and therefore served no major purpose. The slider
+                    showing time ranges was discarded because of the short time frame it covered. This iteration is interactive and users get more information by
+                    interacting with the visualization in different ways:
+                </p>
+                <ul>
+                    <li> Hovering over a data point on the map shows all the information about that point. </li>
+                    <li>
+                        Clicking on a state in the combo box. This removes all the data points on the rest of map and only leaves the ones in that specific state.
+                        The graphs change accordingly. This could be improved by greying out the other points instead of removing them completely so that a user
+                        still has an overview.
+                    </li>
+                    <li>
+                        Clicking on a second state would show the data points in this state, change the graphs and therefore enable users to make comparisons
+                        between the two states. This iteration caters for comparisons between only 2 states.
+                    </li>
+                    <li>
+                        Clicking on a gender selects or un-selects the gender depending on its current state(selected or un-selected). This adds or removes the
+                        data points (for that gender) on the map and changes the graphs as well. Selecting categories works exactly like selecting the gender.
+                    </li>
+                </ul>
                 <h4> Feedback after presentation of 2nd iteration</h4>
                 <p> The feedback from the presentation of the second iteration was quite similar to the feedback from the 1st presentation.</p>
                 <ul>
@@ -226,6 +278,9 @@
                 </ul>
                 <h3> Final Implementation </h3>
                 <h4> Changes from the second iteration to the final visualization</h4>
+                <p>
+                    
+                </p>
                 <p>
                     After the 2nd presentation, we decided to make changes to the visualization based on the feedback above.
                 </p>
@@ -289,7 +344,7 @@
                     which state they are looking at without selecting one.
                 </p>
                 <p>
-                    There are no "all" and "nothing" buttons. The "all" button would enable a user select all the categories at once without having to check all the
+                    There are no "all" and "nothing" buttons or checkboxes. The "all" button would enable a user select all the categories at once without having to check all the
                     9 checkboxes. And similarly, the "nothing" button would enable a de-select all the catgories and choose the one they want to explore.
                 </p>
                 <h3> Difficulties </h3>
