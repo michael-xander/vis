@@ -16,6 +16,7 @@
                     <li> <a href="#viz"> Visualization</a> </li>
                     <li> <a href="#discussions"> Discussion</a> </li>
                     <li> <a href="#team"> Team</a>  </li>
+                    <li><a href="#">Implementation</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,26 +30,30 @@
             <section id="intro">
                 <h2> Introduction</h2>
                 <p>
-                    New Years Resolutions are made by people every year and while some stick to them, others do not. We thought it would be interesting
-                    to visualize the types of resolutions that were made in 2015 heading into 2016. The aim of this project is for us to visualise data
-                    with about 3 to 4 dimensions. We wanted to enable users have an overview of all the data points in the data set and identify patterns.
-                    Our second aim was for the user to be able to interact with the data to get answers to their visual queries. They should be able to
-                    drill down to lower levels of dimensionality and interact with the discreet data. To achieve these aims we used an interactive
-                    visualisation software called <a href="https://d3js.org/">D3js</a>, which is a javascript visualisation library.
+                    Year in, year out, one of the traditions that is yet to go the way of the dinosaurs is that of making new year resolutions. People of all walks of life,
+                    at just about the stroke of midnight on 31st December (every year),  take a moment to reflect on the year that has been and what they plan to do for the
+                    one that is to come ... well the sober ones (if you don't recall then you know where you fall). The list of resolutions is endless ,we presume, involving topics
+                    such as health, self improvement and getting to meet <a href="https://www.google.com/search?client=safari&rls=en&q=scarlett+johansson&ie=UTF-8&oe=UTF-8" target="_blank">Scarlett Johansson</a>.
+                    With such a vast <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html" target="_blank">array</a> of possibilities, we got curious as to what
+                    other people besides ourselves resolve to achieve in the new year. As such we set out to obtain new year resolutions data, categorise it and carry out an analysis to
+                    get an insight into the most popular resolutions, the resolutions split according to gender and regions where to certain resolutions fared better than others. Given that the
+                    internet has an <a href="http://uncyclopedia.wikia.com/wiki/Proof_that_everything_on_the_internet_is_true" target="_blank">answer to everything</a>, we found data on New Year Resolution tweets
+                    which formed the basis of our visualisation. We hoped to develop a visualisation that anybody inquisitive about different new year resolutions and how they compare with regards to topic would find
+                    helpful.
                 </p>
                 <h3><a name="data"></a> Our Data</h3>
                 <p>
-                    We got the data off a <a href="http://www.crowdflower.com/blog/new-years-resolutions-2015">CrowdFlower</a> blog about new year
-                    resolutions. The data was scrapped off of Twitter, taking anything that was tweeted from the United States with a 'hashtag' of #NewYearsResolution.
-                    The data that they collected was compiled into a csv file with the following columns: Twitter handle, gender, tweet, resolution category, resolution
-                    topic (which narrows down the category), 'retweet' count, tweet time and date, location coordinates and state.
+                    The data utilised for the visualisation was a dataset of tweets about new year resolutions obtained from <a href="http://www.crowdflower.com/data-for-everyone/" target="_blank">CrowdFlower</a>, a platform
+                    for data scientists to enrich their data. Each tweet had a twitter handle, the gender of the person who made the tweet, the tweet content, the category of new year resolution that the tweet content fell in,
+                    the date the tweet was made, the retweet count, the state and the location coordinates the person who made the tweet at that time. The locations provided for all the tweets were all from the United States of
+                    America. The dataset itself can be downloaded <a href="http://www.crowdflower.com/wp-content/uploads/2016/03/New-years-resolutions-DFE.csv" target="_blank">here</a>.
                 </p>
             </section>
             <section id="research">
                 <h2> Research</h2>
                 <p>
-					Before the initial design was developed, research into existing visualizations on the same topic was done. All the visualizations discovered
-                    were static and the data was not multi-dimensional. Below are some of the visualizations along with an analysis for each of them.
+                    It is said that you shouldn't reinvent the wheel, a saying so true to itself that no one has bothered thinking up another way to give the same message. In this regard, we set out to find visualisations that had
+                    attempted to show the same kind of data with similar dimensions. This research set the foundation upon which our visualisation was built.
                 </p>
                 <div id="NJ">
                     <h3> Example 1: New Jersey New Year's Resolution</h3>
