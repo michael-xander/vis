@@ -95,10 +95,10 @@ function generateMap()
     svg.call(tip);
 
     // load the compiled data
-    d3.csv("compilation.csv", function(data)
+    d3.csv("data/compilation.csv", function(data)
     {
         // load the GeoJSON data for the states
-        d3.json("us-states.json", function(json){
+        d3.json("data/us-states.json", function(json){
             //bind data and create one path per GeoJSON feature
             g.append("g")
                 .selectAll("path")
@@ -235,7 +235,7 @@ function generateMapLegend()
 {
     var legend_height = height;
     var legend_width = width/4;
-    var category_img = ['ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+    var category_img = ['img/ph.png', 'img/pe.png', 'img/ed.png', 'img/he.png', 'img/re.png', 'img/fa.png','img/ca.png', 'img/fi.png', 'img/ti.png', 'img/hu.png' ];
 
     var svg = d3.select("#map_div")
         .append("svg")

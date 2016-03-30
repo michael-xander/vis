@@ -161,7 +161,7 @@ function generateCategoryGraphs(data)
  */
 function generateCategoryGraphLegend(height, width)
 {
-    var category_img = ['', '', 'ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+    var category_img = ['', '', 'img/ph.png', 'img/pe.png', 'img/ed.png', 'img/he.png', 'img/re.png', 'img/fa.png','img/ca.png', 'img/fi.png', 'img/ti.png', 'img/hu.png' ];
 
     var svg = d3.select("#graph_div")
         .append("svg")
@@ -374,7 +374,7 @@ function generateStateComparisonGraphs(data, stateNames)
 
 function generateStateComparisonGraphLegend(stateNames, height, width)
 {
-    var category_img = ['', '', 'ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+    var category_img = ['', '', 'img/ph.png', 'img/pe.png', 'img/ed.png', 'img/he.png', 'img/re.png', 'img/fa.png','img/ca.png', 'img/fi.png', 'img/ti.png', 'img/hu.png' ];
 
     var svg = d3.select("#state_graph_div")
         .append("svg")
