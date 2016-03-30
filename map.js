@@ -235,36 +235,48 @@ function generateMapLegend()
 {
     var legend_height = height;
     var legend_width = width/4;
+    var category_img = ['ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+
     var svg = d3.select("#map_div")
         .append("svg")
-        .attr("width", legend_width)
-        .attr("height", legend_height);
+        .attr("width", legend_height+40)
+        .attr("height", legend_width);
 
     var legend = svg.selectAll(".legend")
         .data(getCategoryNames().slice())
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i){
-            return "translate(0," + i * 20 + ")";
+            return "translate(0," + i * 50 + ")";
         });
 
     legend.append("rect")
-        .attr("x", legend_width - 18)
-        .attr("width", 18)
-        .attr("height", 18)
+        .attr("x", legend_width)
+        .attr("width", 40)
+        .attr("height", 40)
         .style("fill", function(d){
             return selectCategoryColour(d);
         });
 
+   legend.append('image')
+        .data(category_img)
+        .attr('xlink:href',function (d){
+            return d;})
+       // .attr('class', 'pico')
+        .attr('height', '40')
+        .attr('width', '40')
+        .attr("x", width);
+
     legend.append("text")
-        .attr("x", legend_width-24)
+        .attr("x", legend_width-6)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
+        .style('fill', 'white')
+        .style("font-size", "14")
         .text(function(d){
             return d;
         });
-
 }
 
 /*
@@ -299,7 +311,6 @@ function fillStateSelectionDropdowns(features)
                 return d.properties.name;
             });
     }
-
 }
 
 /*

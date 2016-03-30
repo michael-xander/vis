@@ -94,16 +94,22 @@ function generateCategoryGraphs(data)
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
+        .style("fill", "white")
+        .style("font-size", "14")
         .call(xAxis);
 
     svg.append("g")
         .attr("class", "y axis")
+        .style("fill", "white")
+        .style("font-size", "14")
         .call(yAxis)
         .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
+            .style("fill", "white")
+            .style("font-size", "14")
             .text("Population");
 
     var category = svg.selectAll(".category")
@@ -148,7 +154,6 @@ function generateCategoryGraphs(data)
         .on("mouseout", tip.hide);
 
     generateCategoryGraphLegend(height, width/4);
-
 }
 
 /*
@@ -156,10 +161,12 @@ function generateCategoryGraphs(data)
  */
 function generateCategoryGraphLegend(height, width)
 {
+    var category_img = ['', '', 'ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+
     var svg = d3.select("#graph_div")
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", width+30)
+        .attr("height", height+30);
 
     var items = ["Male", "Female"];
 
@@ -174,13 +181,13 @@ function generateCategoryGraphLegend(height, width)
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i){
-            return "translate(0," + i * 20 + ")";
+            return "translate(0," + i * 40 + ")";
         });
 
     legend.append("rect")
-        .attr("x", width - 18)
-        .attr("width", 18)
-        .attr("height", 18)
+        .attr("x", width)
+        .attr("width", 30)
+        .attr("height", 30)
         .style("fill", function(d){
             return selectCategoryColour(d);
         })
@@ -193,11 +200,23 @@ function generateCategoryGraphLegend(height, width)
             return className;
         });
 
+     legend.append('image')
+             .data(category_img)
+             .attr('xlink:href',function (d){
+                 return d;})
+             //.attr('class', 'pico')
+             .attr('height', '30')
+             .attr('width', '30')
+             .attr("x", width);
+             //.attr("y", 20);
+
     legend.append("text")
-        .attr("x", width - 24)
+        .attr("x", width - 6)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
+        .style('fill', 'white')
+        .style("font-size", "14")
         .text(function(d){return d;});
 }
 
@@ -291,16 +310,22 @@ function generateStateComparisonGraphs(data, stateNames)
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
+        .style("fill", "white")
+        .style("font-size", "14")
         .call(xAxis);
 
     svg.append("g")
         .attr("class", "y axis")
+        .style("fill", "white")
+        .style("font-size", "14")
         .call(yAxis)
         .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
+        .style("fill", "white")
+        .style("font-size", "14")
         .text("Population");
 
     var category = svg.selectAll(".category")
@@ -349,10 +374,12 @@ function generateStateComparisonGraphs(data, stateNames)
 
 function generateStateComparisonGraphLegend(stateNames, height, width)
 {
+    var category_img = ['', '', 'ph.png', 'pe.png', 'ed.png', 'he.png', 're.png', 'fa.png','ca.png', 'fi.png', 'ti.png', 'hu.png' ];
+
     var svg = d3.select("#state_graph_div")
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", width+30)
+        .attr("height", height+30);
 
     var categoryNames = getCategoryNames();
 
@@ -366,13 +393,13 @@ function generateStateComparisonGraphLegend(stateNames, height, width)
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i){
-            return "translate(0," + i * 20 + ")";
+            return "translate(0," + i * 40 + ")";
         });
 
     legend.append("rect")
-        .attr("x", width - 18)
-        .attr("width", 18)
-        .attr("height", 18)
+        .attr("x", width)
+        .attr("width", 30)
+        .attr("height", 30)
         .style("fill", function(d){
             return selectCategoryColour(d);
         })
@@ -385,11 +412,23 @@ function generateStateComparisonGraphLegend(stateNames, height, width)
             return className;
         });
 
+     legend.append('image')
+             .data(category_img)
+             .attr('xlink:href',function (d){
+                 return d;})
+             //.attr('class', 'pico')
+             .attr('height', '30')
+             .attr('width', '30')
+             .attr("x", width );
+             //.attr("y", 50);
+
     legend.append("text")
         .attr("x", width - 24)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
+        .style('fill', 'white')
+        .style("font-size", "14")
         .text(function(d){return d;});
 }
 
@@ -406,13 +445,13 @@ function selectCategoryColour(category)
             color = "yellowGreen";
             break;
         case "Humor":
-            color = "tomato";
+            color = "#7E3517";
             break;
         case "Personal Growth":
-            color = "sienna";
+            color = "orchid";
             break;
         case "Philanthropic":
-            color = "royalBlue";
+            color = "sienna";
             break;
         case "Education/Training":
             color = "powderBlue";
@@ -427,13 +466,13 @@ function selectCategoryColour(category)
             color = "darkOliveGreen";
             break;
         case "Finance":
-            color = "orchid";
+            color = "royalBlue";
             break;
         case "Time Management/Organization":
             color = "rebeccaPurple";
             break;
         default:
-            color = "black";
+            color = "white";
     }
     return color;
 }
@@ -446,16 +485,17 @@ function selectCategoryColour(category)
 function getCategoryNames()
 {
     var categoryNames = [
-        "Health & Fitness",
-        "Humor",
-        "Personal Growth",
+        
         "Philanthropic",
+        "Personal Growth",
         "Education/Training",
+        "Health & Fitness",
         "Recreation & Leisure",
         "Family/Friends/Relationships",
         "Career",
         "Finance",
-        "Time Management/Organization"
+        "Time Management/Organization",
+        "Humor"
     ];
     return categoryNames;
 }

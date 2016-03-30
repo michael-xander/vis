@@ -12,28 +12,31 @@
     <link rel="stylesheet" type="text/css" href="implementation.css">
     <link rel="stylesheet" type="text/css" href="map.css">
     <link rel="stylesheet" type="text/css" href="graphs.css">
+    <link rel="stylesheet" type="text/css" href="layout.css">
 </head>
-<body>
-    <form action="">
+<body background="1451225397_shutterstock_340594100.png">
+<div class="pic"><img src="Picture4.png"></div><div class="heading"><h1 style="font-family: cursive" style="font-size: 50">New Years Resolutions for 2015</h1> </div>
+<div class="options">
+    <form action="" style="text-align:center;"> 
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Health & Fitness">Health & Fitness
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Humor">Humor
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Personal Growth">Personal Growth
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Philanthropic">Philanthropic
-        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Education/Training">Education/Training
+        <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Education/Training">Education/Training<br>
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Recreation & Leisure">Recreation & Leisure
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Family/Friends/Relationships">Family/Friends/Relationships
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Career">Career
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Finance">Finance
         <input class="category_checkbox" type="checkbox" name="category" checked="true" value="Time Management/Organization">Time Management/Organization
     </form>
-
-    <form>
+<p>
+    <form style="text-align:center;">
         <input class="gender_checkbox" type="checkbox" name="gender" checked="true" value="male" id="male_checkbox">Male
         <input class="gender_checkbox" type="checkbox" name="gender" checked="true" value="female" id="female_checkbox">Female
     </form>
-
+</p>
     <!-- the dropdown boxes for the selection of states -->
-    <div>
+    <div style="text-align:center;">
         <select id="state_1" name="state-1">
             <option selected>-- select a state --</option>
         </select>
@@ -41,13 +44,14 @@
             <option selected>-- select a state --</option>
         </select>
     </div>
+</div>
 
     <!-- div to hold the map-->
-    <div id="map_div"></div>
+    <div id="map_div" style="padding-top:10%;" class="map"></div>
     <!-- div to hold the category graph -->
-    <div id="graph_div"></div>
+    <div id="graph_div" class="graph"></div>
     <!-- div to hold the state graph -->
-    <div id="state_graph_div"></div>
+    <div id="state_graph_div" class="graph"></div>
 
     <script>
         generateMap();
