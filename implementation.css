@@ -10,47 +10,15 @@
 
 }
 
-/*css for tooltips on map*/
-
-#tooltip {
-    position: absolute;
-    width: 300px;
-    height: auto;
-    padding: 10px;
-    background-color: black;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-    -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-    pointer-events: none;
-    opacity: 0.85;
-}
-
-.tooltip_tag {
-    color: cyan;
-}
-
-#tooltip.hidden {
-    display: none;
-}
-
-#tooltip p {
-    color: white;
-    margin: 0;
-    font-family: sans-serif;
-    font-size: 16px;
-    line-height: 20px;
-}
-
-/*css for the tooltips used in the graphs*/
+/*css for the tooltips used in the svgs*/
 .d3-tip {
     line-height: 1;
+    width: 300px;
+    font-family: sans-serif;
     font-weight: bold;
     padding: 12px;
     background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    color: cyan;
     border-radius: 2px;
 }
 

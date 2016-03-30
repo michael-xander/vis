@@ -1,5 +1,10 @@
 /* contains css utilised in generation of the map*/
 
+/*css for the map background*/
+.background {
+    fill:none;
+    pointer-events: all;
+}
 /*css for the different categories*/
 .health {
     fill: yellowGreen;
@@ -32,5 +37,10 @@
 .time{
     fill: rebeccaPurple;
 }
+
+#map_div {
+    font: 10px sans-serif;
+}
+
 
 
