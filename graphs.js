@@ -30,6 +30,7 @@ function generateCategoryGraphs(data)
         .orient("left");
 
     var svg = d3.select("#graph_div")
+        .style("display", "block")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height +  margin.top + margin.bottom);
@@ -247,6 +248,7 @@ function generateStateComparisonGraphs(data, stateNames)
         .orient("left");
 
     var svg = d3.select("#state_graph_div")
+        .style("display", "block")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height +  margin.top + margin.bottom);
@@ -284,7 +286,7 @@ function generateStateComparisonGraphs(data, stateNames)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var tip = d3.tip()
-        .attr("class", "d3-tip")
+        .attr("class", "d3-tip-graph")
         .offset([-10, 0])
         .html(function(d) {
             return "<strong>State: </strong><span style='color:red'>" + d.state + "</span><br>" +
@@ -514,6 +516,8 @@ function updateCategoryGraphs(data)
  */
 function deleteCategoryGraphs()
 {
+    d3.select("#graph_div")
+        .style("display", "none");
     d3.selectAll("#graph_div svg").remove();
 }
 
@@ -522,6 +526,8 @@ function deleteCategoryGraphs()
  */
 function deleteStateGraphs()
 {
+    d3.select("#state_graph_div")
+        .style("display", "none");
     d3.selectAll("#state_graph_div svg").remove();
 }
 
