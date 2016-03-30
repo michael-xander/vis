@@ -43,6 +43,19 @@ nav ul a:active{
 
 
 /* the body and its contents*/
+.s_graph{
+    width: 925px;
+    height: 398px;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.s_map{
+    width: 985px;
+    height: 525px;
+    background-color: white;
+    margin: 0 auto;
+}
 
 .winner{
     width: 610px;
