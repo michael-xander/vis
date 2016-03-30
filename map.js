@@ -239,21 +239,21 @@ function generateMapLegend()
 
     var svg = d3.select("#map_div")
         .append("svg")
-        .attr("width", legend_height+40)
-        .attr("height", legend_width);
+        .attr("width", legend_width+40)
+        .attr("height", legend_height);
 
     var legend = svg.selectAll(".legend")
         .data(getCategoryNames().slice())
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i){
-            return "translate(0," + i * 50 + ")";
+            return "translate(0," + i * 40 + ")";
         });
 
     legend.append("rect")
         .attr("x", legend_width)
-        .attr("width", 40)
-        .attr("height", 40)
+        .attr("width", 30)
+        .attr("height", 30)
         .style("fill", function(d){
             return selectCategoryColour(d);
         });
@@ -263,9 +263,9 @@ function generateMapLegend()
         .attr('xlink:href',function (d){
             return d;})
        // .attr('class', 'pico')
-        .attr('height', '40')
-        .attr('width', '40')
-        .attr("x", width);
+        .attr('height', 30)
+        .attr('width', 30)
+        .attr("x", legend_width);
 
     legend.append("text")
         .attr("x", legend_width-6)
