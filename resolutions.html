@@ -13,10 +13,9 @@
                     <li> <a href="#research"> Research </a> </li>
                     <li> <a href="#visqueries"> Visual Queries </a> </li>
                     <li> <a href="#design"> Design Iterations</a> </li>
-                    <li> <a href="#viz"> Visualization</a> </li>
                     <li> <a href="#discussions"> Discussion</a> </li>
                     <li> <a href="#team"> Team</a>  </li>
-                    <li><a href="#">Implementation</a></li>
+                    <li><a href="#"> Visualisation</a></li>
                 </ul>
             </nav>
         </div>
@@ -214,7 +213,7 @@
                 <p>
                     The aim of the second iteration visualisation was to bring to life the initial paper mock up through interactivity
                     and address the criticisms brought up about the initial mock up. <a href="https://d3js.org" target="_blank">D3.js</a>, a JavaScript library for generating visualisations
-                    was utilised to include interactivity in the prototype.
+                    was utilised to include interactivity in the prototype. Figure 9 below shows the map on implementation and figure 10 shows the graph.
                 </p>
                 <div class="s_map">
                     <img src="secondMap.PNG" border="1">
@@ -225,67 +224,50 @@
                     <img src="secondGraph.PNG" border="1">
                     <p> Figure 10: A graph showing the performance of each category (second iteration as presented to the class) </p>
                 </div>
+
+                <br>
+                <p>
+                    In this iteration, the dimension of time was removed from the visualisation. It was found that though each tweet differed when it came to time, all the tweets with the exception
+                    of a few took place on 31st December and as such the range functionality could not be sufficiently used.
+                </p>
+
+                <p>
+                    To provide a visual distinction between male and female data points on the map, the male data points were given a black boundary whilst the female data points were given a white boundary.
+                </p>
+
                 <h4> Implementation of feedback (from 1st presentation) in 2nd iteration</h4>
 
                 <h5> Use shape as well as colour to represent a category</h5>
                 <p>
-                    We thought the colors representing the categories were so distinct that a person did not need an additional symbol to help them
-                    easily identify a category. Due to the fact that we have a large data set we decided not to use symbols for categories because we
-                    felt they would only overcrowd the map even more. We decided use a circle to represent data points and have them colour coded to the
-                    category it falls under. An extra dimension of gender was added by having male data points have a black border around the circle,
-                    while female data points have a white border.
+                    Shapes were not used in this implementation. We were of the mind that the colours were sufficient to distinguish between categories. The was also worry that introducing shapes that were not
+                    shown anywhere else in either the map or graphs besides the legends of those two respective entities would be misleading. A user could look around the map expecting to find data points of a required
+                    category with the provided shape only to not find it.
                 </p>
                 <h5> Comparing two states</h5>
                 <p>
-                    Users have the ability to compare only two states at a time. A state is chosen by selecting it from the combo box above the map. This
-                    changes the map as well as the graphs, therefore providing discrete information. Comparisons can be made within a single state across
-                    its different categories or genders. Comparisons can also be made between two states across all of their categories or in one specific
-                    category.
+                    In the visualisation, states can be picked for comparison. In this scenario, the picked states are highlighted in the map and only their data is shown within it. The graph as well changes to show
+                    comparison of the two states data.
                 </p>
                 <h5> Use both texture and colour for bar graphs </h5>
                 <p>
                     The graphs use both colour and texture. Each category retains its colour while texture is added to the bar representing females as clearly
-                    shown on the key.
+                    shown in figure 10.
                 </p>
                 <h5> Have a bit more of theme - resolutions - add appeal to your graphic </h5>
                 <p>
                     Rather than adding the new year's theme to our visualisation through symbols and colour etc., we decided to add the theme to the
-                    web page instead. We wanted a visually appealing visualisation that did not overwhelm the user with unnecessary symbols and colour.
-                    Our aim is for the user to easily understand the visualization and have their visual queries answered as fast as possible.
+                    visualisation web page instead. We wanted a visually appealing theme that did not overwhelm the user with unnecessary symbols and colour.
                 </p>
                 <h5> Total resolution (category) "winner" of the state shown as a texture?</h5>
                 <p>
-                    At this stage had not added this feature because one category was the winner in about 47 of the 50 states. We thought this would
-                    just fill up the entire map with the symbol or color and decided to think about it for final implementation. A smaller map would be
-                    added next to the large map showing this. This map would look like the one showed below. We decided to make a decision on this during
-                    the final implementation.
+                    This was not implemented. Analysis of the data found that only two categories stood out with one taking over 47 of the states and the other the remaining
+                    4 states. This would have led to a map as shown in figure 11 which we found lacking in visual appeal.
                 </p>
                 <div class="winner">
                     <img src="winnerinstate.PNG" border="1">
                     <p> Figure 11: A map showing the 'winning' category in each state</p>
                 </div>
-                <h5> </h5>
-                <p>
-                    Symbols were discarded for this iteration because they were only going to be used on the key and therefore served no major purpose. The slider
-                    showing time ranges was discarded because of the short time frame it covered. This iteration is interactive and users get more information by
-                    interacting with the visualization in different ways:
-                </p>
-                <ul>
-                    <li> Hovering over a data point on the map shows all the information about that point. </li>
-                    <li>
-                        Clicking on a state in the combo box. This removes all the data points on the rest of map and only leaves the ones in that specific state.
-                        The graphs change accordingly. This could be improved by greying out the other points instead of removing them completely so that a user
-                        still has an overview.
-                    </li>
-                    <li>
-                        Clicking on a second state would show the data points in this state, change the graphs and therefore enable users to make comparisons
-                        between the two states. This iteration caters for comparisons between only 2 states.
-                    </li>
-                    <li>
-                        Clicking on a gender selects or un-selects the gender depending on its current state(selected or un-selected). This adds or removes the
-                        data points (for that gender) on the map and changes the graphs as well. Selecting categories works exactly like selecting the gender.
-                    </li>
-                </ul>
+
                 <h4> Feedback after presentation of 2nd iteration</h4>
                 <p> The feedback from the presentation of the second iteration was quite similar to the feedback from the 1st presentation.</p>
                 <ul>
@@ -299,18 +281,20 @@
                 <h3> Final Implementation </h3>
                 <h4> Changes from the second iteration to the final visualization</h4>
                 <p>
-                    // Needs to be added... i.e why you changed the colours, chose those shapes and the white border around each data point
-                    // why we left out winning category in each state.
+                    The second iteration visualisation was adjusted to fulfill the requirements set by the feedback and as such in the final implementation:
                 </p>
+                <ul>
+                    <li>Symbols were added to the keys of the map and graphs</li>
+                    <li>The gender data points were distinguished according to size; circles for male and squares for female</li>
+                    <li>Zooming capability added to map and activated on clicking on state then zooming out on clicking on that very same state</li>
+                    <li>Frame added to map and graph</li>
+                    <li>Theme added to the visualisation</li>
+                </ul>
                 <p>
-                    After the 2nd presentation, we decided to make changes to the visualization based on the feedback above.
+                    The final implementation can be navigated to by clicking the Visualisation tab on the left or clicking <a href="#">here</a>.
                 </p>
-                <h4> Other Design Decisions</h4>
             </section>
-            <section id="viz">
-                <h2> Visualization </h2>
-                // link to the final presentation
-            </section>
+
             <section id="discussions">
                 <h2> Discussion </h2>
                 <p>
@@ -369,23 +353,27 @@
                     9 checkboxes. And similarly, the "nothing" button would enable a de-select all the catgories and choose the one they want to explore.
                 </p>
                 <h3> Difficulties </h3>
+                <p>
+                    During the implementation, we found it hard to add tooltips to the different states on the map. If added, these tooltips collided with those for the different data points.
+                    Given that states cover an area unlike data points that are at specific positions, the tooltips of the states would get in the way as the map was hovered over. As such, a user
+                    would have to know which state is which when picking one.
+                </p>
+                <p>
+                    We failed to find a visually appealing way to show gender breakdown per category when a comparing two states. At the moment this can only be done through the tooltip above the
+                    a particular bar graph for a category which gives a breakdown for the females and males for that category for that state.
+                </p>
                 <h3> Conclusions </h3>
                 <h3> Future work</h3>
                 <p>
                     Future work could include finding a way to add the name of each state to the map.
-
-                </p>
-                <p>
-                    We could also include the slider. This would enable user look at less data without selecting a gender, category or state. Other users could
-                    make conclusions based on when a resolution was made.
                 </p>
             </section>
             <section id="team">
                 <h2> Team </h2>
                 <p>
-                    The group worked together and used the <a href="https://slack.com/">Slack</a> application for communication and file sharing. Google drive was
+                    The group worked together and used the <a href="https://slack.com/" target="_blank">Slack</a> application for communication and file sharing. Google drive was
                     also used to share files as well work collaboratively. All the members agreed on the final design before implementation. Lastly, we used
-                    <a href="https://github.com/"> Github </a> and this enabled us to see the changes each one of us was making without necessarily having to meet. The
+                    <a href="https://github.com/" target="_blank"> Github </a> and this enabled us to see the changes each one of us was making without necessarily having to meet. The
                     work was divided among the 3 members in the following way:
                 </p>
                 <table cellpadding="10%">
