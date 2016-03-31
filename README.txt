@@ -4,10 +4,9 @@ Date: 31st March 2016.
 
 Name: New Year's Resolutions Visualization. 
 
-Description: The zip file contains a web page containing a report about our visualization, how we refined it and the design decisions at each phase.  
+Description: This folder contains a web page containing a report about our visualization, how we refined it and the design decisions at each phase.  
 
-Instructions: Open the zip file. It contains a README.txt, and folders containing the html files, css files and js files required to read the report and view the visualization. The report is index.html file
-and contains a link to the implementation.html which is the visualization.
+Instructions: Open index.html in a browser, it contains the report. The implementation of the visualistion is implementation.html
 
 List of files:
 -index.html: the report for the visualisation
