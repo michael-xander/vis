@@ -10,18 +10,11 @@ Instructions: Open the zip file. It contains a README.txt, and folders containin
 and contains a link to the implementation.html which is the visualization.
 
 List of files:
--index.html
-CSS folder
--index.css
--implementation.css
--graphs.css
--layout.css
-JS folder
--map.js
--graphs.js
-IMG folder - contains all the images used in the visualization
-DATA folder
--compilation.csv
--us-states.json
+-index.html: the report for the visualisation
+-implementation: the actual visualisation built by the team
+CSS folder: contains the CSS used in the project
+JS folder: contains the javascript used in the project
+IMG folder: contains all the images used for the project
+DATA folder: contains the tweet data and the data utilised to generate map locations
 
 
