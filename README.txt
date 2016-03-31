@@ -1,6 +1,6 @@
 Author: Michael Kyeyune, Thandile Xiphu and William Lumala
 
-Date: 31st March 2014.
+Date: 31st March 2016.
 
 Name: New Year's Resolutions Visualization. 
 
